@@ -1,0 +1,1753 @@
+﻿node.exe : PASS tests/unit/qu
+eryBuilder.test.js
+At C:\Users\pc\AppData\Roamin
+g\npm\npx.ps1:24 char:5
++     & "node$exe"  "$basedir
+/node_modules/npm/bin/npx-cli
+.js" $args
++     ~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~
+    + CategoryInfo           
+   : NotSpecified: (PASS te  
+  sts/unit/queryBuilder.te   
+ st.js:String) [], Remote    
+Exception
+    + FullyQualifiedErrorId  
+   : NativeCommandError
+ 
+PASS 
+tests/unit/validators.test.js
+FAIL src/__tests__/validate.t
+est.js
+  ΓùÅ Validation Middleware 
+ΓÇ║ validateRequest ΓÇ║ 
+should return 400 with 
+details if data is invalid
+
+    expect(jest.fn()).toHaveB
+eenCalledWith(...expected)
+
+    Expected: 400
+
+    Number of calls: 0
+
+    [0m [90m 44 |[39m     
+        
+middleware(req[33m,[39m 
+res[33m,[39m 
+next)[33m;[39m
+     [90m 45 |[39m
+    
+[31m[1m>[22m[39m[90m 46 
+|[39m             expect(res
+[33m.[39mstatus)[33m.[39m
+toHaveBeenCalledWith([35m400
+[39m)[33m;[39m
+     [90m    |[39m         
+                       
+[31m[1m^[22m[39m
+     [90m 47 |[39m         
+    expect(res[33m.[39mjson
+)[33m.[39mtoHaveBeenCalledW
+ith(expect[33m.[39mobjectCo
+ntaining({
+     [90m 48 |[39m         
+        error[33m:[39m 
+[32m'Invalid request 
+data'[39m[33m,[39m
+     [90m 49 |[39m         
+        details[33m:[39m ex
+pect[33m.[39many([33mArray
+[39m)[0m
+
+      at 
+Object.toHaveBeenCalledWith (
+src/__tests__/validate.test.j
+s:46:32)
+
+PASS src/config/cors.test.js
+PASS tests/unit/errorHandler.
+test.js
+PASS 
+src/tests/response.test.js
+  ΓùÅ Console
+
+    console.log
+      [dotenv@17.3.1] 
+injecting env (0) from .env 
+-- tip: ΓÜÖ∩╕Å  write to 
+custom object with { 
+processEnv: myObject }
+
+      at _log (node_modules/d
+otenv/lib/main.js:139:11)
+
+    console.log
+      [dotenv@17.3.1] 
+injecting env (0) from .env 
+-- tip: ≡ƒ¢í∩╕Å auth for 
+agents: https://vestauth.com
+
+      at _log (node_modules/d
+otenv/lib/main.js:139:11)
+
+    console.error
+      Unhandled Error: 
+Error: Triggered Error
+          at C:\Users\pc\Docu
+ments\waves\Liquifact-backend
+\src\app.js:134:10
+          at 
+Layer.handleRequest (C:\Users
+\pc\Documents\waves\Liquifact
+-backend\node_modules\router\
+lib\layer.js:152:17)
+          at next (C:\Users\p
+c\Documents\waves\Liquifact-b
+ackend\node_modules\router\li
+b\route.js:157:13)
+          at Route.dispatch (
+C:\Users\pc\Documents\waves\L
+iquifact-backend\node_modules
+\router\lib\route.js:117:3)
+          at handle (C:\Users
+\pc\Documents\waves\Liquifact
+-backend\node_modules\router\
+index.js:435:11)
+          at 
+Layer.handleRequest (C:\Users
+\pc\Documents\waves\Liquifact
+-backend\node_modules\router\
+lib\layer.js:152:17)
+          at C:\Users\pc\Docu
+ments\waves\Liquifact-backend
+\node_modules\router\index.js
+:295:15
+          at processParams (C
+:\Users\pc\Documents\waves\Li
+quifact-backend\node_modules\
+router\index.js:582:12)
+          at next (C:\Users\p
+c\Documents\waves\Liquifact-b
+ackend\node_modules\router\in
+dex.js:291:5)
+          at C:\Users\pc\Docu
+ments\waves\Liquifact-backend
+\node_modules\express-rate-li
+mit\dist\index.cjs:947:7
+          at 
+processTicksAndRejections (no
+de:internal/process/task_queu
+es:105:5)
+          at C:\Users\pc\Docu
+ments\waves\Liquifact-backend
+\node_modules\express-rate-li
+mit\dist\index.cjs:830:5
+
+    [0m [90m 31 |[39m     
+[90m// Log unexpected 
+errors[39m
+     [90m 32 |[39m     
+[36mif[39m (status 
+[33m===[39m [35m500[39m) 
+{
+    
+[31m[1m>[22m[39m[90m 33 
+|[39m       console[33m.[3
+9merror([32m'Unhandled 
+Error:'[39m[33m,[39m 
+err)[33m;[39m
+     [90m    |[39m         
+      [31m[1m^[22m[39m
+     [90m 34 |[39m     }
+     [90m 35 |[39m
+     [90m 36 |[39m     
+problem [33m=[39m 
+formatProblemDetails({[0m
+
+      at error (src/middlewar
+e/errorHandler.js:33:15)
+      at Layer.handleError (n
+ode_modules/router/lib/layer.
+js:116:17)
+      at trimPrefix (node_mod
+ules/router/index.js:340:13)
+      at node_modules/router/
+index.js:297:9
+      at processParams (node_
+modules/router/index.js:582:1
+2)
+      at next (node_modules/r
+outer/index.js:291:5)
+      at next (src/middleware
+/bodySizeLimits.js:177:3)
+      at Layer.handleError (n
+ode_modules/router/lib/layer.
+js:116:17)
+      at trimPrefix (node_mod
+ules/router/index.js:340:13)
+      at node_modules/router/
+index.js:297:9
+      at processParams (node_
+modules/router/index.js:582:1
+2)
+      at next (node_modules/r
+outer/index.js:291:5)
+      at next 
+(src/app.js:153:5)
+      at Layer.handleError (n
+ode_modules/router/lib/layer.
+js:116:17)
+      at trimPrefix (node_mod
+ules/router/index.js:340:13)
+      at node_modules/router/
+index.js:297:9
+      at processParams (node_
+modules/router/index.js:582:1
+2)
+      at next (node_modules/r
+outer/index.js:291:5)
+      at Layer.handleError (n
+ode_modules/router/lib/layer.
+js:111:12)
+      at trimPrefix (node_mod
+ules/router/index.js:340:13)
+      at node_modules/router/
+index.js:297:9
+      at processParams (node_
+modules/router/index.js:582:1
+2)
+      at next (node_modules/r
+outer/index.js:291:5)
+      at next (node_modules/r
+outer/lib/route.js:132:14)
+      at next 
+(src/app.js:134:5)
+      at Layer.handleRequest 
+(node_modules/router/lib/laye
+r.js:152:17)
+      at next (node_modules/r
+outer/lib/route.js:157:13)
+      at Route.dispatch (node
+_modules/router/lib/route.js:
+117:3)
+      at handle (node_modules
+/router/index.js:435:11)
+      at Layer.handleRequest 
+(node_modules/router/lib/laye
+r.js:152:17)
+      at node_modules/router/
+index.js:295:15
+      at processParams (node_
+modules/router/index.js:582:1
+2)
+      at next (node_modules/r
+outer/index.js:291:5)
+      at node_modules/express
+-rate-limit/dist/index.cjs:94
+7:7
+      at node_modules/express
+-rate-limit/dist/index.cjs:83
+0:5
+
+    console.error
+      Unhandled Error: 
+Error: Triggered Error
+          at C:\Users\pc\Docu
+ments\waves\Liquifact-backend
+\src\app.js:134:10
+          at 
+Layer.handleRequest (C:\Users
+\pc\Documents\waves\Liquifact
+-backend\node_modules\router\
+lib\layer.js:152:17)
+          at next (C:\Users\p
+c\Documents\waves\Liquifact-b
+ackend\node_modules\router\li
+b\route.js:157:13)
+          at Route.dispatch (
+C:\Users\pc\Documents\waves\L
+iquifact-backend\node_modules
+\router\lib\route.js:117:3)
+          at handle (C:\Users
+\pc\Documents\waves\Liquifact
+-backend\node_modules\router\
+index.js:435:11)
+          at 
+Layer.handleRequest (C:\Users
+\pc\Documents\waves\Liquifact
+-backend\node_modules\router\
+lib\layer.js:152:17)
+          at C:\Users\pc\Docu
+ments\waves\Liquifact-backend
+\node_modules\router\index.js
+:295:15
+          at processParams (C
+:\Users\pc\Documents\waves\Li
+quifact-backend\node_modules\
+router\index.js:582:12)
+          at next (C:\Users\p
+c\Documents\waves\Liquifact-b
+ackend\node_modules\router\in
+dex.js:291:5)
+          at C:\Users\pc\Docu
+ments\waves\Liquifact-backend
+\node_modules\express-rate-li
+mit\dist\index.cjs:947:7
+          at 
+processTicksAndRejections (no
+de:internal/process/task_queu
+es:105:5)
+          at C:\Users\pc\Docu
+ments\waves\Liquifact-backend
+\node_modules\express-rate-li
+mit\dist\index.cjs:830:5
+
+    [0m [90m 31 |[39m     
+[90m// Log unexpected 
+errors[39m
+     [90m 32 |[39m     
+[36mif[39m (status 
+[33m===[39m [35m500[39m) 
+{
+    
+[31m[1m>[22m[39m[90m 33 
+|[39m       console[33m.[3
+9merror([32m'Unhandled 
+Error:'[39m[33m,[39m 
+err)[33m;[39m
+     [90m    |[39m         
+      [31m[1m^[22m[39m
+     [90m 34 |[39m     }
+     [90m 35 |[39m
+     [90m 36 |[39m     
+problem [33m=[39m 
+formatProblemDetails({[0m
+
+      at error (src/middlewar
+e/errorHandler.js:33:15)
+      at Layer.handleError (n
+ode_modules/router/lib/layer.
+js:116:17)
+      at trimPrefix (node_mod
+ules/router/index.js:340:13)
+      at node_modules/router/
+index.js:297:9
+      at processParams (node_
+modules/router/index.js:582:1
+2)
+      at next (node_modules/r
+outer/index.js:291:5)
+      at next (src/middleware
+/bodySizeLimits.js:177:3)
+      at Layer.handleError (n
+ode_modules/router/lib/layer.
+js:116:17)
+      at trimPrefix (node_mod
+ules/router/index.js:340:13)
+      at node_modules/router/
+index.js:297:9
+      at processParams (node_
+modules/router/index.js:582:1
+2)
+      at next (node_modules/r
+outer/index.js:291:5)
+      at next 
+(src/app.js:153:5)
+      at Layer.handleError (n
+ode_modules/router/lib/layer.
+js:116:17)
+      at trimPrefix (node_mod
+ules/router/index.js:340:13)
+      at node_modules/router/
+index.js:297:9
+      at processParams (node_
+modules/router/index.js:582:1
+2)
+      at next (node_modules/r
+outer/index.js:291:5)
+      at Layer.handleError (n
+ode_modules/router/lib/layer.
+js:111:12)
+      at trimPrefix (node_mod
+ules/router/index.js:340:13)
+      at node_modules/router/
+index.js:297:9
+      at processParams (node_
+modules/router/index.js:582:1
+2)
+      at next (node_modules/r
+outer/index.js:291:5)
+      at next (node_modules/r
+outer/lib/route.js:132:14)
+      at next 
+(src/app.js:134:5)
+      at Layer.handleRequest 
+(node_modules/router/lib/laye
+r.js:152:17)
+      at next (node_modules/r
+outer/lib/route.js:157:13)
+      at Route.dispatch (node
+_modules/router/lib/route.js:
+117:3)
+      at handle (node_modules
+/router/index.js:435:11)
+      at Layer.handleRequest 
+(node_modules/router/lib/laye
+r.js:152:17)
+      at node_modules/router/
+index.js:295:15
+      at processParams (node_
+modules/router/index.js:582:1
+2)
+      at next (node_modules/r
+outer/index.js:291:5)
+      at node_modules/express
+-rate-limit/dist/index.cjs:94
+7:7
+      at node_modules/express
+-rate-limit/dist/index.cjs:83
+0:5
+
+PASS src/utils/retry.test.js
+PASS src/__tests__/bodySizeLi
+mits.test.js
+  ΓùÅ Console
+
+    console.log
+      [dotenv@17.3.1] 
+injecting env (0) from .env 
+-- tip: ΓÜÖ∩╕Å  suppress all 
+logs with { quiet: true }
+
+      at _log (node_modules/d
+otenv/lib/main.js:139:11)
+
+    console.log
+      [dotenv@17.3.1] 
+injecting env (0) from .env 
+-- tip: ΓÜÖ∩╕Å  load 
+multiple .env files with { 
+path: ['.env.local', '.env'] 
+}
+
+      at _log (node_modules/d
+otenv/lib/main.js:139:11)
+
+PASS src/__tests__/invoice.ap
+i.test.js
+  ΓùÅ Console
+
+    console.log
+      [dotenv@17.3.1] 
+injecting env (0) from .env 
+-- tip: ΓÜÖ∩╕Å  specify 
+custom .env file path with { 
+path: '/custom/path/.env' }
+
+      at _log (node_modules/d
+otenv/lib/main.js:139:11)
+
+    console.log
+      [dotenv@17.3.1] 
+injecting env (0) from .env 
+-- tip: ΓÜÖ∩╕Å  suppress all 
+logs with { quiet: true }
+
+      at _log (node_modules/d
+otenv/lib/main.js:139:11)
+
+    console.error
+      Unhandled Error: 
+Error: Service failure
+          at 
+Object.<anonymous> (C:\Users\
+pc\Documents\waves\Liquifact-
+backend\src\__tests__\invoice
+.api.test.js:107:52)
+          at 
+Promise.finally.completed (C:
+\Users\pc\Documents\waves\Liq
+uifact-backend\node_modules\j
+est-circus\build\jestAdapterI
+nit.js:1557:28)
+          at new Promise 
+(<anonymous>)
+          at 
+callAsyncCircusFn (C:\Users\p
+c\Documents\waves\Liquifact-b
+ackend\node_modules\jest-circ
+us\build\jestAdapterInit.js:1
+497:10)
+          at _callCircusTest 
+(C:\Users\pc\Documents\waves\
+Liquifact-backend\node_module
+s\jest-circus\build\jestAdapt
+erInit.js:1007:40)
+          at 
+processTicksAndRejections (no
+de:internal/process/task_queu
+es:105:5)
+          at _runTest (C:\Use
+rs\pc\Documents\waves\Liquifa
+ct-backend\node_modules\jest-
+circus\build\jestAdapterInit.
+js:947:3)
+          at C:\Users\pc\Docu
+ments\waves\Liquifact-backend
+\node_modules\jest-circus\bui
+ld\jestAdapterInit.js:849:7
+          at 
+_runTestsForDescribeBlock (C:
+\Users\pc\Documents\waves\Liq
+uifact-backend\node_modules\j
+est-circus\build\jestAdapterI
+nit.js:862:11)
+          at 
+_runTestsForDescribeBlock (C:
+\Users\pc\Documents\waves\Liq
+uifact-backend\node_modules\j
+est-circus\build\jestAdapterI
+nit.js:857:11)
+          at 
+_runTestsForDescribeBlock (C:
+\Users\pc\Documents\waves\Liq
+uifact-backend\node_modules\j
+est-circus\build\jestAdapterI
+nit.js:857:11)
+          at run (C:\Users\pc
+\Documents\waves\Liquifact-ba
+ckend\node_modules\jest-circu
+s\build\jestAdapterInit.js:76
+1:3)
+          at runAndTransformR
+esultsToJestFormat (C:\Users\
+pc\Documents\waves\Liquifact-
+backend\node_modules\jest-cir
+cus\build\jestAdapterInit.js:
+1918:21)
+          at jestAdapter (C:\
+Users\pc\Documents\waves\Liqu
+ifact-backend\node_modules\je
+st-circus\build\runner.js:101
+:19)
+          at runTestInternal 
+(C:\Users\pc\Documents\waves\
+Liquifact-backend\node_module
+s\jest-runner\build\testWorke
+r.js:275:16)
+          at runTest (C:\User
+s\pc\Documents\waves\Liquifac
+t-backend\node_modules\jest-r
+unner\build\testWorker.js:343
+:7)
+          at Object.worker (C
+:\Users\pc\Documents\waves\Li
+quifact-backend\node_modules\
+jest-runner\build\testWorker.
+js:497:12)
+
+    [0m [90m 31 |[39m     
+[90m// Log unexpected 
+errors[39m
+     [90m 32 |[39m     
+[36mif[39m (status 
+[33m===[39m [35m500[39m) 
+{
+    
+[31m[1m>[22m[39m[90m 33 
+|[39m       console[33m.[3
+9merror([32m'Unhandled 
+Error:'[39m[33m,[39m 
+err)[33m;[39m
+     [90m    |[39m         
+      [31m[1m^[22m[39m
+     [90m 34 |[39m     }
+     [90m 35 |[39m
+     [90m 36 |[39m     
+problem [33m=[39m 
+formatProblemDetails({[0m
+
+      at error (src/middlewar
+e/errorHandler.js:33:15)
+      at Layer.handleError (n
+ode_modules/router/lib/layer.
+js:116:17)
+      at trimPrefix (node_mod
+ules/router/index.js:340:13)
+      at node_modules/router/
+index.js:297:9
+      at processParams (node_
+modules/router/index.js:582:1
+2)
+      at next (node_modules/r
+outer/index.js:291:5)
+      at next (src/middleware
+/bodySizeLimits.js:177:3)
+      at Layer.handleError (n
+ode_modules/router/lib/layer.
+js:116:17)
+      at trimPrefix (node_mod
+ules/router/index.js:340:13)
+      at node_modules/router/
+index.js:297:9
+      at processParams (node_
+modules/router/index.js:582:1
+2)
+      at next (node_modules/r
+outer/index.js:291:5)
+      at next 
+(src/app.js:153:5)
+      at Layer.handleError (n
+ode_modules/router/lib/layer.
+js:116:17)
+      at trimPrefix (node_mod
+ules/router/index.js:340:13)
+      at node_modules/router/
+index.js:297:9
+      at processParams (node_
+modules/router/index.js:582:1
+2)
+      at next (node_modules/r
+outer/index.js:291:5)
+      at Layer.handleError (n
+ode_modules/router/lib/layer.
+js:111:12)
+      at trimPrefix (node_mod
+ules/router/index.js:340:13)
+      at node_modules/router/
+index.js:297:9
+      at processParams (node_
+modules/router/index.js:582:1
+2)
+      at next (node_modules/r
+outer/index.js:291:5)
+      at next (node_modules/r
+outer/lib/route.js:132:14)
+
+PASS 
+src/services/soroban.test.js
+PASS src/index.test.js
+  ΓùÅ Console
+
+    console.log
+      [dotenv@17.3.1] 
+injecting env (0) from .env 
+-- tip: ≡ƒöÉ encrypt with 
+Dotenvx: https://dotenvx.com
+
+      at _log (node_modules/d
+otenv/lib/main.js:139:11)
+
+    console.log
+      [dotenv@17.3.1] 
+injecting env (0) from .env 
+-- tip: ΓÜÖ∩╕Å  write to 
+custom object with { 
+processEnv: myObject }
+
+      at _log (node_modules/d
+otenv/lib/main.js:139:11)
+
+    console.log
+      [dotenv@17.3.1] 
+injecting env (0) from .env 
+-- tip: ΓÜÖ∩╕Å  enable debug 
+logging with { debug: true }
+
+      at _log (node_modules/d
+otenv/lib/main.js:139:11)
+
+PASS tests/unit/problemDetail
+s.test.js
+PASS 
+src/__tests__/auth.test.js
+  ΓùÅ Console
+
+    console.log
+      [dotenv@17.3.1] 
+injecting env (0) from .env 
+-- tip: ΓÜÖ∩╕Å  write to 
+custom object with { 
+processEnv: myObject }
+
+      at _log (node_modules/d
+otenv/lib/main.js:139:11)
+
+    console.log
+      [dotenv@17.3.1] 
+injecting env (0) from .env 
+-- tip: ΓÜÖ∩╕Å  override 
+existing env vars with { 
+override: true }
+
+      at _log (node_modules/d
+otenv/lib/main.js:139:11)
+
+    console.log
+      [dotenv@17.3.1] 
+injecting env (0) from .env 
+-- tip: ΓÜí∩╕Å secrets for 
+agents: 
+https://dotenvx.com/as2
+
+      at _log (node_modules/d
+otenv/lib/main.js:139:11)
+
+PASS tests/unit/invoice.servi
+ce.test.js
+  ΓùÅ Console
+
+    console.error
+      Error fetching 
+invoices: Error: DB Error
+          at 
+Function.<anonymous> (C:\User
+s\pc\Documents\waves\Liquifac
+t-backend\tests\unit\invoice.
+service.test.js:36:66)
+          at C:\Users\pc\Docu
+ments\waves\Liquifact-backend
+\node_modules\jest-mock\build
+\index.js:305:39
+          at 
+Function.<anonymous> (C:\User
+s\pc\Documents\waves\Liquifac
+t-backend\node_modules\jest-m
+ock\build\index.js:312:13)
+          at 
+Function.mockConstructor [as 
+then] (C:\Users\pc\Documents\
+waves\Liquifact-backend\node_
+modules\jest-mock\build\index
+.js:57:19)
+          at 
+processTicksAndRejections (no
+de:internal/process/task_queu
+es:105:5)
+
+    [0m [90m 42 |[39m     
+[36mreturn[39m 
+[36mawait[39m 
+query[33m;[39m
+     [90m 43 |[39m   } 
+[36mcatch[39m (error) {
+    
+[31m[1m>[22m[39m[90m 44 
+|[39m     console[33m.[39m
+error([32m'Error fetching 
+invoices:'[39m[33m,[39m 
+error)[33m;[39m
+     [90m    |[39m         
+    [31m[1m^[22m[39m
+     [90m 45 |[39m     
+[36mthrow[39m 
+[36mnew[39m [33mError[39m
+([32m'Database error while 
+fetching 
+invoices'[39m)[33m;[39m
+     [90m 46 |[39m   }
+     [90m 47 |[39m }[0m
+
+      at error (src/services/
+invoice.service.js:44:13)
+      at Object.<anonymous> (
+tests/unit/invoice.service.te
+st.js:38:5)
+
+PASS 
+tests/unit/AppError.test.js
+PASS tests/unit/asyncHandler.
+test.js
+  ΓùÅ Console
+
+    console.error
+      Unhandled Error: 
+Error: Test error
+          at C:\Users\pc\Docu
+ments\waves\Liquifact-backend
+\tests\unit\asyncHandler.test
+.js:28:17
+          at fn (C:\Users\pc\
+Documents\waves\Liquifact-bac
+kend\src\utils\asyncHandler.j
+s:10:21)
+          at 
+Layer.handleRequest (C:\Users
+\pc\Documents\waves\Liquifact
+-backend\node_modules\router\
+lib\layer.js:152:17)
+          at next (C:\Users\p
+c\Documents\waves\Liquifact-b
+ackend\node_modules\router\li
+b\route.js:157:13)
+          at Route.dispatch (
+C:\Users\pc\Documents\waves\L
+iquifact-backend\node_modules
+\router\lib\route.js:117:3)
+          at handle (C:\Users
+\pc\Documents\waves\Liquifact
+-backend\node_modules\router\
+index.js:435:11)
+          at 
+Layer.handleRequest (C:\Users
+\pc\Documents\waves\Liquifact
+-backend\node_modules\router\
+lib\layer.js:152:17)
+          at C:\Users\pc\Docu
+ments\waves\Liquifact-backend
+\node_modules\router\index.js
+:295:15
+          at processParams (C
+:\Users\pc\Documents\waves\Li
+quifact-backend\node_modules\
+router\index.js:582:12)
+          at next (C:\Users\p
+c\Documents\waves\Liquifact-b
+ackend\node_modules\router\in
+dex.js:291:5)
+          at read (C:\Users\p
+c\Documents\waves\Liquifact-b
+ackend\node_modules\body-pars
+er\lib\read.js:53:5)
+          at jsonParser (C:\U
+sers\pc\Documents\waves\Liqui
+fact-backend\node_modules\bod
+y-parser\lib\types\json.js:88
+:5)
+          at 
+Layer.handleRequest (C:\Users
+\pc\Documents\waves\Liquifact
+-backend\node_modules\router\
+lib\layer.js:152:17)
+          at trimPrefix (C:\U
+sers\pc\Documents\waves\Liqui
+fact-backend\node_modules\rou
+ter\index.js:342:13)
+          at C:\Users\pc\Docu
+ments\waves\Liquifact-backend
+\node_modules\router\index.js
+:297:9
+          at processParams (C
+:\Users\pc\Documents\waves\Li
+quifact-backend\node_modules\
+router\index.js:582:12)
+          at next (C:\Users\p
+c\Documents\waves\Liquifact-b
+ackend\node_modules\router\in
+dex.js:291:5)
+          at Function.handle 
+(C:\Users\pc\Documents\waves\
+Liquifact-backend\node_module
+s\router\index.js:186:3)
+          at Function.handle 
+(C:\Users\pc\Documents\waves\
+Liquifact-backend\node_module
+s\express\lib\application.js:
+177:15)
+          at Server.app (C:\U
+sers\pc\Documents\waves\Liqui
+fact-backend\node_modules\exp
+ress\lib\express.js:38:9)
+          at Server.emit 
+(node:events:519:28)
+          at 
+parserOnIncoming 
+(node:_http_server:1186:12)
+          at HTTPParser.parse
+rOnHeadersComplete 
+(node:_http_common:122:17)
+
+    [0m [90m 31 |[39m     
+[90m// Log unexpected 
+errors[39m
+     [90m 32 |[39m     
+[36mif[39m (status 
+[33m===[39m [35m500[39m) 
+{
+    
+[31m[1m>[22m[39m[90m 33 
+|[39m       console[33m.[3
+9merror([32m'Unhandled 
+Error:'[39m[33m,[39m 
+err)[33m;[39m
+     [90m    |[39m         
+      [31m[1m^[22m[39m
+     [90m 34 |[39m     }
+     [90m 35 |[39m
+     [90m 36 |[39m     
+problem [33m=[39m 
+formatProblemDetails({[0m
+
+      at error (src/middlewar
+e/errorHandler.js:33:15)
+      at Layer.handleError (n
+ode_modules/router/lib/layer.
+js:116:17)
+      at trimPrefix (node_mod
+ules/router/index.js:340:13)
+      at node_modules/router/
+index.js:297:9
+      at processParams (node_
+modules/router/index.js:582:1
+2)
+      at next (node_modules/r
+outer/index.js:291:5)
+      at next (node_modules/r
+outer/lib/route.js:132:14)
+
+    console.error
+      Unhandled Error: 
+Error: Rejected
+          at C:\Users\pc\Docu
+ments\waves\Liquifact-backend
+\tests\unit\asyncHandler.test
+.js:45:49
+          at fn (C:\Users\pc\
+Documents\waves\Liquifact-bac
+kend\src\utils\asyncHandler.j
+s:10:21)
+          at 
+Layer.handleRequest (C:\Users
+\pc\Documents\waves\Liquifact
+-backend\node_modules\router\
+lib\layer.js:152:17)
+          at next (C:\Users\p
+c\Documents\waves\Liquifact-b
+ackend\node_modules\router\li
+b\route.js:157:13)
+          at Route.dispatch (
+C:\Users\pc\Documents\waves\L
+iquifact-backend\node_modules
+\router\lib\route.js:117:3)
+          at handle (C:\Users
+\pc\Documents\waves\Liquifact
+-backend\node_modules\router\
+index.js:435:11)
+          at 
+Layer.handleRequest (C:\Users
+\pc\Documents\waves\Liquifact
+-backend\node_modules\router\
+lib\layer.js:152:17)
+          at C:\Users\pc\Docu
+ments\waves\Liquifact-backend
+\node_modules\router\index.js
+:295:15
+          at processParams (C
+:\Users\pc\Documents\waves\Li
+quifact-backend\node_modules\
+router\index.js:582:12)
+          at next (C:\Users\p
+c\Documents\waves\Liquifact-b
+ackend\node_modules\router\in
+dex.js:291:5)
+          at read (C:\Users\p
+c\Documents\waves\Liquifact-b
+ackend\node_modules\body-pars
+er\lib\read.js:53:5)
+          at jsonParser (C:\U
+sers\pc\Documents\waves\Liqui
+fact-backend\node_modules\bod
+y-parser\lib\types\json.js:88
+:5)
+          at 
+Layer.handleRequest (C:\Users
+\pc\Documents\waves\Liquifact
+-backend\node_modules\router\
+lib\layer.js:152:17)
+          at trimPrefix (C:\U
+sers\pc\Documents\waves\Liqui
+fact-backend\node_modules\rou
+ter\index.js:342:13)
+          at C:\Users\pc\Docu
+ments\waves\Liquifact-backend
+\node_modules\router\index.js
+:297:9
+          at processParams (C
+:\Users\pc\Documents\waves\Li
+quifact-backend\node_modules\
+router\index.js:582:12)
+          at next (C:\Users\p
+c\Documents\waves\Liquifact-b
+ackend\node_modules\router\in
+dex.js:291:5)
+          at Function.handle 
+(C:\Users\pc\Documents\waves\
+Liquifact-backend\node_module
+s\router\index.js:186:3)
+          at Function.handle 
+(C:\Users\pc\Documents\waves\
+Liquifact-backend\node_module
+s\express\lib\application.js:
+177:15)
+          at Server.app (C:\U
+sers\pc\Documents\waves\Liqui
+fact-backend\node_modules\exp
+ress\lib\express.js:38:9)
+          at Server.emit 
+(node:events:519:28)
+          at 
+parserOnIncoming 
+(node:_http_server:1186:12)
+          at HTTPParser.parse
+rOnHeadersComplete 
+(node:_http_common:122:17)
+
+    [0m [90m 31 |[39m     
+[90m// Log unexpected 
+errors[39m
+     [90m 32 |[39m     
+[36mif[39m (status 
+[33m===[39m [35m500[39m) 
+{
+    
+[31m[1m>[22m[39m[90m 33 
+|[39m       console[33m.[3
+9merror([32m'Unhandled 
+Error:'[39m[33m,[39m 
+err)[33m;[39m
+     [90m    |[39m         
+      [31m[1m^[22m[39m
+     [90m 34 |[39m     }
+     [90m 35 |[39m
+     [90m 36 |[39m     
+problem [33m=[39m 
+formatProblemDetails({[0m
+
+      at error (src/middlewar
+e/errorHandler.js:33:15)
+      at Layer.handleError (n
+ode_modules/router/lib/layer.
+js:116:17)
+      at trimPrefix (node_mod
+ules/router/index.js:340:13)
+      at node_modules/router/
+index.js:297:9
+      at processParams (node_
+modules/router/index.js:582:1
+2)
+      at next (node_modules/r
+outer/index.js:291:5)
+      at next (node_modules/r
+outer/lib/route.js:132:14)
+
+PASS src/__tests__/deprecatio
+n.test.js
+PASS tests/app.test.js
+  ΓùÅ Console
+
+    console.error
+      Unhandled Error: 
+Error: Boom
+          at C:\Users\pc\Docu
+ments\waves\Liquifact-backend
+\tests\app.test.js:10:51
+          at fn (C:\Users\pc\
+Documents\waves\Liquifact-bac
+kend\src\utils\asyncHandler.j
+s:10:21)
+          at 
+Layer.handleRequest (C:\Users
+\pc\Documents\waves\Liquifact
+-backend\node_modules\router\
+lib\layer.js:152:17)
+          at next (C:\Users\p
+c\Documents\waves\Liquifact-b
+ackend\node_modules\router\li
+b\route.js:157:13)
+          at Route.dispatch (
+C:\Users\pc\Documents\waves\L
+iquifact-backend\node_modules
+\router\lib\route.js:117:3)
+          at handle (C:\Users
+\pc\Documents\waves\Liquifact
+-backend\node_modules\router\
+index.js:435:11)
+          at 
+Layer.handleRequest (C:\Users
+\pc\Documents\waves\Liquifact
+-backend\node_modules\router\
+lib\layer.js:152:17)
+          at C:\Users\pc\Docu
+ments\waves\Liquifact-backend
+\node_modules\router\index.js
+:295:15
+          at processParams (C
+:\Users\pc\Documents\waves\Li
+quifact-backend\node_modules\
+router\index.js:582:12)
+          at next (C:\Users\p
+c\Documents\waves\Liquifact-b
+ackend\node_modules\router\in
+dex.js:291:5)
+          at read (C:\Users\p
+c\Documents\waves\Liquifact-b
+ackend\node_modules\body-pars
+er\lib\read.js:53:5)
+          at jsonParser (C:\U
+sers\pc\Documents\waves\Liqui
+fact-backend\node_modules\bod
+y-parser\lib\types\json.js:88
+:5)
+          at 
+Layer.handleRequest (C:\Users
+\pc\Documents\waves\Liquifact
+-backend\node_modules\router\
+lib\layer.js:152:17)
+          at trimPrefix (C:\U
+sers\pc\Documents\waves\Liqui
+fact-backend\node_modules\rou
+ter\index.js:342:13)
+          at C:\Users\pc\Docu
+ments\waves\Liquifact-backend
+\node_modules\router\index.js
+:297:9
+          at processParams (C
+:\Users\pc\Documents\waves\Li
+quifact-backend\node_modules\
+router\index.js:582:12)
+          at next (C:\Users\p
+c\Documents\waves\Liquifact-b
+ackend\node_modules\router\in
+dex.js:291:5)
+          at Function.handle 
+(C:\Users\pc\Documents\waves\
+Liquifact-backend\node_module
+s\router\index.js:186:3)
+          at Function.handle 
+(C:\Users\pc\Documents\waves\
+Liquifact-backend\node_module
+s\express\lib\application.js:
+177:15)
+          at Server.app (C:\U
+sers\pc\Documents\waves\Liqui
+fact-backend\node_modules\exp
+ress\lib\express.js:38:9)
+          at Server.emit 
+(node:events:519:28)
+          at 
+parserOnIncoming 
+(node:_http_server:1186:12)
+          at HTTPParser.parse
+rOnHeadersComplete 
+(node:_http_common:122:17)
+
+    [0m [90m 31 |[39m     
+[90m// Log unexpected 
+errors[39m
+     [90m 32 |[39m     
+[36mif[39m (status 
+[33m===[39m [35m500[39m) 
+{
+    
+[31m[1m>[22m[39m[90m 33 
+|[39m       console[33m.[3
+9merror([32m'Unhandled 
+Error:'[39m[33m,[39m 
+err)[33m;[39m
+     [90m    |[39m         
+      [31m[1m^[22m[39m
+     [90m 34 |[39m     }
+     [90m 35 |[39m
+     [90m 36 |[39m     
+problem [33m=[39m 
+formatProblemDetails({[0m
+
+      at error (src/middlewar
+e/errorHandler.js:33:15)
+      at Layer.handleError (n
+ode_modules/router/lib/layer.
+js:116:17)
+      at trimPrefix (node_mod
+ules/router/index.js:340:13)
+      at node_modules/router/
+index.js:297:9
+      at processParams (node_
+modules/router/index.js:582:1
+2)
+      at next (node_modules/r
+outer/index.js:291:5)
+      at next (node_modules/r
+outer/lib/route.js:132:14)
+
+PASS src/app.test.js
+  ΓùÅ Console
+
+    console.log
+      [dotenv@17.3.1] 
+injecting env (0) from .env 
+-- tip: ΓÜÖ∩╕Å  specify 
+custom .env file path with { 
+path: '/custom/path/.env' }
+
+      at _log (node_modules/d
+otenv/lib/main.js:139:11)
+
+    console.log
+      [dotenv@17.3.1] 
+injecting env (0) from .env 
+-- tip: ≡ƒöÉ prevent 
+committing .env to code: 
+https://dotenvx.com/precommit
+
+      at _log (node_modules/d
+otenv/lib/main.js:139:11)
+
+    console.error
+      Unhandled Error: 
+Error: Triggered Error
+          at C:\Users\pc\Docu
+ments\waves\Liquifact-backend
+\src\app.js:134:10
+          at 
+Layer.handleRequest (C:\Users
+\pc\Documents\waves\Liquifact
+-backend\node_modules\router\
+lib\layer.js:152:17)
+          at next (C:\Users\p
+c\Documents\waves\Liquifact-b
+ackend\node_modules\router\li
+b\route.js:157:13)
+          at Route.dispatch (
+C:\Users\pc\Documents\waves\L
+iquifact-backend\node_modules
+\router\lib\route.js:117:3)
+          at handle (C:\Users
+\pc\Documents\waves\Liquifact
+-backend\node_modules\router\
+index.js:435:11)
+          at 
+Layer.handleRequest (C:\Users
+\pc\Documents\waves\Liquifact
+-backend\node_modules\router\
+lib\layer.js:152:17)
+          at C:\Users\pc\Docu
+ments\waves\Liquifact-backend
+\node_modules\router\index.js
+:295:15
+          at processParams (C
+:\Users\pc\Documents\waves\Li
+quifact-backend\node_modules\
+router\index.js:582:12)
+          at next (C:\Users\p
+c\Documents\waves\Liquifact-b
+ackend\node_modules\router\in
+dex.js:291:5)
+          at C:\Users\pc\Docu
+ments\waves\Liquifact-backend
+\node_modules\express-rate-li
+mit\dist\index.cjs:947:7
+          at 
+processTicksAndRejections (no
+de:internal/process/task_queu
+es:105:5)
+          at C:\Users\pc\Docu
+ments\waves\Liquifact-backend
+\node_modules\express-rate-li
+mit\dist\index.cjs:830:5
+
+    [0m [90m 31 |[39m     
+[90m// Log unexpected 
+errors[39m
+     [90m 32 |[39m     
+[36mif[39m (status 
+[33m===[39m [35m500[39m) 
+{
+    
+[31m[1m>[22m[39m[90m 33 
+|[39m       console[33m.[3
+9merror([32m'Unhandled 
+Error:'[39m[33m,[39m 
+err)[33m;[39m
+     [90m    |[39m         
+      [31m[1m^[22m[39m
+     [90m 34 |[39m     }
+     [90m 35 |[39m
+     [90m 36 |[39m     
+problem [33m=[39m 
+formatProblemDetails({[0m
+
+      at error (src/middlewar
+e/errorHandler.js:33:15)
+      at Layer.handleError (n
+ode_modules/router/lib/layer.
+js:116:17)
+      at trimPrefix (node_mod
+ules/router/index.js:340:13)
+      at node_modules/router/
+index.js:297:9
+      at processParams (node_
+modules/router/index.js:582:1
+2)
+      at next (node_modules/r
+outer/index.js:291:5)
+      at next (src/middleware
+/bodySizeLimits.js:177:3)
+      at Layer.handleError (n
+ode_modules/router/lib/layer.
+js:116:17)
+      at trimPrefix (node_mod
+ules/router/index.js:340:13)
+      at node_modules/router/
+index.js:297:9
+      at processParams (node_
+modules/router/index.js:582:1
+2)
+      at next (node_modules/r
+outer/index.js:291:5)
+      at next 
+(src/app.js:153:5)
+      at Layer.handleError (n
+ode_modules/router/lib/layer.
+js:116:17)
+      at trimPrefix (node_mod
+ules/router/index.js:340:13)
+      at node_modules/router/
+index.js:297:9
+      at processParams (node_
+modules/router/index.js:582:1
+2)
+      at next (node_modules/r
+outer/index.js:291:5)
+      at Layer.handleError (n
+ode_modules/router/lib/layer.
+js:111:12)
+      at trimPrefix (node_mod
+ules/router/index.js:340:13)
+      at node_modules/router/
+index.js:297:9
+      at processParams (node_
+modules/router/index.js:582:1
+2)
+      at next (node_modules/r
+outer/index.js:291:5)
+      at next (node_modules/r
+outer/lib/route.js:132:14)
+      at next 
+(src/app.js:134:5)
+      at Layer.handleRequest 
+(node_modules/router/lib/laye
+r.js:152:17)
+      at next (node_modules/r
+outer/lib/route.js:157:13)
+      at Route.dispatch (node
+_modules/router/lib/route.js:
+117:3)
+      at handle (node_modules
+/router/index.js:435:11)
+      at Layer.handleRequest 
+(node_modules/router/lib/laye
+r.js:152:17)
+      at node_modules/router/
+index.js:295:15
+      at processParams (node_
+modules/router/index.js:582:1
+2)
+      at next (node_modules/r
+outer/index.js:291:5)
+      at node_modules/express
+-rate-limit/dist/index.cjs:94
+7:7
+      at node_modules/express
+-rate-limit/dist/index.cjs:83
+0:5
+
+FAIL tests/integration/errorH
+andling.test.js
+  ΓùÅ Console
+
+    console.log
+      [dotenv@17.3.1] 
+injecting env (0) from .env 
+-- tip: ≡ƒöÉ encrypt with 
+Dotenvx: https://dotenvx.com
+
+      at _log (node_modules/d
+otenv/lib/main.js:139:11)
+
+    console.log
+      [dotenv@17.3.1] 
+injecting env (0) from .env 
+-- tip: ΓÜÖ∩╕Å  suppress all 
+logs with { quiet: true }
+
+      at _log (node_modules/d
+otenv/lib/main.js:139:11)
+
+    console.log
+      [dotenv@17.3.1] 
+injecting env (0) from .env 
+-- tip: ΓÜÖ∩╕Å  load 
+multiple .env files with { 
+path: ['.env.local', '.env'] 
+}
+
+      at _log (node_modules/d
+otenv/lib/main.js:139:11)
+
+  ΓùÅ API Integration Tests 
+(RFC 7807) ΓÇ║ POST 
+/api/invoices without amount 
+should return 400 Bad 
+Request (Validation Error)
+
+    expect(received).toBe(exp
+ected) // Object.is equality
+
+    Expected: "Invalid 
+request data"
+    Received: {"code": 
+"BAD_REQUEST", "details": 
+"amount: Invalid input: 
+expected number, received 
+undefined", "message": 
+"Validation Failed"}
+
+    [0m [90m 22 |[39m
+     [90m 23 |[39m     expe
+ct(response[33m.[39mstatus)
+[33m.[39mtoBe([35m400[39m
+)[33m;[39m
+    
+[31m[1m>[22m[39m[90m 24 
+|[39m     expect(response[3
+3m.[39mbody[33m.[39merror)
+[33m.[39mtoBe([32m'Invalid
+ request 
+data'[39m)[33m;[39m
+     [90m    |[39m         
+                        
+[31m[1m^[22m[39m
+     [90m 25 |[39m   
+})[33m;[39m
+     [90m 26 |[39m
+     [90m 27 |[39m   
+test([32m'GET 
+/unknown-route should return 
+404 Not Found in RFC 7807 
+format'[39m[33m,[39m 
+[36masync[39m () 
+[33m=>[39m {[0m
+
+      at Object.toBe (tests/i
+ntegration/errorHandling.test
+.js:24:33)
+
+  ΓùÅ API Integration Tests 
+(RFC 7807) ΓÇ║ GET /health 
+should return status ok
+
+    expect(received).toBe(exp
+ected) // Object.is equality
+
+    Expected: "ok"
+    Received: undefined
+
+    [0m [90m 36 |[39m     
+[36mconst[39m response 
+[33m=[39m [36mawait[39m r
+equest(app)[33m.[39m[36mge
+t[39m([32m'/health'[39m)[
+33m;[39m
+     [90m 37 |[39m     expe
+ct(response[33m.[39mstatus)
+[33m.[39mtoBe([35m200[39m
+)[33m;[39m
+    
+[31m[1m>[22m[39m[90m 38 
+|[39m     expect(response[3
+3m.[39mbody[33m.[39mstatus
+)[33m.[39mtoBe([32m'ok'[3
+9m)[33m;[39m
+     [90m    |[39m         
+                         
+[31m[1m^[22m[39m
+     [90m 39 |[39m   
+})[33m;[39m
+     [90m 40 |[39m
+     [90m 41 |[39m   
+test([32m'GET /api should 
+return api 
+info'[39m[33m,[39m 
+[36masync[39m () 
+[33m=>[39m {[0m
+
+      at Object.toBe (tests/i
+ntegration/errorHandling.test
+.js:38:34)
+
+  ΓùÅ API Integration Tests 
+(RFC 7807) ΓÇ║ GET /api 
+should return api info
+
+    expect(received).toBe(exp
+ected) // Object.is equality
+
+    Expected: "LiquiFact API"
+    Received: undefined
+
+    [0m [90m 42 |[39m     
+[36mconst[39m response 
+[33m=[39m [36mawait[39m r
+equest(app)[33m.[39m[36mge
+t[39m([32m'/api'[39m)[33m
+;[39m
+     [90m 43 |[39m     expe
+ct(response[33m.[39mstatus)
+[33m.[39mtoBe([35m200[39m
+)[33m;[39m
+    
+[31m[1m>[22m[39m[90m 44 
+|[39m     expect(response[3
+3m.[39mbody[33m.[39mname)
+[33m.[39mtoBe([32m'LiquiFac
+t API'[39m)[33m;[39m
+     [90m    |[39m         
+                       
+[31m[1m^[22m[39m
+     [90m 45 |[39m   
+})[33m;[39m
+     [90m 46 |[39m
+     [90m 47 |[39m   
+test([32m'GET 
+/api/escrow/:invoiceId 
+should return 200 with 
+escrow data (requires 
+auth)'[39m[33m,[39m 
+[36masync[39m () 
+[33m=>[39m {[0m
+
+      at Object.toBe (tests/i
+ntegration/errorHandling.test
+.js:44:32)
+
+PASS src/__tests__/rateLimit.
+test.js
+  ΓùÅ Console
+
+    console.log
+      [dotenv@17.3.1] 
+injecting env (0) from .env 
+-- tip: ≡ƒöÉ prevent 
+building .env in docker: 
+https://dotenvx.com/prebuild
+
+      at _log (node_modules/d
+otenv/lib/main.js:139:11)
+
+    console.log
+      [dotenv@17.3.1] 
+injecting env (0) from .env 
+-- tip: ΓÜÖ∩╕Å  override 
+existing env vars with { 
+override: true }
+
+      at _log (node_modules/d
+otenv/lib/main.js:139:11)
+
+    console.log
+      [dotenv@17.3.1] 
+injecting env (0) from .env 
+-- tip: ΓÜÖ∩╕Å  suppress all 
+logs with { quiet: true }
+
+      at _log (node_modules/d
+otenv/lib/main.js:139:11)
+
+
+Summary of all failing tests
+FAIL src/__tests__/validate.t
+est.js
+  ΓùÅ Validation Middleware 
+ΓÇ║ validateRequest ΓÇ║ 
+should return 400 with 
+details if data is invalid
+
+    expect(jest.fn()).toHaveB
+eenCalledWith(...expected)
+
+    Expected: 400
+
+    Number of calls: 0
+
+    [0m [90m 44 |[39m     
+        
+middleware(req[33m,[39m 
+res[33m,[39m 
+next)[33m;[39m
+     [90m 45 |[39m
+    
+[31m[1m>[22m[39m[90m 46 
+|[39m             expect(res
+[33m.[39mstatus)[33m.[39m
+toHaveBeenCalledWith([35m400
+[39m)[33m;[39m
+     [90m    |[39m         
+                       
+[31m[1m^[22m[39m
+     [90m 47 |[39m         
+    expect(res[33m.[39mjson
+)[33m.[39mtoHaveBeenCalledW
+ith(expect[33m.[39mobjectCo
+ntaining({
+     [90m 48 |[39m         
+        error[33m:[39m 
+[32m'Invalid request 
+data'[39m[33m,[39m
+     [90m 49 |[39m         
+        details[33m:[39m ex
+pect[33m.[39many([33mArray
+[39m)[0m
+
+      at 
+Object.toHaveBeenCalledWith (
+src/__tests__/validate.test.j
+s:46:32)
+
+FAIL tests/integration/errorH
+andling.test.js
+  ΓùÅ API Integration Tests 
+(RFC 7807) ΓÇ║ POST 
+/api/invoices without amount 
+should return 400 Bad 
+Request (Validation Error)
+
+    expect(received).toBe(exp
+ected) // Object.is equality
+
+    Expected: "Invalid 
+request data"
+    Received: {"code": 
+"BAD_REQUEST", "details": 
+"amount: Invalid input: 
+expected number, received 
+undefined", "message": 
+"Validation Failed"}
+
+    [0m [90m 22 |[39m
+     [90m 23 |[39m     expe
+ct(response[33m.[39mstatus)
+[33m.[39mtoBe([35m400[39m
+)[33m;[39m
+    
+[31m[1m>[22m[39m[90m 24 
+|[39m     expect(response[3
+3m.[39mbody[33m.[39merror)
+[33m.[39mtoBe([32m'Invalid
+ request 
+data'[39m)[33m;[39m
+     [90m    |[39m         
+                        
+[31m[1m^[22m[39m
+     [90m 25 |[39m   
+})[33m;[39m
+     [90m 26 |[39m
+     [90m 27 |[39m   
+test([32m'GET 
+/unknown-route should return 
+404 Not Found in RFC 7807 
+format'[39m[33m,[39m 
+[36masync[39m () 
+[33m=>[39m {[0m
+
+      at Object.toBe (tests/i
+ntegration/errorHandling.test
+.js:24:33)
+
+  ΓùÅ API Integration Tests 
+(RFC 7807) ΓÇ║ GET /health 
+should return status ok
+
+    expect(received).toBe(exp
+ected) // Object.is equality
+
+    Expected: "ok"
+    Received: undefined
+
+    [0m [90m 36 |[39m     
+[36mconst[39m response 
+[33m=[39m [36mawait[39m r
+equest(app)[33m.[39m[36mge
+t[39m([32m'/health'[39m)[
+33m;[39m
+     [90m 37 |[39m     expe
+ct(response[33m.[39mstatus)
+[33m.[39mtoBe([35m200[39m
+)[33m;[39m
+    
+[31m[1m>[22m[39m[90m 38 
+|[39m     expect(response[3
+3m.[39mbody[33m.[39mstatus
+)[33m.[39mtoBe([32m'ok'[3
+9m)[33m;[39m
+     [90m    |[39m         
+                         
+[31m[1m^[22m[39m
+     [90m 39 |[39m   
+})[33m;[39m
+     [90m 40 |[39m
+     [90m 41 |[39m   
+test([32m'GET /api should 
+return api 
+info'[39m[33m,[39m 
+[36masync[39m () 
+[33m=>[39m {[0m
+
+      at Object.toBe (tests/i
+ntegration/errorHandling.test
+.js:38:34)
+
+  ΓùÅ API Integration Tests 
+(RFC 7807) ΓÇ║ GET /api 
+should return api info
+
+    expect(received).toBe(exp
+ected) // Object.is equality
+
+    Expected: "LiquiFact API"
+    Received: undefined
+
+    [0m [90m 42 |[39m     
+[36mconst[39m response 
+[33m=[39m [36mawait[39m r
+equest(app)[33m.[39m[36mge
+t[39m([32m'/api'[39m)[33m
+;[39m
+     [90m 43 |[39m     expe
+ct(response[33m.[39mstatus)
+[33m.[39mtoBe([35m200[39m
+)[33m;[39m
+    
+[31m[1m>[22m[39m[90m 44 
+|[39m     expect(response[3
+3m.[39mbody[33m.[39mname)
+[33m.[39mtoBe([32m'LiquiFac
+t API'[39m)[33m;[39m
+     [90m    |[39m         
+                       
+[31m[1m^[22m[39m
+     [90m 45 |[39m   
+})[33m;[39m
+     [90m 46 |[39m
+     [90m 47 |[39m   
+test([32m'GET 
+/api/escrow/:invoiceId 
+should return 200 with 
+escrow data (requires 
+auth)'[39m[33m,[39m 
+[36masync[39m () 
+[33m=>[39m {[0m
+
+      at Object.toBe (tests/i
+ntegration/errorHandling.test
+.js:44:32)
+
+
+Test Suites: 2 failed, 19 
+passed, 21 total
+Tests:       4 failed, 148 
+passed, 152 total
+Snapshots:   0 total
+Time:        8.061 s
+Ran all test suites.

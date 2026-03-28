@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>7/7</span>
+                <span class='fraction'>9/9</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>7/7</span>
+                <span class='fraction'>9/9</span>
             </div>
         
             
@@ -110,47 +110,51 @@
 <a name='L45'></a><a href='#L45'>45</a>
 <a name='L46'></a><a href='#L46'>46</a>
 <a name='L47'></a><a href='#L47'>47</a>
-<a name='L48'></a><a href='#L48'>48</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -159,47 +163,49 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const { z } = require('zod');
 &nbsp;
-/**
- * Base Invoice Schema
- */
-const InvoiceSchema = z.object({
-    id: z.string(),
-    amount: z.number().positive(),
-    customer: z.string().min(1),
-    status: z.string(),
-    createdAt: z.string(),
-    deletedAt: z.string().nullable(),
-});
+const MetaSchema = z.object({
+    version: z.string(),
+    timestamp: z.string(),
+}).passthrough();
 &nbsp;
-/**
- * Request Schemas
- */
-const CreateInvoiceRequestSchema = z.object({
-    amount: z.number().positive(),
-    customer: z.string().min(1),
-});
-&nbsp;
-/**
- * Response Schemas
- */
-const CreateInvoiceResponseSchema = z.object({
-    data: InvoiceSchema,
+const ErrorSchema = z.object({
     message: z.string(),
+    code: z.string().optional(),
+    details: z.any().nullable().optional(),
+}).nullable();
+&nbsp;
+const InvoiceSchema = z.object({
+    id: z.union([z.string(), z.number()]),
+    amount: z.number().positive(),
+    customer: z.string().optional(),
+    status: z.string(),
+    createdAt: z.string().optional(),
+}).passthrough();
+&nbsp;
+const BaseResponseSchema = z.object({
+    meta: MetaSchema,
+    error: ErrorSchema,
+    message: z.string().optional().nullable(),
 });
 &nbsp;
-const InvoiceListResponseSchema = z.object({
-    data: z.array(InvoiceSchema),
-    message: z.string()
-});
-&nbsp;
-const DeleteRestoreInvoiceResponseSchema = z.object({
+const CreateInvoiceResponseSchema = BaseResponseSchema.extend({
     data: InvoiceSchema,
-    message: z.string()
+});
+&nbsp;
+const InvoiceListResponseSchema = BaseResponseSchema.extend({
+    data: z.array(InvoiceSchema),
+});
+&nbsp;
+const DeleteRestoreInvoiceResponseSchema = BaseResponseSchema.extend({
+    data: InvoiceSchema,
 });
 &nbsp;
 module.exports = {
     InvoiceSchema,
-    CreateInvoiceRequestSchema,
+    CreateInvoiceRequestSchema: z.object({
+        amount: z.number().positive(),
+        customer: z.string().optional(),
+    }),
     CreateInvoiceResponseSchema,
     InvoiceListResponseSchema,
     DeleteRestoreInvoiceResponseSchema
@@ -211,7 +217,7 @@ module.exports = {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-03-28T16:11:53.777Z
+                at 2026-03-28T17:44:46.485Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

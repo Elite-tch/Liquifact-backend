@@ -1,29 +1,16 @@
 const request = require('supertest');
 const express = require('express');
-
 const asyncHandler = require('../src/utils/asyncHandler');
 const errorHandler = require('../src/middleware/errorHandler');
 
 const app = express();
 app.use(express.json());
 
-app.get(
-  '/success',
-  asyncHandler(async (req, res) => {
-    res.json({ ok: true });
-  })
-);
-
-app.get(
-  '/fail',
-  asyncHandler(async () => {
-    throw new Error('Boom');
-  })
-);
-
+app.get('/success', asyncHandler(async (req, res) => { res.json({ ok: true }); }));
+app.get('/fail', asyncHandler(async () => { throw new Error('Boom'); }));
 app.use(errorHandler);
 
-describe('Async Handler', () => {
+describe('Async Handler Test Suite', () => {
   it('should return success response', async () => {
     const res = await request(app).get('/success');
     expect(res.statusCode).toBe(200);
@@ -31,8 +18,12 @@ describe('Async Handler', () => {
   });
 
   it('should catch async errors', async () => {
+    // Force environment for test predictability
+    process.env.NODE_ENV = 'development';
     const res = await request(app).get('/fail');
     expect(res.statusCode).toBe(500);
-    expect(res.body.error.message).toBeDefined();
+    expect(res.body.title).toBe('Internal Server Error');
+    // After unification, detail should be either 'Boom' or the generic one depending on env
+    expect(res.body.detail).toBeDefined();
   });
 });

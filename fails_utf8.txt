@@ -1,0 +1,3858 @@
+﻿node.exe : npm warn invalid 
+config cache=false set in 
+command line options
+At C:\Users\pc\AppData\Roamin
+g\npm\npm.ps1:24 char:5
++     & "node$exe"  "$basedir
+/node_modules/npm/bin/npm-cli
+.js" $args
++     ~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~
+    + CategoryInfo           
+   : NotSpecified: (npm war  
+  n invali...nd line optio   
+ ns:String) [], RemoteExc    
+eption
+    + FullyQualifiedErrorId  
+   : NativeCommandError
+ 
+npm warn invalid config Must 
+be valid filesystem path
+
+> backend@1.0.0 test
+> jest
+
+FAIL tests/app.test.js
+  ΓùÅ Console
+
+    console.error
+      Unhandled Error: 
+Error: Boom
+          at C:\Users\pc\Docu
+ments\waves\Liquifact-backend
+\tests\app.test.js:20:11
+          at fn (C:\Users\pc\
+Documents\waves\Liquifact-bac
+kend\src\utils\asyncHandler.j
+s:10:21)
+          at 
+Layer.handleRequest (C:\Users
+\pc\Documents\waves\Liquifact
+-backend\node_modules\router\
+lib\layer.js:152:17)
+          at next (C:\Users\p
+c\Documents\waves\Liquifact-b
+ackend\node_modules\router\li
+b\route.js:157:13)
+          at Route.dispatch (
+C:\Users\pc\Documents\waves\L
+iquifact-backend\node_modules
+\router\lib\route.js:117:3)
+          at handle (C:\Users
+\pc\Documents\waves\Liquifact
+-backend\node_modules\router\
+index.js:435:11)
+          at 
+Layer.handleRequest (C:\Users
+\pc\Documents\waves\Liquifact
+-backend\node_modules\router\
+lib\layer.js:152:17)
+          at C:\Users\pc\Docu
+ments\waves\Liquifact-backend
+\node_modules\router\index.js
+:295:15
+          at processParams (C
+:\Users\pc\Documents\waves\Li
+quifact-backend\node_modules\
+router\index.js:582:12)
+          at next (C:\Users\p
+c\Documents\waves\Liquifact-b
+ackend\node_modules\router\in
+dex.js:291:5)
+          at read (C:\Users\p
+c\Documents\waves\Liquifact-b
+ackend\node_modules\body-pars
+er\lib\read.js:53:5)
+          at jsonParser (C:\U
+sers\pc\Documents\waves\Liqui
+fact-backend\node_modules\bod
+y-parser\lib\types\json.js:88
+:5)
+          at 
+Layer.handleRequest (C:\Users
+\pc\Documents\waves\Liquifact
+-backend\node_modules\router\
+lib\layer.js:152:17)
+          at trimPrefix (C:\U
+sers\pc\Documents\waves\Liqui
+fact-backend\node_modules\rou
+ter\index.js:342:13)
+          at C:\Users\pc\Docu
+ments\waves\Liquifact-backend
+\node_modules\router\index.js
+:297:9
+          at processParams (C
+:\Users\pc\Documents\waves\Li
+quifact-backend\node_modules\
+router\index.js:582:12)
+          at next (C:\Users\p
+c\Documents\waves\Liquifact-b
+ackend\node_modules\router\in
+dex.js:291:5)
+          at Function.handle 
+(C:\Users\pc\Documents\waves\
+Liquifact-backend\node_module
+s\router\index.js:186:3)
+          at Function.handle 
+(C:\Users\pc\Documents\waves\
+Liquifact-backend\node_module
+s\express\lib\application.js:
+177:15)
+          at Server.app (C:\U
+sers\pc\Documents\waves\Liqui
+fact-backend\node_modules\exp
+ress\lib\express.js:38:9)
+          at Server.emit 
+(node:events:519:28)
+          at 
+parserOnIncoming 
+(node:_http_server:1186:12)
+          at HTTPParser.parse
+rOnHeadersComplete 
+(node:_http_common:122:17)
+
+    [0m [90m 25 |[39m   } 
+[36melse[39m {
+     [90m 26 |[39m     
+[90m// If it's an unknown 
+error, provide a fallback 
+500 status (or use 
+err.status/statusCode if 
+available)[39m
+    
+[31m[1m>[22m[39m[90m 27 
+|[39m     console[33m.[39m
+error([32m'Unhandled 
+Error:'[39m[33m,[39m 
+err)[33m;[39m
+     [90m    |[39m         
+    [31m[1m^[22m[39m
+     [90m 28 |[39m
+     [90m 29 |[39m     
+[90m// Some libraries use 
+status or statusCode 
+properties (like 
+http-errors)[39m
+     [90m 30 |[39m     
+[36mconst[39m status 
+[33m=[39m 
+err[33m.[39mstatus 
+[33m||[39m 
+err[33m.[39mstatusCode 
+[33m||[39m 
+[35m500[39m[33m;[39m[0m
+
+      at error (src/middlewar
+e/errorHandler.js:27:13)
+      at Layer.handleError (n
+ode_modules/router/lib/layer.
+js:116:17)
+      at trimPrefix (node_mod
+ules/router/index.js:340:13)
+      at node_modules/router/
+index.js:297:9
+      at processParams (node_
+modules/router/index.js:582:1
+2)
+      at next (node_modules/r
+outer/index.js:291:5)
+      at next (node_modules/r
+outer/lib/route.js:132:14)
+
+  ΓùÅ Async Handler ΓÇ║ 
+should catch async errors
+
+    expect(received).toBe(exp
+ected) // Object.is equality
+
+    Expected: "Boom"
+    Received: "An unexpected 
+error occurred while 
+processing your request."
+
+    [0m [90m 35 |[39m     
+expect(res[33m.[39mstatusCo
+de)[33m.[39mtoBe([35m500[
+39m)[33m;[39m
+     [90m 36 |[39m     expe
+ct(res[33m.[39mbody[33m.[
+39mtitle)[33m.[39mtoBe([32
+m'Internal Server 
+Error'[39m)[33m;[39m
+    
+[31m[1m>[22m[39m[90m 37 
+|[39m     expect(res[33m.[
+39mbody[33m.[39mdetail)[33
+m.[39mtoBe([32m'Boom'[39m)
+[33m;[39m
+     [90m    |[39m         
+                    
+[31m[1m^[22m[39m
+     [90m 38 |[39m   
+})[33m;[39m
+     [90m 39 |[39m 
+})[33m;[39m[0m
+
+      at Object.toBe 
+(tests/app.test.js:37:29)
+
+FAIL tests/unit/asyncHandler.
+test.js
+  ΓùÅ Console
+
+    console.error
+      Unhandled Error: 
+Error: Test error
+          at C:\Users\pc\Docu
+ments\waves\Liquifact-backend
+\tests\unit\asyncHandler.test
+.js:27:17
+          at fn (C:\Users\pc\
+Documents\waves\Liquifact-bac
+kend\src\utils\asyncHandler.j
+s:10:21)
+          at 
+Layer.handleRequest (C:\Users
+\pc\Documents\waves\Liquifact
+-backend\node_modules\router\
+lib\layer.js:152:17)
+          at next (C:\Users\p
+c\Documents\waves\Liquifact-b
+ackend\node_modules\router\li
+b\route.js:157:13)
+          at Route.dispatch (
+C:\Users\pc\Documents\waves\L
+iquifact-backend\node_modules
+\router\lib\route.js:117:3)
+          at handle (C:\Users
+\pc\Documents\waves\Liquifact
+-backend\node_modules\router\
+index.js:435:11)
+          at 
+Layer.handleRequest (C:\Users
+\pc\Documents\waves\Liquifact
+-backend\node_modules\router\
+lib\layer.js:152:17)
+          at C:\Users\pc\Docu
+ments\waves\Liquifact-backend
+\node_modules\router\index.js
+:295:15
+          at processParams (C
+:\Users\pc\Documents\waves\Li
+quifact-backend\node_modules\
+router\index.js:582:12)
+          at next (C:\Users\p
+c\Documents\waves\Liquifact-b
+ackend\node_modules\router\in
+dex.js:291:5)
+          at read (C:\Users\p
+c\Documents\waves\Liquifact-b
+ackend\node_modules\body-pars
+er\lib\read.js:53:5)
+          at jsonParser (C:\U
+sers\pc\Documents\waves\Liqui
+fact-backend\node_modules\bod
+y-parser\lib\types\json.js:88
+:5)
+          at 
+Layer.handleRequest (C:\Users
+\pc\Documents\waves\Liquifact
+-backend\node_modules\router\
+lib\layer.js:152:17)
+          at trimPrefix (C:\U
+sers\pc\Documents\waves\Liqui
+fact-backend\node_modules\rou
+ter\index.js:342:13)
+          at C:\Users\pc\Docu
+ments\waves\Liquifact-backend
+\node_modules\router\index.js
+:297:9
+          at processParams (C
+:\Users\pc\Documents\waves\Li
+quifact-backend\node_modules\
+router\index.js:582:12)
+          at next (C:\Users\p
+c\Documents\waves\Liquifact-b
+ackend\node_modules\router\in
+dex.js:291:5)
+          at Function.handle 
+(C:\Users\pc\Documents\waves\
+Liquifact-backend\node_module
+s\router\index.js:186:3)
+          at Function.handle 
+(C:\Users\pc\Documents\waves\
+Liquifact-backend\node_module
+s\express\lib\application.js:
+177:15)
+          at Server.app (C:\U
+sers\pc\Documents\waves\Liqui
+fact-backend\node_modules\exp
+ress\lib\express.js:38:9)
+          at Server.emit 
+(node:events:519:28)
+          at 
+parserOnIncoming 
+(node:_http_server:1186:12)
+          at HTTPParser.parse
+rOnHeadersComplete 
+(node:_http_common:122:17)
+
+    [0m [90m 25 |[39m   } 
+[36melse[39m {
+     [90m 26 |[39m     
+[90m// If it's an unknown 
+error, provide a fallback 
+500 status (or use 
+err.status/statusCode if 
+available)[39m
+    
+[31m[1m>[22m[39m[90m 27 
+|[39m     console[33m.[39m
+error([32m'Unhandled 
+Error:'[39m[33m,[39m 
+err)[33m;[39m
+     [90m    |[39m         
+    [31m[1m^[22m[39m
+     [90m 28 |[39m
+     [90m 29 |[39m     
+[90m// Some libraries use 
+status or statusCode 
+properties (like 
+http-errors)[39m
+     [90m 30 |[39m     
+[36mconst[39m status 
+[33m=[39m 
+err[33m.[39mstatus 
+[33m||[39m 
+err[33m.[39mstatusCode 
+[33m||[39m 
+[35m500[39m[33m;[39m[0m
+
+      at error (src/middlewar
+e/errorHandler.js:27:13)
+      at Layer.handleError (n
+ode_modules/router/lib/layer.
+js:116:17)
+      at trimPrefix (node_mod
+ules/router/index.js:340:13)
+      at node_modules/router/
+index.js:297:9
+      at processParams (node_
+modules/router/index.js:582:1
+2)
+      at next (node_modules/r
+outer/index.js:291:5)
+      at next (node_modules/r
+outer/lib/route.js:132:14)
+
+    console.error
+      Unhandled Error: 
+Error: Rejected
+          at C:\Users\pc\Docu
+ments\waves\Liquifact-backend
+\tests\unit\asyncHandler.test
+.js:43:49
+          at fn (C:\Users\pc\
+Documents\waves\Liquifact-bac
+kend\src\utils\asyncHandler.j
+s:10:21)
+          at 
+Layer.handleRequest (C:\Users
+\pc\Documents\waves\Liquifact
+-backend\node_modules\router\
+lib\layer.js:152:17)
+          at next (C:\Users\p
+c\Documents\waves\Liquifact-b
+ackend\node_modules\router\li
+b\route.js:157:13)
+          at Route.dispatch (
+C:\Users\pc\Documents\waves\L
+iquifact-backend\node_modules
+\router\lib\route.js:117:3)
+          at handle (C:\Users
+\pc\Documents\waves\Liquifact
+-backend\node_modules\router\
+index.js:435:11)
+          at 
+Layer.handleRequest (C:\Users
+\pc\Documents\waves\Liquifact
+-backend\node_modules\router\
+lib\layer.js:152:17)
+          at C:\Users\pc\Docu
+ments\waves\Liquifact-backend
+\node_modules\router\index.js
+:295:15
+          at processParams (C
+:\Users\pc\Documents\waves\Li
+quifact-backend\node_modules\
+router\index.js:582:12)
+          at next (C:\Users\p
+c\Documents\waves\Liquifact-b
+ackend\node_modules\router\in
+dex.js:291:5)
+          at read (C:\Users\p
+c\Documents\waves\Liquifact-b
+ackend\node_modules\body-pars
+er\lib\read.js:53:5)
+          at jsonParser (C:\U
+sers\pc\Documents\waves\Liqui
+fact-backend\node_modules\bod
+y-parser\lib\types\json.js:88
+:5)
+          at 
+Layer.handleRequest (C:\Users
+\pc\Documents\waves\Liquifact
+-backend\node_modules\router\
+lib\layer.js:152:17)
+          at trimPrefix (C:\U
+sers\pc\Documents\waves\Liqui
+fact-backend\node_modules\rou
+ter\index.js:342:13)
+          at C:\Users\pc\Docu
+ments\waves\Liquifact-backend
+\node_modules\router\index.js
+:297:9
+          at processParams (C
+:\Users\pc\Documents\waves\Li
+quifact-backend\node_modules\
+router\index.js:582:12)
+          at next (C:\Users\p
+c\Documents\waves\Liquifact-b
+ackend\node_modules\router\in
+dex.js:291:5)
+          at Function.handle 
+(C:\Users\pc\Documents\waves\
+Liquifact-backend\node_module
+s\router\index.js:186:3)
+          at Function.handle 
+(C:\Users\pc\Documents\waves\
+Liquifact-backend\node_module
+s\express\lib\application.js:
+177:15)
+          at Server.app (C:\U
+sers\pc\Documents\waves\Liqui
+fact-backend\node_modules\exp
+ress\lib\express.js:38:9)
+          at Server.emit 
+(node:events:519:28)
+          at 
+parserOnIncoming 
+(node:_http_server:1186:12)
+          at HTTPParser.parse
+rOnHeadersComplete 
+(node:_http_common:122:17)
+
+    [0m [90m 25 |[39m   } 
+[36melse[39m {
+     [90m 26 |[39m     
+[90m// If it's an unknown 
+error, provide a fallback 
+500 status (or use 
+err.status/statusCode if 
+available)[39m
+    
+[31m[1m>[22m[39m[90m 27 
+|[39m     console[33m.[39m
+error([32m'Unhandled 
+Error:'[39m[33m,[39m 
+err)[33m;[39m
+     [90m    |[39m         
+    [31m[1m^[22m[39m
+     [90m 28 |[39m
+     [90m 29 |[39m     
+[90m// Some libraries use 
+status or statusCode 
+properties (like 
+http-errors)[39m
+     [90m 30 |[39m     
+[36mconst[39m status 
+[33m=[39m 
+err[33m.[39mstatus 
+[33m||[39m 
+err[33m.[39mstatusCode 
+[33m||[39m 
+[35m500[39m[33m;[39m[0m
+
+      at error (src/middlewar
+e/errorHandler.js:27:13)
+      at Layer.handleError (n
+ode_modules/router/lib/layer.
+js:116:17)
+      at trimPrefix (node_mod
+ules/router/index.js:340:13)
+      at node_modules/router/
+index.js:297:9
+      at processParams (node_
+modules/router/index.js:582:1
+2)
+      at next (node_modules/r
+outer/index.js:291:5)
+      at next (node_modules/r
+outer/lib/route.js:132:14)
+
+  ΓùÅ asyncHandler utility 
+ΓÇ║ should catch async 
+errors and pass to error 
+handler
+
+    expect(received).toBe(exp
+ected) // Object.is equality
+
+    Expected: "Test error"
+    Received: "An unexpected 
+error occurred while 
+processing your request."
+
+    [0m [90m 34 |[39m     
+expect(res[33m.[39mstatusCo
+de)[33m.[39mtoBe([35m500[
+39m)[33m;[39m
+     [90m 35 |[39m     expe
+ct(res[33m.[39mbody[33m.[
+39mtitle)[33m.[39mtoBe([32
+m'Internal Server 
+Error'[39m)[33m;[39m
+    
+[31m[1m>[22m[39m[90m 36 
+|[39m     expect(res[33m.[
+39mbody[33m.[39mdetail)[33
+m.[39mtoBe([32m'Test 
+error'[39m)[33m;[39m
+     [90m    |[39m         
+                    
+[31m[1m^[22m[39m
+     [90m 37 |[39m   
+})[33m;[39m
+     [90m 38 |[39m
+     [90m 39 |[39m   
+it([32m'should handle 
+rejected 
+promises'[39m[33m,[39m 
+[36masync[39m () 
+[33m=>[39m {[0m
+
+      at Object.toBe (tests/u
+nit/asyncHandler.test.js:36:2
+9)
+
+FAIL 
+src/tests/response.test.js
+  ΓùÅ Console
+
+    console.log
+      [dotenv@17.3.1] 
+injecting env (0) from .env 
+-- tip: ≡ƒöÉ prevent 
+committing .env to code: 
+https://dotenvx.com/precommit
+
+      at _log (node_modules/d
+otenv/lib/main.js:139:11)
+
+  ΓùÅ Standard Response 
+Envelope (Issue 19) ΓÇ║ 
+Success response should have 
+data, meta, and error=null
+
+    TypeError: app.address 
+is not a function
+
+    [0m [90m 4 |[39m 
+describe([32m'Standard 
+Response Envelope (Issue 
+19)'[39m[33m,[39m () 
+[33m=>[39m {
+     [90m 5 |[39m   
+it([32m'Success response 
+should have data, meta, and 
+error=null'[39m[33m,[39m 
+[36masync[39m () 
+[33m=>[39m {
+    
+[31m[1m>[22m[39m[90m 6 
+|[39m     [36mconst[39m 
+res [33m=[39m 
+[36mawait[39m request(app)
+[33m.[39m[36mget[39m([32m
+'/health'[39m)[33m;[39m
+     [90m   |[39m          
+                          
+[31m[1m^[22m[39m
+     [90m 7 |[39m     expec
+t(res[33m.[39mstatus)[33m.
+[39mtoBe([35m200[39m)[33m
+;[39m
+     [90m 8 |[39m     expec
+t(res[33m.[39mbody)[33m.[
+39mtoHaveProperty([32m'data'
+[39m)[33m;[39m
+     [90m 9 |[39m     expec
+t(res[33m.[39mbody)[33m.[
+39mtoHaveProperty([32m'meta'
+[39m)[33m;[39m[0m
+
+      at Test.serverAddress (
+node_modules/supertest/lib/te
+st.js:61:22)
+      at new Test (node_modul
+es/supertest/lib/test.js:49:1
+4)
+      at 
+Object.obj.<computed> [as 
+get] (node_modules/supertest/
+index.js:40:18)
+      at Object.get (src/test
+s/response.test.js:6:36)
+
+  ΓùÅ Standard Response 
+Envelope (Issue 19) ΓÇ║ 
+Error response should have 
+data=null, meta, and error 
+object
+
+    TypeError: app.address 
+is not a function
+
+    [0m [90m 15 |[39m
+     [90m 16 |[39m   
+it([32m'Error response 
+should have data=null, meta, 
+and error 
+object'[39m[33m,[39m 
+[36masync[39m () 
+[33m=>[39m {
+    
+[31m[1m>[22m[39m[90m 17 
+|[39m     [36mconst[39m 
+res [33m=[39m 
+[36mawait[39m request(app)
+[33m.[39m[36mget[39m([32m
+'/not-found-route'[39m)[33m
+;[39m
+     [90m    |[39m         
+                           
+[31m[1m^[22m[39m
+     [90m 18 |[39m     expe
+ct(res[33m.[39mstatus)[33m
+.[39mtoBe([35m404[39m)[33
+m;[39m
+     [90m 19 |[39m     expe
+ct(res[33m.[39mbody)[33m.
+[39mtoHaveProperty([32m'data
+'[39m)[33m;[39m
+     [90m 20 |[39m     expe
+ct(res[33m.[39mbody[33m.[
+39mdata)[33m.[39mtoBeNull()
+[33m;[39m[0m
+
+      at Test.serverAddress (
+node_modules/supertest/lib/te
+st.js:61:22)
+      at new Test (node_modul
+es/supertest/lib/test.js:49:1
+4)
+      at 
+Object.obj.<computed> [as 
+get] (node_modules/supertest/
+index.js:40:18)
+      at Object.get (src/test
+s/response.test.js:17:36)
+
+  ΓùÅ Standard Response 
+Envelope (Issue 19) ΓÇ║ POST 
+/api/invoices should return 
+201 and standardized success 
+envelope
+
+    TypeError: app.address 
+is not a function
+
+    [0m [90m 26 |[39m   
+     [90m 27 |[39m   
+it([32m'POST /api/invoices 
+should return 201 and 
+standardized success 
+envelope'[39m[33m,[39m 
+[36masync[39m () 
+[33m=>[39m {
+    
+[31m[1m>[22m[39m[90m 28 
+|[39m     [36mconst[39m 
+res [33m=[39m 
+[36mawait[39m request(app)
+[33m.[39mpost([32m'/api/inv
+oices'[39m)[33m.[39msend({
+})[33m;[39m
+     [90m    |[39m         
+                           
+[31m[1m^[22m[39m
+     [90m 29 |[39m     expe
+ct(res[33m.[39mstatus)[33m
+.[39mtoBe([35m201[39m)[33
+m;[39m
+     [90m 30 |[39m     expe
+ct(res[33m.[39mbody[33m.[
+39mdata[33m.[39mid)[33m.[
+39mtoBe([32m'placeholder'[3
+9m)[33m;[39m
+     [90m 31 |[39m     expe
+ct(res[33m.[39mbody[33m.[
+39merror)[33m.[39mtoBeNull(
+)[33m;[39m[0m
+
+      at Test.serverAddress (
+node_modules/supertest/lib/te
+st.js:61:22)
+      at new Test (node_modul
+es/supertest/lib/test.js:49:1
+4)
+      at 
+Object.obj.<computed> [as 
+post] (node_modules/supertest
+/index.js:40:18)
+      at Object.post (src/tes
+ts/response.test.js:28:36)
+
+  ΓùÅ Standard Response 
+Envelope (Issue 19) ΓÇ║ All 
+routes should return 
+standard response format
+
+    TypeError: app.address 
+is not a function
+
+    [0m [90m 35 |[39m     
+[36mconst[39m routes 
+[33m=[39m 
+[[32m'/api'[39m[33m,[39m 
+[32m'/api/invoices'[39m[33
+m,[39m [32m'/api/escrow/123
+'[39m][33m;[39m
+     [90m 36 |[39m     
+[36mfor[39m 
+([36mconst[39m route 
+[36mof[39m routes) {
+    
+[31m[1m>[22m[39m[90m 37 
+|[39m       [36mconst[39m 
+res [33m=[39m 
+[36mawait[39m request(app)
+[33m.[39m[36mget[39m(route
+)[33m;[39m
+     [90m    |[39m         
+                             
+[31m[1m^[22m[39m
+     [90m 38 |[39m       ex
+pect(res[33m.[39mstatus)[3
+3m.[39mtoBe([35m200[39m)[
+33m;[39m
+     [90m 39 |[39m       ex
+pect(res[33m.[39mbody)[33m
+.[39mtoHaveProperty([32m'da
+ta'[39m)[33m;[39m
+     [90m 40 |[39m       ex
+pect(res[33m.[39mbody)[33m
+.[39mtoHaveProperty([32m'me
+ta'[39m)[33m;[39m[0m
+
+      at Test.serverAddress (
+node_modules/supertest/lib/te
+st.js:61:22)
+      at new Test (node_modul
+es/supertest/lib/test.js:49:1
+4)
+      at 
+Object.obj.<computed> [as 
+get] (node_modules/supertest/
+index.js:40:18)
+      at Object.get (src/test
+s/response.test.js:37:38)
+
+  ΓùÅ Standard Response 
+Envelope (Issue 19) ΓÇ║ GET 
+/debug/error should return 
+500 and standardized 
+internal error
+
+    TypeError: app.address 
+is not a function
+
+    [0m [90m 46 |[39m   
+it([32m'GET /debug/error 
+should return 500 and 
+standardized internal 
+error'[39m[33m,[39m 
+[36masync[39m () 
+[33m=>[39m {
+     [90m 47 |[39m     proc
+ess[33m.[39menv[33m.[39m
+[33mNODE_ENV[39m 
+[33m=[39m [32m'production'
+[39m[33m;[39m
+    
+[31m[1m>[22m[39m[90m 48 
+|[39m     [36mconst[39m 
+res [33m=[39m 
+[36mawait[39m request(app)
+[33m.[39m[36mget[39m([32m
+'/debug/error'[39m)[33m;[3
+9m
+     [90m    |[39m         
+                           
+[31m[1m^[22m[39m
+     [90m 49 |[39m     expe
+ct(res[33m.[39mstatus)[33m
+.[39mtoBe([35m500[39m)[33
+m;[39m
+     [90m 50 |[39m     expe
+ct(res[33m.[39mbody[33m.[
+39merror[33m.[39mmessage)[
+33m.[39mtoBe([32m'Internal 
+Server 
+Error'[39m)[33m;[39m
+     [90m 51 |[39m     expe
+ct(res[33m.[39mbody[33m.[
+39merror[33m.[39mdetails)[
+33m.[39mtoBeNull()[33m;[39
+m[0m
+
+      at Test.serverAddress (
+node_modules/supertest/lib/te
+st.js:61:22)
+      at new Test (node_modul
+es/supertest/lib/test.js:49:1
+4)
+      at 
+Object.obj.<computed> [as 
+get] (node_modules/supertest/
+index.js:40:18)
+      at Object.get (src/test
+s/response.test.js:48:36)
+
+  ΓùÅ Standard Response 
+Envelope (Issue 19) ΓÇ║ 
+Internal server errors 
+should return stack trace in 
+development
+
+    TypeError: app.address 
+is not a function
+
+    [0m [90m 54 |[39m   
+it([32m'Internal server 
+errors should return stack 
+trace in 
+development'[39m[33m,[39m 
+[36masync[39m () 
+[33m=>[39m {
+     [90m 55 |[39m     proc
+ess[33m.[39menv[33m.[39m
+[33mNODE_ENV[39m 
+[33m=[39m [32m'development
+'[39m[33m;[39m
+    
+[31m[1m>[22m[39m[90m 56 
+|[39m     [36mconst[39m 
+res [33m=[39m 
+[36mawait[39m request(app)
+[33m.[39m[36mget[39m([32m
+'/debug/error'[39m)[33m;[3
+9m
+     [90m    |[39m         
+                           
+[31m[1m^[22m[39m
+     [90m 57 |[39m     expe
+ct(res[33m.[39mstatus)[33m
+.[39mtoBe([35m500[39m)[33
+m;[39m
+     [90m 58 |[39m     expe
+ct(res[33m.[39mbody[33m.[
+39merror[33m.[39mdetails)[
+33m.[39mtoContain([32m'Erro
+r: Triggered 
+Error'[39m)[33m;[39m
+     [90m 59 |[39m   
+})[33m;[39m[0m
+
+      at Test.serverAddress (
+node_modules/supertest/lib/te
+st.js:61:22)
+      at new Test (node_modul
+es/supertest/lib/test.js:49:1
+4)
+      at 
+Object.obj.<computed> [as 
+get] (node_modules/supertest/
+index.js:40:18)
+      at Object.get (src/test
+s/response.test.js:56:36)
+
+  ΓùÅ Standard Response 
+Envelope (Issue 19) ΓÇ║ 
+Internal server errors 
+should return standard error 
+envelope (e.g. malformed 
+JSON)
+
+    TypeError: app.address 
+is not a function
+
+    [0m [90m 61 |[39m   
+it([32m'Internal server 
+errors should return 
+standard error envelope 
+(e.g. malformed 
+JSON)'[39m[33m,[39m 
+[36masync[39m () 
+[33m=>[39m {
+     [90m 62 |[39m     
+[36mconst[39m res 
+[33m=[39m [36mawait[39m 
+request(app)
+    
+[31m[1m>[22m[39m[90m 63 
+|[39m       [33m.[39mpost(
+[32m'/api/invoices'[39m)
+     [90m    |[39m        
+[31m[1m^[22m[39m
+     [90m 64 |[39m       [
+33m.[39m[36mset[39m([32m'
+Content-Type'[39m[33m,[39m
+ 
+[32m'application/json'[39m)
+     [90m 65 |[39m       [
+33m.[39msend([32m'{"invalid
+": json}'[39m)[33m;[39m 
+[90m// Malformed JSON[39m
+     [90m 66 |[39m[0m
+
+      at Test.serverAddress (
+node_modules/supertest/lib/te
+st.js:61:22)
+      at new Test (node_modul
+es/supertest/lib/test.js:49:1
+4)
+      at 
+Object.obj.<computed> [as 
+post] (node_modules/supertest
+/index.js:40:18)
+      at Object.post (src/tes
+ts/response.test.js:63:8)
+
+FAIL src/app.test.js
+  ΓùÅ Console
+
+    console.log
+      [dotenv@17.3.1] 
+injecting env (0) from .env 
+-- tip: ≡ƒöÉ prevent 
+building .env in docker: 
+https://dotenvx.com/prebuild
+
+      at _log (node_modules/d
+otenv/lib/main.js:139:11)
+
+    console.error
+      Unhandled Error: 
+TypeError: Cannot read 
+properties of undefined 
+(reading 'remoteAddress')
+          at getSocketAddr (C
+:\Users\pc\Documents\waves\Li
+quifact-backend\node_modules\
+forwarded\index.js:49:22)
+          at forwarded (C:\Us
+ers\pc\Documents\waves\Liquif
+act-backend\node_modules\forw
+arded\index.js:31:20)
+          at alladdrs (C:\Use
+rs\pc\Documents\waves\Liquifa
+ct-backend\node_modules\proxy
+-addr\index.js:57:15)
+          at proxyaddr (C:\Us
+ers\pc\Documents\waves\Liquif
+act-backend\node_modules\prox
+y-addr\index.js:231:15)
+          at 
+IncomingMessage.ip (C:\Users\
+pc\Documents\waves\Liquifact-
+backend\node_modules\express\
+lib\request.js:329:10)
+          at Object.ip [as 
+keyGenerator] (C:\Users\pc\Do
+cuments\waves\Liquifact-backe
+nd\src\middleware\rateLimit.j
+s:27:66)
+          at C:\Users\pc\Docu
+ments\waves\Liquifact-backend
+\node_modules\express-rate-li
+mit\dist\index.cjs:849:32
+          at 
+processTicksAndRejections (no
+de:internal/process/task_queu
+es:105:5)
+          at C:\Users\pc\Docu
+ments\waves\Liquifact-backend
+\node_modules\express-rate-li
+mit\dist\index.cjs:830:5
+
+    [0m [90m 25 |[39m   } 
+[36melse[39m {
+     [90m 26 |[39m     
+[90m// If it's an unknown 
+error, provide a fallback 
+500 status (or use 
+err.status/statusCode if 
+available)[39m
+    
+[31m[1m>[22m[39m[90m 27 
+|[39m     console[33m.[39m
+error([32m'Unhandled 
+Error:'[39m[33m,[39m 
+err)[33m;[39m
+     [90m    |[39m         
+    [31m[1m^[22m[39m
+     [90m 28 |[39m
+     [90m 29 |[39m     
+[90m// Some libraries use 
+status or statusCode 
+properties (like 
+http-errors)[39m
+     [90m 30 |[39m     
+[36mconst[39m status 
+[33m=[39m 
+err[33m.[39mstatus 
+[33m||[39m 
+err[33m.[39mstatusCode 
+[33m||[39m 
+[35m500[39m[33m;[39m[0m
+
+      at error (src/middlewar
+e/errorHandler.js:27:13)
+      at Layer.handleError (n
+ode_modules/router/lib/layer.
+js:116:17)
+      at trimPrefix (node_mod
+ules/router/index.js:340:13)
+      at node_modules/router/
+index.js:297:9
+      at processParams (node_
+modules/router/index.js:582:1
+2)
+      at next (node_modules/r
+outer/index.js:291:5)
+      at next (src/middleware
+/bodySizeLimits.js:177:3)
+      at Layer.handleError (n
+ode_modules/router/lib/layer.
+js:116:17)
+      at trimPrefix (node_mod
+ules/router/index.js:340:13)
+      at node_modules/router/
+index.js:297:9
+      at processParams (node_
+modules/router/index.js:582:1
+2)
+      at next (node_modules/r
+outer/index.js:291:5)
+      at next 
+(src/app.js:176:5)
+      at Layer.handleError (n
+ode_modules/router/lib/layer.
+js:116:17)
+      at trimPrefix (node_mod
+ules/router/index.js:340:13)
+      at node_modules/router/
+index.js:297:9
+      at processParams (node_
+modules/router/index.js:582:1
+2)
+      at next (node_modules/r
+outer/index.js:291:5)
+      at Layer.handleError (n
+ode_modules/router/lib/layer.
+js:111:12)
+      at trimPrefix (node_mod
+ules/router/index.js:340:13)
+      at node_modules/router/
+index.js:297:9
+      at processParams (node_
+modules/router/index.js:582:1
+2)
+      at next (node_modules/r
+outer/index.js:291:5)
+      at node_modules/express
+-rate-limit/dist/index.cjs:83
+0:5
+
+    console.error
+      Unhandled Error: 
+TypeError: Cannot read 
+properties of undefined 
+(reading 'remoteAddress')
+          at getSocketAddr (C
+:\Users\pc\Documents\waves\Li
+quifact-backend\node_modules\
+forwarded\index.js:49:22)
+          at forwarded (C:\Us
+ers\pc\Documents\waves\Liquif
+act-backend\node_modules\forw
+arded\index.js:31:20)
+          at alladdrs (C:\Use
+rs\pc\Documents\waves\Liquifa
+ct-backend\node_modules\proxy
+-addr\index.js:57:15)
+          at proxyaddr (C:\Us
+ers\pc\Documents\waves\Liquif
+act-backend\node_modules\prox
+y-addr\index.js:231:15)
+          at 
+IncomingMessage.ip (C:\Users\
+pc\Documents\waves\Liquifact-
+backend\node_modules\express\
+lib\request.js:329:10)
+          at Object.ip [as 
+keyGenerator] (C:\Users\pc\Do
+cuments\waves\Liquifact-backe
+nd\src\middleware\rateLimit.j
+s:27:66)
+          at C:\Users\pc\Docu
+ments\waves\Liquifact-backend
+\node_modules\express-rate-li
+mit\dist\index.cjs:849:32
+          at 
+processTicksAndRejections (no
+de:internal/process/task_queu
+es:105:5)
+          at C:\Users\pc\Docu
+ments\waves\Liquifact-backend
+\node_modules\express-rate-li
+mit\dist\index.cjs:830:5
+
+    [0m [90m 25 |[39m   } 
+[36melse[39m {
+     [90m 26 |[39m     
+[90m// If it's an unknown 
+error, provide a fallback 
+500 status (or use 
+err.status/statusCode if 
+available)[39m
+    
+[31m[1m>[22m[39m[90m 27 
+|[39m     console[33m.[39m
+error([32m'Unhandled 
+Error:'[39m[33m,[39m 
+err)[33m;[39m
+     [90m    |[39m         
+    [31m[1m^[22m[39m
+     [90m 28 |[39m
+     [90m 29 |[39m     
+[90m// Some libraries use 
+status or statusCode 
+properties (like 
+http-errors)[39m
+     [90m 30 |[39m     
+[36mconst[39m status 
+[33m=[39m 
+err[33m.[39mstatus 
+[33m||[39m 
+err[33m.[39mstatusCode 
+[33m||[39m 
+[35m500[39m[33m;[39m[0m
+
+      at error (src/middlewar
+e/errorHandler.js:27:13)
+      at Layer.handleError (n
+ode_modules/router/lib/layer.
+js:116:17)
+      at trimPrefix (node_mod
+ules/router/index.js:340:13)
+      at node_modules/router/
+index.js:297:9
+      at processParams (node_
+modules/router/index.js:582:1
+2)
+      at next (node_modules/r
+outer/index.js:291:5)
+      at next (src/middleware
+/bodySizeLimits.js:177:3)
+      at Layer.handleError (n
+ode_modules/router/lib/layer.
+js:116:17)
+      at trimPrefix (node_mod
+ules/router/index.js:340:13)
+      at node_modules/router/
+index.js:297:9
+      at processParams (node_
+modules/router/index.js:582:1
+2)
+      at next (node_modules/r
+outer/index.js:291:5)
+      at next 
+(src/app.js:176:5)
+      at Layer.handleError (n
+ode_modules/router/lib/layer.
+js:116:17)
+      at trimPrefix (node_mod
+ules/router/index.js:340:13)
+      at node_modules/router/
+index.js:297:9
+      at processParams (node_
+modules/router/index.js:582:1
+2)
+      at next (node_modules/r
+outer/index.js:291:5)
+      at Layer.handleError (n
+ode_modules/router/lib/layer.
+js:111:12)
+      at trimPrefix (node_mod
+ules/router/index.js:340:13)
+      at node_modules/router/
+index.js:297:9
+      at processParams (node_
+modules/router/index.js:582:1
+2)
+      at next (node_modules/r
+outer/index.js:291:5)
+      at node_modules/express
+-rate-limit/dist/index.cjs:83
+0:5
+
+    console.error
+      Unhandled Error: 
+TypeError: Cannot read 
+properties of undefined 
+(reading 'remoteAddress')
+          at getSocketAddr (C
+:\Users\pc\Documents\waves\Li
+quifact-backend\node_modules\
+forwarded\index.js:49:22)
+          at forwarded (C:\Us
+ers\pc\Documents\waves\Liquif
+act-backend\node_modules\forw
+arded\index.js:31:20)
+          at alladdrs (C:\Use
+rs\pc\Documents\waves\Liquifa
+ct-backend\node_modules\proxy
+-addr\index.js:57:15)
+          at proxyaddr (C:\Us
+ers\pc\Documents\waves\Liquif
+act-backend\node_modules\prox
+y-addr\index.js:231:15)
+          at 
+IncomingMessage.ip (C:\Users\
+pc\Documents\waves\Liquifact-
+backend\node_modules\express\
+lib\request.js:329:10)
+          at Object.ip [as 
+keyGenerator] (C:\Users\pc\Do
+cuments\waves\Liquifact-backe
+nd\src\middleware\rateLimit.j
+s:27:66)
+          at C:\Users\pc\Docu
+ments\waves\Liquifact-backend
+\node_modules\express-rate-li
+mit\dist\index.cjs:849:32
+          at 
+processTicksAndRejections (no
+de:internal/process/task_queu
+es:105:5)
+          at C:\Users\pc\Docu
+ments\waves\Liquifact-backend
+\node_modules\express-rate-li
+mit\dist\index.cjs:830:5
+
+    [0m [90m 25 |[39m   } 
+[36melse[39m {
+     [90m 26 |[39m     
+[90m// If it's an unknown 
+error, provide a fallback 
+500 status (or use 
+err.status/statusCode if 
+available)[39m
+    
+[31m[1m>[22m[39m[90m 27 
+|[39m     console[33m.[39m
+error([32m'Unhandled 
+Error:'[39m[33m,[39m 
+err)[33m;[39m
+     [90m    |[39m         
+    [31m[1m^[22m[39m
+     [90m 28 |[39m
+     [90m 29 |[39m     
+[90m// Some libraries use 
+status or statusCode 
+properties (like 
+http-errors)[39m
+     [90m 30 |[39m     
+[36mconst[39m status 
+[33m=[39m 
+err[33m.[39mstatus 
+[33m||[39m 
+err[33m.[39mstatusCode 
+[33m||[39m 
+[35m500[39m[33m;[39m[0m
+
+      at error (src/middlewar
+e/errorHandler.js:27:13)
+      at Layer.handleError (n
+ode_modules/router/lib/layer.
+js:116:17)
+      at trimPrefix (node_mod
+ules/router/index.js:340:13)
+      at node_modules/router/
+index.js:297:9
+      at processParams (node_
+modules/router/index.js:582:1
+2)
+      at next (node_modules/r
+outer/index.js:291:5)
+      at next (src/middleware
+/bodySizeLimits.js:177:3)
+      at Layer.handleError (n
+ode_modules/router/lib/layer.
+js:116:17)
+      at trimPrefix (node_mod
+ules/router/index.js:340:13)
+      at node_modules/router/
+index.js:297:9
+      at processParams (node_
+modules/router/index.js:582:1
+2)
+      at next (node_modules/r
+outer/index.js:291:5)
+      at next 
+(src/app.js:176:5)
+      at Layer.handleError (n
+ode_modules/router/lib/layer.
+js:116:17)
+      at trimPrefix (node_mod
+ules/router/index.js:340:13)
+      at node_modules/router/
+index.js:297:9
+      at processParams (node_
+modules/router/index.js:582:1
+2)
+      at next (node_modules/r
+outer/index.js:291:5)
+      at Layer.handleError (n
+ode_modules/router/lib/layer.
+js:111:12)
+      at trimPrefix (node_mod
+ules/router/index.js:340:13)
+      at node_modules/router/
+index.js:297:9
+      at processParams (node_
+modules/router/index.js:582:1
+2)
+      at next (node_modules/r
+outer/index.js:291:5)
+      at node_modules/express
+-rate-limit/dist/index.cjs:83
+0:5
+
+    console.error
+      Unhandled Error: 
+TypeError: Cannot read 
+properties of undefined 
+(reading 'remoteAddress')
+          at getSocketAddr (C
+:\Users\pc\Documents\waves\Li
+quifact-backend\node_modules\
+forwarded\index.js:49:22)
+          at forwarded (C:\Us
+ers\pc\Documents\waves\Liquif
+act-backend\node_modules\forw
+arded\index.js:31:20)
+          at alladdrs (C:\Use
+rs\pc\Documents\waves\Liquifa
+ct-backend\node_modules\proxy
+-addr\index.js:57:15)
+          at proxyaddr (C:\Us
+ers\pc\Documents\waves\Liquif
+act-backend\node_modules\prox
+y-addr\index.js:231:15)
+          at 
+IncomingMessage.ip (C:\Users\
+pc\Documents\waves\Liquifact-
+backend\node_modules\express\
+lib\request.js:329:10)
+          at Object.ip [as 
+keyGenerator] (C:\Users\pc\Do
+cuments\waves\Liquifact-backe
+nd\src\middleware\rateLimit.j
+s:27:66)
+          at C:\Users\pc\Docu
+ments\waves\Liquifact-backend
+\node_modules\express-rate-li
+mit\dist\index.cjs:849:32
+          at 
+processTicksAndRejections (no
+de:internal/process/task_queu
+es:105:5)
+          at C:\Users\pc\Docu
+ments\waves\Liquifact-backend
+\node_modules\express-rate-li
+mit\dist\index.cjs:830:5
+
+    [0m [90m 25 |[39m   } 
+[36melse[39m {
+     [90m 26 |[39m     
+[90m// If it's an unknown 
+error, provide a fallback 
+500 status (or use 
+err.status/statusCode if 
+available)[39m
+    
+[31m[1m>[22m[39m[90m 27 
+|[39m     console[33m.[39m
+error([32m'Unhandled 
+Error:'[39m[33m,[39m 
+err)[33m;[39m
+     [90m    |[39m         
+    [31m[1m^[22m[39m
+     [90m 28 |[39m
+     [90m 29 |[39m     
+[90m// Some libraries use 
+status or statusCode 
+properties (like 
+http-errors)[39m
+     [90m 30 |[39m     
+[36mconst[39m status 
+[33m=[39m 
+err[33m.[39mstatus 
+[33m||[39m 
+err[33m.[39mstatusCode 
+[33m||[39m 
+[35m500[39m[33m;[39m[0m
+
+      at error (src/middlewar
+e/errorHandler.js:27:13)
+      at Layer.handleError (n
+ode_modules/router/lib/layer.
+js:116:17)
+      at trimPrefix (node_mod
+ules/router/index.js:340:13)
+      at node_modules/router/
+index.js:297:9
+      at processParams (node_
+modules/router/index.js:582:1
+2)
+      at next (node_modules/r
+outer/index.js:291:5)
+      at next (src/middleware
+/bodySizeLimits.js:177:3)
+      at Layer.handleError (n
+ode_modules/router/lib/layer.
+js:116:17)
+      at trimPrefix (node_mod
+ules/router/index.js:340:13)
+      at node_modules/router/
+index.js:297:9
+      at processParams (node_
+modules/router/index.js:582:1
+2)
+      at next (node_modules/r
+outer/index.js:291:5)
+      at next 
+(src/app.js:176:5)
+      at Layer.handleError (n
+ode_modules/router/lib/layer.
+js:116:17)
+      at trimPrefix (node_mod
+ules/router/index.js:340:13)
+      at node_modules/router/
+index.js:297:9
+      at processParams (node_
+modules/router/index.js:582:1
+2)
+      at next (node_modules/r
+outer/index.js:291:5)
+      at Layer.handleError (n
+ode_modules/router/lib/layer.
+js:111:12)
+      at trimPrefix (node_mod
+ules/router/index.js:340:13)
+      at node_modules/router/
+index.js:297:9
+      at processParams (node_
+modules/router/index.js:582:1
+2)
+      at next (node_modules/r
+outer/index.js:291:5)
+      at node_modules/express
+-rate-limit/dist/index.cjs:83
+0:5
+
+    console.error
+      Unhandled Error: 
+TypeError: Cannot read 
+properties of undefined 
+(reading 'remoteAddress')
+          at getSocketAddr (C
+:\Users\pc\Documents\waves\Li
+quifact-backend\node_modules\
+forwarded\index.js:49:22)
+          at forwarded (C:\Us
+ers\pc\Documents\waves\Liquif
+act-backend\node_modules\forw
+arded\index.js:31:20)
+          at alladdrs (C:\Use
+rs\pc\Documents\waves\Liquifa
+ct-backend\node_modules\proxy
+-addr\index.js:57:15)
+          at proxyaddr (C:\Us
+ers\pc\Documents\waves\Liquif
+act-backend\node_modules\prox
+y-addr\index.js:231:15)
+          at 
+IncomingMessage.ip (C:\Users\
+pc\Documents\waves\Liquifact-
+backend\node_modules\express\
+lib\request.js:329:10)
+          at Object.ip [as 
+keyGenerator] (C:\Users\pc\Do
+cuments\waves\Liquifact-backe
+nd\src\middleware\rateLimit.j
+s:27:66)
+          at C:\Users\pc\Docu
+ments\waves\Liquifact-backend
+\node_modules\express-rate-li
+mit\dist\index.cjs:849:32
+          at 
+processTicksAndRejections (no
+de:internal/process/task_queu
+es:105:5)
+          at C:\Users\pc\Docu
+ments\waves\Liquifact-backend
+\node_modules\express-rate-li
+mit\dist\index.cjs:830:5
+
+    [0m [90m 25 |[39m   } 
+[36melse[39m {
+     [90m 26 |[39m     
+[90m// If it's an unknown 
+error, provide a fallback 
+500 status (or use 
+err.status/statusCode if 
+available)[39m
+    
+[31m[1m>[22m[39m[90m 27 
+|[39m     console[33m.[39m
+error([32m'Unhandled 
+Error:'[39m[33m,[39m 
+err)[33m;[39m
+     [90m    |[39m         
+    [31m[1m^[22m[39m
+     [90m 28 |[39m
+     [90m 29 |[39m     
+[90m// Some libraries use 
+status or statusCode 
+properties (like 
+http-errors)[39m
+     [90m 30 |[39m     
+[36mconst[39m status 
+[33m=[39m 
+err[33m.[39mstatus 
+[33m||[39m 
+err[33m.[39mstatusCode 
+[33m||[39m 
+[35m500[39m[33m;[39m[0m
+
+      at error (src/middlewar
+e/errorHandler.js:27:13)
+      at Layer.handleError (n
+ode_modules/router/lib/layer.
+js:116:17)
+      at trimPrefix (node_mod
+ules/router/index.js:340:13)
+      at node_modules/router/
+index.js:297:9
+      at processParams (node_
+modules/router/index.js:582:1
+2)
+      at next (node_modules/r
+outer/index.js:291:5)
+      at next (src/middleware
+/bodySizeLimits.js:177:3)
+      at Layer.handleError (n
+ode_modules/router/lib/layer.
+js:116:17)
+      at trimPrefix (node_mod
+ules/router/index.js:340:13)
+      at node_modules/router/
+index.js:297:9
+      at processParams (node_
+modules/router/index.js:582:1
+2)
+      at next (node_modules/r
+outer/index.js:291:5)
+      at next 
+(src/app.js:176:5)
+      at Layer.handleError (n
+ode_modules/router/lib/layer.
+js:116:17)
+      at trimPrefix (node_mod
+ules/router/index.js:340:13)
+      at node_modules/router/
+index.js:297:9
+      at processParams (node_
+modules/router/index.js:582:1
+2)
+      at next (node_modules/r
+outer/index.js:291:5)
+      at Layer.handleError (n
+ode_modules/router/lib/layer.
+js:111:12)
+      at trimPrefix (node_mod
+ules/router/index.js:340:13)
+      at node_modules/router/
+index.js:297:9
+      at processParams (node_
+modules/router/index.js:582:1
+2)
+      at next (node_modules/r
+outer/index.js:291:5)
+      at node_modules/express
+-rate-limit/dist/index.cjs:83
+0:5
+
+    console.error
+      Unhandled Error: 
+TypeError: Cannot read 
+properties of undefined 
+(reading 'remoteAddress')
+          at getSocketAddr (C
+:\Users\pc\Documents\waves\Li
+quifact-backend\node_modules\
+forwarded\index.js:49:22)
+          at forwarded (C:\Us
+ers\pc\Documents\waves\Liquif
+act-backend\node_modules\forw
+arded\index.js:31:20)
+          at alladdrs (C:\Use
+rs\pc\Documents\waves\Liquifa
+ct-backend\node_modules\proxy
+-addr\index.js:57:15)
+          at proxyaddr (C:\Us
+ers\pc\Documents\waves\Liquif
+act-backend\node_modules\prox
+y-addr\index.js:231:15)
+          at 
+IncomingMessage.ip (C:\Users\
+pc\Documents\waves\Liquifact-
+backend\node_modules\express\
+lib\request.js:329:10)
+          at Object.ip [as 
+keyGenerator] (C:\Users\pc\Do
+cuments\waves\Liquifact-backe
+nd\src\middleware\rateLimit.j
+s:27:66)
+          at C:\Users\pc\Docu
+ments\waves\Liquifact-backend
+\node_modules\express-rate-li
+mit\dist\index.cjs:849:32
+          at 
+processTicksAndRejections (no
+de:internal/process/task_queu
+es:105:5)
+          at C:\Users\pc\Docu
+ments\waves\Liquifact-backend
+\node_modules\express-rate-li
+mit\dist\index.cjs:830:5
+
+    [0m [90m 25 |[39m   } 
+[36melse[39m {
+     [90m 26 |[39m     
+[90m// If it's an unknown 
+error, provide a fallback 
+500 status (or use 
+err.status/statusCode if 
+available)[39m
+    
+[31m[1m>[22m[39m[90m 27 
+|[39m     console[33m.[39m
+error([32m'Unhandled 
+Error:'[39m[33m,[39m 
+err)[33m;[39m
+     [90m    |[39m         
+    [31m[1m^[22m[39m
+     [90m 28 |[39m
+     [90m 29 |[39m     
+[90m// Some libraries use 
+status or statusCode 
+properties (like 
+http-errors)[39m
+     [90m 30 |[39m     
+[36mconst[39m status 
+[33m=[39m 
+err[33m.[39mstatus 
+[33m||[39m 
+err[33m.[39mstatusCode 
+[33m||[39m 
+[35m500[39m[33m;[39m[0m
+
+      at error (src/middlewar
+e/errorHandler.js:27:13)
+      at Layer.handleError (n
+ode_modules/router/lib/layer.
+js:116:17)
+      at trimPrefix (node_mod
+ules/router/index.js:340:13)
+      at node_modules/router/
+index.js:297:9
+      at processParams (node_
+modules/router/index.js:582:1
+2)
+      at next (node_modules/r
+outer/index.js:291:5)
+      at next (src/middleware
+/bodySizeLimits.js:177:3)
+      at Layer.handleError (n
+ode_modules/router/lib/layer.
+js:116:17)
+      at trimPrefix (node_mod
+ules/router/index.js:340:13)
+      at node_modules/router/
+index.js:297:9
+      at processParams (node_
+modules/router/index.js:582:1
+2)
+      at next (node_modules/r
+outer/index.js:291:5)
+      at next 
+(src/app.js:176:5)
+      at Layer.handleError (n
+ode_modules/router/lib/layer.
+js:116:17)
+      at trimPrefix (node_mod
+ules/router/index.js:340:13)
+      at node_modules/router/
+index.js:297:9
+      at processParams (node_
+modules/router/index.js:582:1
+2)
+      at next (node_modules/r
+outer/index.js:291:5)
+      at Layer.handleError (n
+ode_modules/router/lib/layer.
+js:111:12)
+      at trimPrefix (node_mod
+ules/router/index.js:340:13)
+      at node_modules/router/
+index.js:297:9
+      at processParams (node_
+modules/router/index.js:582:1
+2)
+      at next (node_modules/r
+outer/index.js:291:5)
+      at node_modules/express
+-rate-limit/dist/index.cjs:83
+0:5
+
+    console.error
+      Unhandled Error: 
+TypeError: Cannot read 
+properties of undefined 
+(reading 'remoteAddress')
+          at getSocketAddr (C
+:\Users\pc\Documents\waves\Li
+quifact-backend\node_modules\
+forwarded\index.js:49:22)
+          at forwarded (C:\Us
+ers\pc\Documents\waves\Liquif
+act-backend\node_modules\forw
+arded\index.js:31:20)
+          at alladdrs (C:\Use
+rs\pc\Documents\waves\Liquifa
+ct-backend\node_modules\proxy
+-addr\index.js:57:15)
+          at proxyaddr (C:\Us
+ers\pc\Documents\waves\Liquif
+act-backend\node_modules\prox
+y-addr\index.js:231:15)
+          at 
+IncomingMessage.ip (C:\Users\
+pc\Documents\waves\Liquifact-
+backend\node_modules\express\
+lib\request.js:329:10)
+          at Object.ip [as 
+keyGenerator] (C:\Users\pc\Do
+cuments\waves\Liquifact-backe
+nd\src\middleware\rateLimit.j
+s:27:66)
+          at C:\Users\pc\Docu
+ments\waves\Liquifact-backend
+\node_modules\express-rate-li
+mit\dist\index.cjs:849:32
+          at 
+processTicksAndRejections (no
+de:internal/process/task_queu
+es:105:5)
+          at C:\Users\pc\Docu
+ments\waves\Liquifact-backend
+\node_modules\express-rate-li
+mit\dist\index.cjs:830:5
+
+    [0m [90m 25 |[39m   } 
+[36melse[39m {
+     [90m 26 |[39m     
+[90m// If it's an unknown 
+error, provide a fallback 
+500 status (or use 
+err.status/statusCode if 
+available)[39m
+    
+[31m[1m>[22m[39m[90m 27 
+|[39m     console[33m.[39m
+error([32m'Unhandled 
+Error:'[39m[33m,[39m 
+err)[33m;[39m
+     [90m    |[39m         
+    [31m[1m^[22m[39m
+     [90m 28 |[39m
+     [90m 29 |[39m     
+[90m// Some libraries use 
+status or statusCode 
+properties (like 
+http-errors)[39m
+     [90m 30 |[39m     
+[36mconst[39m status 
+[33m=[39m 
+err[33m.[39mstatus 
+[33m||[39m 
+err[33m.[39mstatusCode 
+[33m||[39m 
+[35m500[39m[33m;[39m[0m
+
+      at error (src/middlewar
+e/errorHandler.js:27:13)
+      at Layer.handleError (n
+ode_modules/router/lib/layer.
+js:116:17)
+      at trimPrefix (node_mod
+ules/router/index.js:340:13)
+      at node_modules/router/
+index.js:297:9
+      at processParams (node_
+modules/router/index.js:582:1
+2)
+      at next (node_modules/r
+outer/index.js:291:5)
+      at next (src/middleware
+/bodySizeLimits.js:177:3)
+      at Layer.handleError (n
+ode_modules/router/lib/layer.
+js:116:17)
+      at trimPrefix (node_mod
+ules/router/index.js:340:13)
+      at node_modules/router/
+index.js:297:9
+      at processParams (node_
+modules/router/index.js:582:1
+2)
+      at next (node_modules/r
+outer/index.js:291:5)
+      at next 
+(src/app.js:176:5)
+      at Layer.handleError (n
+ode_modules/router/lib/layer.
+js:116:17)
+      at trimPrefix (node_mod
+ules/router/index.js:340:13)
+      at node_modules/router/
+index.js:297:9
+      at processParams (node_
+modules/router/index.js:582:1
+2)
+      at next (node_modules/r
+outer/index.js:291:5)
+      at Layer.handleError (n
+ode_modules/router/lib/layer.
+js:111:12)
+      at trimPrefix (node_mod
+ules/router/index.js:340:13)
+      at node_modules/router/
+index.js:297:9
+      at processParams (node_
+modules/router/index.js:582:1
+2)
+      at next (node_modules/r
+outer/index.js:291:5)
+      at node_modules/express
+-rate-limit/dist/index.cjs:83
+0:5
+
+    console.error
+      Unhandled Error: 
+TypeError: Cannot read 
+properties of undefined 
+(reading 'remoteAddress')
+          at getSocketAddr (C
+:\Users\pc\Documents\waves\Li
+quifact-backend\node_modules\
+forwarded\index.js:49:22)
+          at forwarded (C:\Us
+ers\pc\Documents\waves\Liquif
+act-backend\node_modules\forw
+arded\index.js:31:20)
+          at alladdrs (C:\Use
+rs\pc\Documents\waves\Liquifa
+ct-backend\node_modules\proxy
+-addr\index.js:57:15)
+          at proxyaddr (C:\Us
+ers\pc\Documents\waves\Liquif
+act-backend\node_modules\prox
+y-addr\index.js:231:15)
+          at 
+IncomingMessage.ip (C:\Users\
+pc\Documents\waves\Liquifact-
+backend\node_modules\express\
+lib\request.js:329:10)
+          at Object.ip [as 
+keyGenerator] (C:\Users\pc\Do
+cuments\waves\Liquifact-backe
+nd\src\middleware\rateLimit.j
+s:27:66)
+          at C:\Users\pc\Docu
+ments\waves\Liquifact-backend
+\node_modules\express-rate-li
+mit\dist\index.cjs:849:32
+          at 
+processTicksAndRejections (no
+de:internal/process/task_queu
+es:105:5)
+          at C:\Users\pc\Docu
+ments\waves\Liquifact-backend
+\node_modules\express-rate-li
+mit\dist\index.cjs:830:5
+
+    [0m [90m 25 |[39m   } 
+[36melse[39m {
+     [90m 26 |[39m     
+[90m// If it's an unknown 
+error, provide a fallback 
+500 status (or use 
+err.status/statusCode if 
+available)[39m
+    
+[31m[1m>[22m[39m[90m 27 
+|[39m     console[33m.[39m
+error([32m'Unhandled 
+Error:'[39m[33m,[39m 
+err)[33m;[39m
+     [90m    |[39m         
+    [31m[1m^[22m[39m
+     [90m 28 |[39m
+     [90m 29 |[39m     
+[90m// Some libraries use 
+status or statusCode 
+properties (like 
+http-errors)[39m
+     [90m 30 |[39m     
+[36mconst[39m status 
+[33m=[39m 
+err[33m.[39mstatus 
+[33m||[39m 
+err[33m.[39mstatusCode 
+[33m||[39m 
+[35m500[39m[33m;[39m[0m
+
+      at error (src/middlewar
+e/errorHandler.js:27:13)
+      at Layer.handleError (n
+ode_modules/router/lib/layer.
+js:116:17)
+      at trimPrefix (node_mod
+ules/router/index.js:340:13)
+      at node_modules/router/
+index.js:297:9
+      at processParams (node_
+modules/router/index.js:582:1
+2)
+      at next (node_modules/r
+outer/index.js:291:5)
+      at next (src/middleware
+/bodySizeLimits.js:177:3)
+      at Layer.handleError (n
+ode_modules/router/lib/layer.
+js:116:17)
+      at trimPrefix (node_mod
+ules/router/index.js:340:13)
+      at node_modules/router/
+index.js:297:9
+      at processParams (node_
+modules/router/index.js:582:1
+2)
+      at next (node_modules/r
+outer/index.js:291:5)
+      at next 
+(src/app.js:176:5)
+      at Layer.handleError (n
+ode_modules/router/lib/layer.
+js:116:17)
+      at trimPrefix (node_mod
+ules/router/index.js:340:13)
+      at node_modules/router/
+index.js:297:9
+      at processParams (node_
+modules/router/index.js:582:1
+2)
+      at next (node_modules/r
+outer/index.js:291:5)
+      at Layer.handleError (n
+ode_modules/router/lib/layer.
+js:111:12)
+      at trimPrefix (node_mod
+ules/router/index.js:340:13)
+      at node_modules/router/
+index.js:297:9
+      at processParams (node_
+modules/router/index.js:582:1
+2)
+      at next (node_modules/r
+outer/index.js:291:5)
+      at node_modules/express
+-rate-limit/dist/index.cjs:83
+0:5
+
+  ΓùÅ LiquiFact app 
+integration ΓÇ║ allows 
+configured origins for 
+standard requests
+
+    expect(received).toBe(exp
+ected) // Object.is equality
+
+    Expected: 200
+    Received: 500
+
+    [0m [90m 164 |[39m    
+     })[33m;[39m
+     [90m 165 |[39m
+    
+[31m[1m>[22m[39m[90m 
+166 |[39m         expect(res
+ponse[33m.[39mstatusCode)[
+33m.[39mtoBe([35m200[39m)
+[33m;[39m
+     [90m     |[39m        
+                             
+[31m[1m^[22m[39m
+     [90m 167 |[39m        
+ expect(response[33m.[39mhe
+aders[[32m'access-control-al
+low-origin'[39m])[33m.[39m
+toBe(
+     [90m 168 |[39m        
+   [32m'https://app.example.
+com'[39m
+     [90m 169 |[39m        
+ )[33m;[39m[0m
+
+      at toBe 
+(src/app.test.js:166:37)
+      at Object.<anonymous> 
+(src/app.test.js:155:5)
+
+  ΓùÅ LiquiFact app 
+integration ΓÇ║ allows 
+requests without an origin 
+header
+
+    expect(received).toBe(exp
+ected) // Object.is equality
+
+    Expected: 200
+    Received: 500
+
+    [0m [90m 210 |[39m    
+     })[33m;[39m
+     [90m 211 |[39m
+    
+[31m[1m>[22m[39m[90m 
+212 |[39m         expect(res
+ponse[33m.[39mstatusCode)[
+33m.[39mtoBe([35m200[39m)
+[33m;[39m
+     [90m     |[39m        
+                             
+[31m[1m^[22m[39m
+     [90m 213 |[39m        
+ expect(response[33m.[39mhe
+aders[[32m'access-control-al
+low-origin'[39m])[33m.[39m
+toBeUndefined()[33m;[39m
+     [90m 214 |[39m       }
+     [90m 215 |[39m     
+)[33m;[39m[0m
+
+      at toBe 
+(src/app.test.js:212:37)
+      at Object.<anonymous> 
+(src/app.test.js:202:5)
+
+  ΓùÅ LiquiFact app 
+integration ΓÇ║ allows 
+localhost origins by default 
+in development
+
+    expect(received).toBe(exp
+ected) // Object.is equality
+
+    Expected: 200
+    Received: 500
+
+    [0m [90m 228 |[39m    
+     })[33m;[39m
+     [90m 229 |[39m
+    
+[31m[1m>[22m[39m[90m 
+230 |[39m         expect(res
+ponse[33m.[39mstatusCode)[
+33m.[39mtoBe([35m200[39m)
+[33m;[39m
+     [90m     |[39m        
+                             
+[31m[1m^[22m[39m
+     [90m 231 |[39m        
+ expect(response[33m.[39mhe
+aders[[32m'access-control-al
+low-origin'[39m])[33m.[39m
+toBe(
+     [90m 232 |[39m        
+   [32m'http://localhost:300
+0'[39m
+     [90m 233 |[39m        
+ )[33m;[39m[0m
+
+      at toBe 
+(src/app.test.js:230:37)
+      at Object.<anonymous> 
+(src/app.test.js:219:5)
+
+  ΓùÅ LiquiFact app 
+integration ΓÇ║ returns API 
+metadata from /api
+
+    expect(received).toBe(exp
+ected) // Object.is equality
+
+    Expected: 200
+    Received: 500
+
+    [0m [90m 261 |[39m    
+ })[33m;[39m
+     [90m 262 |[39m
+    
+[31m[1m>[22m[39m[90m 
+263 |[39m     expect(respons
+e[33m.[39mstatusCode)[33m.
+[39mtoBe([35m200[39m)[33m
+;[39m
+     [90m     |[39m        
+                         
+[31m[1m^[22m[39m
+     [90m 264 |[39m     exp
+ect(response[33m.[39mbody)
+[33m.[39mtoEqual({
+     [90m 265 |[39m       
+name[33m:[39m 
+[32m'LiquiFact 
+API'[39m[33m,[39m
+     [90m 266 |[39m       
+description[33m:[39m 
+[32m'Global Invoice 
+Liquidity Network on 
+Stellar'[39m[33m,[39m[0m
+
+      at Object.toBe 
+(src/app.test.js:263:33)
+
+  ΓùÅ LiquiFact app 
+integration ΓÇ║ returns the 
+invoice list
+
+    expect(received).toBe(exp
+ected) // Object.is equality
+
+    Expected: 200
+    Received: 500
+
+    [0m [90m 279 |[39m    
+ })[33m;[39m
+     [90m 280 |[39m
+    
+[31m[1m>[22m[39m[90m 
+281 |[39m     expect(respons
+e[33m.[39mstatusCode)[33m.
+[39mtoBe([35m200[39m)[33m
+;[39m
+     [90m     |[39m        
+                         
+[31m[1m^[22m[39m
+     [90m 282 |[39m     exp
+ect(response[33m.[39mbody)
+[33m.[39mtoEqual({
+     [90m 283 |[39m       
+data[33m:[39m expect[33m.
+[39many([33mArray[39m)[33m
+,[39m
+     [90m 284 |[39m       
+message[33m:[39m 
+[32m'Invoices retrieved succ
+essfully.'[39m[33m,[39m[0
+m
+
+      at Object.toBe 
+(src/app.test.js:281:33)
+
+  ΓùÅ LiquiFact app 
+integration ΓÇ║ returns the 
+invoice creation placeholder
+
+    expect(received).toBe(exp
+ected) // Object.is equality
+
+    Expected: 201
+    Received: 500
+
+    [0m [90m 300 |[39m    
+ })[33m;[39m
+     [90m 301 |[39m
+    
+[31m[1m>[22m[39m[90m 
+302 |[39m     expect(respons
+e[33m.[39mstatusCode)[33m.
+[39mtoBe([35m201[39m)[33m
+;[39m
+     [90m     |[39m        
+                         
+[31m[1m^[22m[39m
+     [90m 303 |[39m     exp
+ect(response[33m.[39mbody[
+33m.[39mdata)[33m.[39mtoHa
+veProperty([32m'id'[39m)[3
+3m;[39m
+     [90m 304 |[39m     exp
+ect(response[33m.[39mbody[
+33m.[39mdata[33m.[39mcusto
+mer)[33m.[39mtoBe([32m'Tes
+t'[39m)[33m;[39m
+     [90m 305 |[39m   
+})[33m;[39m[0m
+
+      at Object.toBe 
+(src/app.test.js:302:33)
+
+  ΓùÅ LiquiFact app 
+integration ΓÇ║ returns the 
+escrow data through the 
+Soroban wrapper
+
+    expect(received).toBe(exp
+ected) // Object.is equality
+
+    Expected: 200
+    Received: 500
+
+    [0m [90m 315 |[39m    
+ })[33m;[39m
+     [90m 316 |[39m
+    
+[31m[1m>[22m[39m[90m 
+317 |[39m     expect(respons
+e[33m.[39mstatusCode)[33m.
+[39mtoBe([35m200[39m)[33m
+;[39m
+     [90m     |[39m        
+                         
+[31m[1m^[22m[39m
+     [90m 318 |[39m     exp
+ect(response[33m.[39mbody)
+[33m.[39mtoEqual({
+     [90m 319 |[39m       
+data[33m:[39m { 
+invoiceId[33m:[39m [32m'in
+voice-123'[39m[33m,[39m 
+status[33m:[39m [32m'not_f
+ound'[39m[33m,[39m 
+fundedAmount[33m:[39m 
+[35m0[39m }[33m,[39m
+     [90m 320 |[39m       
+message[33m:[39m 
+[32m'Escrow state read from 
+Soroban contract via robust 
+integration 
+wrapper.'[39m[33m,[39m[0m
+
+      at Object.toBe 
+(src/app.test.js:317:33)
+
+  ΓùÅ LiquiFact app 
+integration ΓÇ║ returns 404 
+for unknown routes
+
+    expect(received).toBe(exp
+ected) // Object.is equality
+
+    Expected: 404
+    Received: 500
+
+    [0m [90m 327 |[39m    
+ })[33m;[39m
+     [90m 328 |[39m
+    
+[31m[1m>[22m[39m[90m 
+329 |[39m     expect(respons
+e[33m.[39mstatusCode)[33m.
+[39mtoBe([35m404[39m)[33m
+;[39m
+     [90m     |[39m        
+                         
+[31m[1m^[22m[39m
+     [90m 330 |[39m     exp
+ect(response[33m.[39mbody[
+33m.[39mtitle)[33m.[39mtoB
+e([32m'Resource Not 
+Found'[39m)[33m;[39m
+     [90m 331 |[39m     exp
+ect(response[33m.[39mbody[
+33m.[39minstance)[33m.[39m
+toBe([32m'/missing'[39m)[3
+3m;[39m
+     [90m 332 |[39m   
+})[33m;[39m[0m
+
+      at Object.toBe 
+(src/app.test.js:329:33)
+
+  ΓùÅ LiquiFact app CORS 
+middleware behavior ΓÇ║ 
+allows preflight requests 
+for allowed origins
+
+    expect(received).toBe(exp
+ected) // Object.is equality
+
+    Expected: 204
+    Received: 200
+
+    [0m [90m 360 |[39m
+     [90m 361 |[39m     exp
+ect(nextCalled)[33m.[39mtoB
+e([36mfalse[39m)[33m;[39m
+    
+[31m[1m>[22m[39m[90m 
+362 |[39m     expect(res[33
+m.[39mstatusCode)[33m.[39m
+toBe([35m204[39m)[33m;[39
+m
+     [90m     |[39m        
+                    
+[31m[1m^[22m[39m
+     [90m 363 |[39m     exp
+ect(res[33m.[39mgetHeader(
+[32m'access-control-allow-ori
+gin'[39m))[33m.[39mtoBe([
+32m'https://app.example.com'
+[39m)[33m;[39m
+     [90m 364 |[39m   
+})[33m;[39m
+     [90m 365 |[39m[0m
+
+      at Object.toBe 
+(src/app.test.js:362:28)
+
+  ΓùÅ LiquiFact app CORS 
+middleware behavior ΓÇ║ 
+passes unrelated errors 
+through the CORS error 
+handler
+
+    TypeError: 
+handleCorsError is not a 
+function
+
+    [0m [90m 385 |[39m    
+ [36mconst[39m next 
+[33m=[39m jest[33m.[39mfn
+()[33m;[39m
+     [90m 386 |[39m
+    
+[31m[1m>[22m[39m[90m 
+387 |[39m     
+handleCorsError(
+     [90m     |[39m     
+[31m[1m^[22m[39m
+     [90m 388 |[39m       
+[36mnew[39m 
+[33mError[39m([32m'Other 
+error'[39m)[33m,[39m
+     [90m 389 |[39m       c
+reateMockRequest()[33m,[39m
+     [90m 390 |[39m       c
+reateMockResponse()[33m,[39
+m[0m
+
+      at 
+Object.handleCorsError 
+(src/app.test.js:387:5)
+
+PASS src/__tests__/rateLimit.
+test.js
+  ΓùÅ Console
+
+    console.log
+      [dotenv@17.3.1] 
+injecting env (0) from .env 
+-- tip: ≡ƒöÉ prevent 
+committing .env to code: 
+https://dotenvx.com/precommit
+
+      at _log (node_modules/d
+otenv/lib/main.js:139:11)
+
+    console.log
+      [dotenv@17.3.1] 
+injecting env (0) from .env 
+-- tip: ΓÜí∩╕Å secrets for 
+agents: 
+https://dotenvx.com/as2
+
+      at _log (node_modules/d
+otenv/lib/main.js:139:11)
+
+FAIL src/__tests__/invoice.ap
+i.test.js
+  ΓùÅ Console
+
+    console.log
+      [dotenv@17.3.1] 
+injecting env (0) from .env 
+-- tip: ΓÜÖ∩╕Å  load 
+multiple .env files with { 
+path: ['.env.local', '.env'] 
+}
+
+      at _log (node_modules/d
+otenv/lib/main.js:139:11)
+
+    console.error
+      Response validation 
+failed: [
+        {
+          expected: 'string',
+          code: 
+'invalid_type',
+          path: [ 'data', 0, 
+'status' ],
+          message: 'Invalid 
+input: expected string, 
+received undefined'
+        },
+        {
+          expected: 'string',
+          code: 
+'invalid_type',
+          path: [ 'data', 1, 
+'status' ],
+          message: 'Invalid 
+input: expected string, 
+received undefined'
+        }
+      ]
+
+    [0m [90m 48 |[39m     
+        } [36mcatch[39m 
+(error) {
+     [90m 49 |[39m         
+        [36mif[39m (error 
+[36minstanceof[39m 
+[33mZodError[39m) {
+    
+[31m[1m>[22m[39m[90m 50 
+|[39m                     co
+nsole[33m.[39merror([32m'R
+esponse validation 
+failed:'[39m[33m,[39m erro
+r[33m.[39missues)[33m;[39
+m
+     [90m    |[39m         
+                    
+[31m[1m^[22m[39m
+     [90m 51 |[39m         
+            [36mreturn[39m 
+originalJson[33m.[39mcall(
+[36mthis[39m[33m.[39mstatu
+s([35m500[39m)[33m,[39m 
+{ error[33m:[39m 
+[32m'Internal server error: 
+Response validation 
+failed'[39m })[33m;[39m
+     [90m 52 |[39m         
+        }
+     [90m 53 |[39m         
+        [90m// In rare 
+cases where another error 
+happens, just throw[39m[0m
+
+      at 
+ServerResponse.error [as 
+json] (src/middleware/validat
+e.js:50:29)
+      at json 
+(src/app.js:80:18)
+
+  ΓùÅ Invoice API 
+Integration ΓÇ║ GET 
+/api/invoices ΓÇ║ should 
+return 200 and invoices when 
+no query params are provided
+
+    expect(received).toBe(exp
+ected) // Object.is equality
+
+    Expected: 200
+    Received: 500
+
+    [0m [90m 21 |[39m     
+  [36mconst[39m res 
+[33m=[39m [36mawait[39m r
+equest(app)[33m.[39m[36mge
+t[39m([32m'/api/invoices'[
+39m)[33m;[39m
+     [90m 22 |[39m
+    
+[31m[1m>[22m[39m[90m 23 
+|[39m       expect(res[33m.
+[39mstatusCode)[33m.[39mto
+Be([35m200[39m)[33m;[39m
+     [90m    |[39m         
+                     
+[31m[1m^[22m[39m
+     [90m 24 |[39m       ex
+pect(res[33m.[39mbody[33m.
+[39mdata)[33m.[39mtoEqual(
+mockInvoices)[33m;[39m
+     [90m 25 |[39m       ex
+pect(res[33m.[39mbody[33m.
+[39mmessage)[33m.[39mtoBe(
+[32m'Invoices retrieved succ
+essfully.'[39m)[33m;[39m
+     [90m 26 |[39m       ex
+pect(invoiceService[33m.[39
+mgetInvoices)[33m.[39mtoHav
+eBeenCalledWith({[0m
+
+      at Object.toBe (src/__t
+ests__/invoice.api.test.js:23
+:30)
+
+PASS tests/unit/errorHandler.
+test.js
+PASS src/__tests__/deprecatio
+n.test.js
+PASS 
+tests/unit/validators.test.js
+FAIL src/index.test.js
+  ΓùÅ Console
+
+    console.log
+      [dotenv@17.3.1] 
+injecting env (0) from .env 
+-- tip: ΓÜÖ∩╕Å  specify 
+custom .env file path with { 
+path: '/custom/path/.env' }
+
+      at _log (node_modules/d
+otenv/lib/main.js:139:11)
+
+    console.log
+      [dotenv@17.3.1] 
+injecting env (0) from .env 
+-- tip: ≡ƒöÉ encrypt with 
+Dotenvx: https://dotenvx.com
+
+      at _log (node_modules/d
+otenv/lib/main.js:139:11)
+
+    console.warn
+      LiquiFact API running 
+at http://localhost:3001
+
+    [0m [90m 16 |[39m 
+[36mconst[39m startServer 
+[33m=[39m () [33m=>[39m {
+     [90m 17 |[39m   
+[36mconst[39m server 
+[33m=[39m app[33m.[39mlis
+ten([33mPORT[39m[33m,[39m
+ () [33m=>[39m {
+    
+[31m[1m>[22m[39m[90m 18 
+|[39m     console[33m.[39m
+warn([32m`LiquiFact API 
+running at http://localhost:$
+{PORT}`[39m)[33m;[39m
+     [90m    |[39m         
+    [31m[1m^[22m[39m
+     [90m 19 |[39m   
+})[33m;[39m
+     [90m 20 |[39m   
+[36mreturn[39m 
+server[33m;[39m
+     [90m 21 |[39m 
+}[33m;[39m[0m
+
+      at warn 
+(src/index.js:18:13)
+      at Function.cb 
+(src/index.test.js:239:19)
+      at listen 
+(src/index.js:17:22)
+      at Object.startServer 
+(src/index.test.js:243:22)
+
+  ΓùÅ LiquiFact API ΓÇ║ 
+Invoices Lifecycle ΓÇ║ POST 
+/api/invoices - fails if 
+missing fields
+
+    expect(received).toBe(exp
+ected) // Object.is equality
+
+    Expected: 400
+    Received: 201
+
+    [0m [90m 132 |[39m    
+     [33m.[39m[36mset[39m
+([32m'Authorization'[39m[3
+3m,[39m [32m`Bearer 
+${token}`[39m)
+     [90m 133 |[39m        
+ [33m.[39msend({ 
+amount[33m:[39m 
+[35m1000[39m })[33m;[39m
+    
+[31m[1m>[22m[39m[90m 
+134 |[39m       expect(respo
+nse[33m.[39mstatus)[33m.[
+39mtoBe([35m400[39m)[33m;
+[39m
+     [90m     |[39m        
+                       
+[31m[1m^[22m[39m
+     [90m 135 |[39m       e
+xpect(response[33m.[39mbody
+)[33m.[39mtoHaveProperty([
+32m'error'[39m)[33m;[39m
+     [90m 136 |[39m     
+})[33m;[39m
+     [90m 137 |[39m[0m
+
+      at Object.toBe 
+(src/index.test.js:134:31)
+
+  ΓùÅ LiquiFact API ΓÇ║ 
+Error Handling ΓÇ║ error 
+handler - returns 500 on 
+unexpected error
+
+    expect(received).toBe(exp
+ected) // Object.is equality
+
+    Expected: 500
+    Received: 404
+
+    [0m [90m 219 |[39m    
+   [36mconst[39m 
+consoleSpy [33m=[39m jest[
+33m.[39mspyOn(console[33m,
+[39m [32m'error'[39m)[33m.
+[39mmockImplementation(() 
+[33m=>[39m { })[33m;[39m
+     [90m 220 |[39m       
+[36mconst[39m response 
+[33m=[39m [36mawait[39m r
+equest(app)[33m.[39m[36mge
+t[39m([32m'/error-test-trig
+ger'[39m)[33m;[39m
+    
+[31m[1m>[22m[39m[90m 
+221 |[39m       expect(respo
+nse[33m.[39mstatus)[33m.[
+39mtoBe([35m500[39m)[33m;
+[39m
+     [90m     |[39m        
+                       
+[31m[1m^[22m[39m
+     [90m 222 |[39m       c
+onsoleSpy[33m.[39mmockResto
+re()[33m;[39m
+     [90m 223 |[39m     
+})[33m;[39m
+     [90m 224 |[39m   
+})[33m;[39m[0m
+
+      at Object.toBe 
+(src/index.test.js:221:31)
+
+PASS src/__tests__/bodySizeLi
+mits.test.js
+  ΓùÅ Console
+
+    console.log
+      [dotenv@17.3.1] 
+injecting env (0) from .env 
+-- tip: ΓÜÖ∩╕Å  write to 
+custom object with { 
+processEnv: myObject }
+
+      at _log (node_modules/d
+otenv/lib/main.js:139:11)
+
+    console.log
+      [dotenv@17.3.1] 
+injecting env (0) from .env 
+-- tip: ≡ƒ¢í∩╕Å auth for 
+agents: https://vestauth.com
+
+      at _log (node_modules/d
+otenv/lib/main.js:139:11)
+
+PASS tests/unit/queryBuilder.
+test.js
+PASS src/__tests__/validate.t
+est.js
+PASS 
+src/__tests__/auth.test.js
+  ΓùÅ Console
+
+    console.log
+      [dotenv@17.3.1] 
+injecting env (0) from .env 
+-- tip: ≡ƒöÉ prevent 
+committing .env to code: 
+https://dotenvx.com/precommit
+
+      at _log (node_modules/d
+otenv/lib/main.js:139:11)
+
+    console.log
+      [dotenv@17.3.1] 
+injecting env (0) from .env 
+-- tip: ≡ƒ¢í∩╕Å auth for 
+agents: https://vestauth.com
+
+      at _log (node_modules/d
+otenv/lib/main.js:139:11)
+
+PASS tests/unit/invoice.servi
+ce.test.js
+  ΓùÅ Console
+
+    console.error
+      Error fetching 
+invoices: Error: DB Error
+          at 
+Function.<anonymous> (C:\User
+s\pc\Documents\waves\Liquifac
+t-backend\tests\unit\invoice.
+service.test.js:36:66)
+          at C:\Users\pc\Docu
+ments\waves\Liquifact-backend
+\node_modules\jest-mock\build
+\index.js:305:39
+          at 
+Function.<anonymous> (C:\User
+s\pc\Documents\waves\Liquifac
+t-backend\node_modules\jest-m
+ock\build\index.js:312:13)
+          at 
+Function.mockConstructor [as 
+then] (C:\Users\pc\Documents\
+waves\Liquifact-backend\node_
+modules\jest-mock\build\index
+.js:57:19)
+          at 
+processTicksAndRejections (no
+de:internal/process/task_queu
+es:105:5)
+
+    [0m [90m 42 |[39m     
+[36mreturn[39m 
+[36mawait[39m 
+query[33m;[39m
+     [90m 43 |[39m   } 
+[36mcatch[39m (error) {
+    
+[31m[1m>[22m[39m[90m 44 
+|[39m     console[33m.[39m
+error([32m'Error fetching 
+invoices:'[39m[33m,[39m 
+error)[33m;[39m
+     [90m    |[39m         
+    [31m[1m^[22m[39m
+     [90m 45 |[39m     
+[36mthrow[39m 
+[36mnew[39m [33mError[39m
+([32m'Database error while 
+fetching 
+invoices'[39m)[33m;[39m
+     [90m 46 |[39m   }
+     [90m 47 |[39m }[0m
+
+      at error (src/services/
+invoice.service.js:44:13)
+      at Object.<anonymous> (
+tests/unit/invoice.service.te
+st.js:38:5)
+
+PASS 
+src/services/soroban.test.js
+PASS src/config/cors.test.js
+PASS 
+tests/unit/AppError.test.js
+PASS tests/unit/problemDetail
+s.test.js
+PASS tests/integration/errorH
+andling.test.js
+  ΓùÅ Console
+
+    console.log
+      [dotenv@17.3.1] 
+injecting env (0) from .env 
+-- tip: ≡ƒöÉ prevent 
+committing .env to code: 
+https://dotenvx.com/precommit
+
+      at _log (node_modules/d
+otenv/lib/main.js:139:11)
+
+    console.log
+      [dotenv@17.3.1] 
+injecting env (0) from .env 
+-- tip: ΓÜÖ∩╕Å  write to 
+custom object with { 
+processEnv: myObject }
+
+      at _log (node_modules/d
+otenv/lib/main.js:139:11)
+
+PASS src/utils/retry.test.js
+
+Summary of all failing tests
+FAIL tests/app.test.js
+  ΓùÅ Async Handler ΓÇ║ 
+should catch async errors
+
+    expect(received).toBe(exp
+ected) // Object.is equality
+
+    Expected: "Boom"
+    Received: "An unexpected 
+error occurred while 
+processing your request."
+
+    [0m [90m 35 |[39m     
+expect(res[33m.[39mstatusCo
+de)[33m.[39mtoBe([35m500[
+39m)[33m;[39m
+     [90m 36 |[39m     expe
+ct(res[33m.[39mbody[33m.[
+39mtitle)[33m.[39mtoBe([32
+m'Internal Server 
+Error'[39m)[33m;[39m
+    
+[31m[1m>[22m[39m[90m 37 
+|[39m     expect(res[33m.[
+39mbody[33m.[39mdetail)[33
+m.[39mtoBe([32m'Boom'[39m)
+[33m;[39m
+     [90m    |[39m         
+                    
+[31m[1m^[22m[39m
+     [90m 38 |[39m   
+})[33m;[39m
+     [90m 39 |[39m 
+})[33m;[39m[0m
+
+      at Object.toBe 
+(tests/app.test.js:37:29)
+
+FAIL tests/unit/asyncHandler.
+test.js
+  ΓùÅ asyncHandler utility 
+ΓÇ║ should catch async 
+errors and pass to error 
+handler
+
+    expect(received).toBe(exp
+ected) // Object.is equality
+
+    Expected: "Test error"
+    Received: "An unexpected 
+error occurred while 
+processing your request."
+
+    [0m [90m 34 |[39m     
+expect(res[33m.[39mstatusCo
+de)[33m.[39mtoBe([35m500[
+39m)[33m;[39m
+     [90m 35 |[39m     expe
+ct(res[33m.[39mbody[33m.[
+39mtitle)[33m.[39mtoBe([32
+m'Internal Server 
+Error'[39m)[33m;[39m
+    
+[31m[1m>[22m[39m[90m 36 
+|[39m     expect(res[33m.[
+39mbody[33m.[39mdetail)[33
+m.[39mtoBe([32m'Test 
+error'[39m)[33m;[39m
+     [90m    |[39m         
+                    
+[31m[1m^[22m[39m
+     [90m 37 |[39m   
+})[33m;[39m
+     [90m 38 |[39m
+     [90m 39 |[39m   
+it([32m'should handle 
+rejected 
+promises'[39m[33m,[39m 
+[36masync[39m () 
+[33m=>[39m {[0m
+
+      at Object.toBe (tests/u
+nit/asyncHandler.test.js:36:2
+9)
+
+FAIL 
+src/tests/response.test.js
+  ΓùÅ Standard Response 
+Envelope (Issue 19) ΓÇ║ 
+Success response should have 
+data, meta, and error=null
+
+    TypeError: app.address 
+is not a function
+
+    [0m [90m 4 |[39m 
+describe([32m'Standard 
+Response Envelope (Issue 
+19)'[39m[33m,[39m () 
+[33m=>[39m {
+     [90m 5 |[39m   
+it([32m'Success response 
+should have data, meta, and 
+error=null'[39m[33m,[39m 
+[36masync[39m () 
+[33m=>[39m {
+    
+[31m[1m>[22m[39m[90m 6 
+|[39m     [36mconst[39m 
+res [33m=[39m 
+[36mawait[39m request(app)
+[33m.[39m[36mget[39m([32m
+'/health'[39m)[33m;[39m
+     [90m   |[39m          
+                          
+[31m[1m^[22m[39m
+     [90m 7 |[39m     expec
+t(res[33m.[39mstatus)[33m.
+[39mtoBe([35m200[39m)[33m
+;[39m
+     [90m 8 |[39m     expec
+t(res[33m.[39mbody)[33m.[
+39mtoHaveProperty([32m'data'
+[39m)[33m;[39m
+     [90m 9 |[39m     expec
+t(res[33m.[39mbody)[33m.[
+39mtoHaveProperty([32m'meta'
+[39m)[33m;[39m[0m
+
+      at Test.serverAddress (
+node_modules/supertest/lib/te
+st.js:61:22)
+      at new Test (node_modul
+es/supertest/lib/test.js:49:1
+4)
+      at 
+Object.obj.<computed> [as 
+get] (node_modules/supertest/
+index.js:40:18)
+      at Object.get (src/test
+s/response.test.js:6:36)
+
+  ΓùÅ Standard Response 
+Envelope (Issue 19) ΓÇ║ 
+Error response should have 
+data=null, meta, and error 
+object
+
+    TypeError: app.address 
+is not a function
+
+    [0m [90m 15 |[39m
+     [90m 16 |[39m   
+it([32m'Error response 
+should have data=null, meta, 
+and error 
+object'[39m[33m,[39m 
+[36masync[39m () 
+[33m=>[39m {
+    
+[31m[1m>[22m[39m[90m 17 
+|[39m     [36mconst[39m 
+res [33m=[39m 
+[36mawait[39m request(app)
+[33m.[39m[36mget[39m([32m
+'/not-found-route'[39m)[33m
+;[39m
+     [90m    |[39m         
+                           
+[31m[1m^[22m[39m
+     [90m 18 |[39m     expe
+ct(res[33m.[39mstatus)[33m
+.[39mtoBe([35m404[39m)[33
+m;[39m
+     [90m 19 |[39m     expe
+ct(res[33m.[39mbody)[33m.
+[39mtoHaveProperty([32m'data
+'[39m)[33m;[39m
+     [90m 20 |[39m     expe
+ct(res[33m.[39mbody[33m.[
+39mdata)[33m.[39mtoBeNull()
+[33m;[39m[0m
+
+      at Test.serverAddress (
+node_modules/supertest/lib/te
+st.js:61:22)
+      at new Test (node_modul
+es/supertest/lib/test.js:49:1
+4)
+      at 
+Object.obj.<computed> [as 
+get] (node_modules/supertest/
+index.js:40:18)
+      at Object.get (src/test
+s/response.test.js:17:36)
+
+  ΓùÅ Standard Response 
+Envelope (Issue 19) ΓÇ║ POST 
+/api/invoices should return 
+201 and standardized success 
+envelope
+
+    TypeError: app.address 
+is not a function
+
+    [0m [90m 26 |[39m   
+     [90m 27 |[39m   
+it([32m'POST /api/invoices 
+should return 201 and 
+standardized success 
+envelope'[39m[33m,[39m 
+[36masync[39m () 
+[33m=>[39m {
+    
+[31m[1m>[22m[39m[90m 28 
+|[39m     [36mconst[39m 
+res [33m=[39m 
+[36mawait[39m request(app)
+[33m.[39mpost([32m'/api/inv
+oices'[39m)[33m.[39msend({
+})[33m;[39m
+     [90m    |[39m         
+                           
+[31m[1m^[22m[39m
+     [90m 29 |[39m     expe
+ct(res[33m.[39mstatus)[33m
+.[39mtoBe([35m201[39m)[33
+m;[39m
+     [90m 30 |[39m     expe
+ct(res[33m.[39mbody[33m.[
+39mdata[33m.[39mid)[33m.[
+39mtoBe([32m'placeholder'[3
+9m)[33m;[39m
+     [90m 31 |[39m     expe
+ct(res[33m.[39mbody[33m.[
+39merror)[33m.[39mtoBeNull(
+)[33m;[39m[0m
+
+      at Test.serverAddress (
+node_modules/supertest/lib/te
+st.js:61:22)
+      at new Test (node_modul
+es/supertest/lib/test.js:49:1
+4)
+      at 
+Object.obj.<computed> [as 
+post] (node_modules/supertest
+/index.js:40:18)
+      at Object.post (src/tes
+ts/response.test.js:28:36)
+
+  ΓùÅ Standard Response 
+Envelope (Issue 19) ΓÇ║ All 
+routes should return 
+standard response format
+
+    TypeError: app.address 
+is not a function
+
+    [0m [90m 35 |[39m     
+[36mconst[39m routes 
+[33m=[39m 
+[[32m'/api'[39m[33m,[39m 
+[32m'/api/invoices'[39m[33
+m,[39m [32m'/api/escrow/123
+'[39m][33m;[39m
+     [90m 36 |[39m     
+[36mfor[39m 
+([36mconst[39m route 
+[36mof[39m routes) {
+    
+[31m[1m>[22m[39m[90m 37 
+|[39m       [36mconst[39m 
+res [33m=[39m 
+[36mawait[39m request(app)
+[33m.[39m[36mget[39m(route
+)[33m;[39m
+     [90m    |[39m         
+                             
+[31m[1m^[22m[39m
+     [90m 38 |[39m       ex
+pect(res[33m.[39mstatus)[3
+3m.[39mtoBe([35m200[39m)[
+33m;[39m
+     [90m 39 |[39m       ex
+pect(res[33m.[39mbody)[33m
+.[39mtoHaveProperty([32m'da
+ta'[39m)[33m;[39m
+     [90m 40 |[39m       ex
+pect(res[33m.[39mbody)[33m
+.[39mtoHaveProperty([32m'me
+ta'[39m)[33m;[39m[0m
+
+      at Test.serverAddress (
+node_modules/supertest/lib/te
+st.js:61:22)
+      at new Test (node_modul
+es/supertest/lib/test.js:49:1
+4)
+      at 
+Object.obj.<computed> [as 
+get] (node_modules/supertest/
+index.js:40:18)
+      at Object.get (src/test
+s/response.test.js:37:38)
+
+  ΓùÅ Standard Response 
+Envelope (Issue 19) ΓÇ║ GET 
+/debug/error should return 
+500 and standardized 
+internal error
+
+    TypeError: app.address 
+is not a function
+
+    [0m [90m 46 |[39m   
+it([32m'GET /debug/error 
+should return 500 and 
+standardized internal 
+error'[39m[33m,[39m 
+[36masync[39m () 
+[33m=>[39m {
+     [90m 47 |[39m     proc
+ess[33m.[39menv[33m.[39m
+[33mNODE_ENV[39m 
+[33m=[39m [32m'production'
+[39m[33m;[39m
+    
+[31m[1m>[22m[39m[90m 48 
+|[39m     [36mconst[39m 
+res [33m=[39m 
+[36mawait[39m request(app)
+[33m.[39m[36mget[39m([32m
+'/debug/error'[39m)[33m;[3
+9m
+     [90m    |[39m         
+                           
+[31m[1m^[22m[39m
+     [90m 49 |[39m     expe
+ct(res[33m.[39mstatus)[33m
+.[39mtoBe([35m500[39m)[33
+m;[39m
+     [90m 50 |[39m     expe
+ct(res[33m.[39mbody[33m.[
+39merror[33m.[39mmessage)[
+33m.[39mtoBe([32m'Internal 
+Server 
+Error'[39m)[33m;[39m
+     [90m 51 |[39m     expe
+ct(res[33m.[39mbody[33m.[
+39merror[33m.[39mdetails)[
+33m.[39mtoBeNull()[33m;[39
+m[0m
+
+      at Test.serverAddress (
+node_modules/supertest/lib/te
+st.js:61:22)
+      at new Test (node_modul
+es/supertest/lib/test.js:49:1
+4)
+      at 
+Object.obj.<computed> [as 
+get] (node_modules/supertest/
+index.js:40:18)
+      at Object.get (src/test
+s/response.test.js:48:36)
+
+  ΓùÅ Standard Response 
+Envelope (Issue 19) ΓÇ║ 
+Internal server errors 
+should return stack trace in 
+development
+
+    TypeError: app.address 
+is not a function
+
+    [0m [90m 54 |[39m   
+it([32m'Internal server 
+errors should return stack 
+trace in 
+development'[39m[33m,[39m 
+[36masync[39m () 
+[33m=>[39m {
+     [90m 55 |[39m     proc
+ess[33m.[39menv[33m.[39m
+[33mNODE_ENV[39m 
+[33m=[39m [32m'development
+'[39m[33m;[39m
+    
+[31m[1m>[22m[39m[90m 56 
+|[39m     [36mconst[39m 
+res [33m=[39m 
+[36mawait[39m request(app)
+[33m.[39m[36mget[39m([32m
+'/debug/error'[39m)[33m;[3
+9m
+     [90m    |[39m         
+                           
+[31m[1m^[22m[39m
+     [90m 57 |[39m     expe
+ct(res[33m.[39mstatus)[33m
+.[39mtoBe([35m500[39m)[33
+m;[39m
+     [90m 58 |[39m     expe
+ct(res[33m.[39mbody[33m.[
+39merror[33m.[39mdetails)[
+33m.[39mtoContain([32m'Erro
+r: Triggered 
+Error'[39m)[33m;[39m
+     [90m 59 |[39m   
+})[33m;[39m[0m
+
+      at Test.serverAddress (
+node_modules/supertest/lib/te
+st.js:61:22)
+      at new Test (node_modul
+es/supertest/lib/test.js:49:1
+4)
+      at 
+Object.obj.<computed> [as 
+get] (node_modules/supertest/
+index.js:40:18)
+      at Object.get (src/test
+s/response.test.js:56:36)
+
+  ΓùÅ Standard Response 
+Envelope (Issue 19) ΓÇ║ 
+Internal server errors 
+should return standard error 
+envelope (e.g. malformed 
+JSON)
+
+    TypeError: app.address 
+is not a function
+
+    [0m [90m 61 |[39m   
+it([32m'Internal server 
+errors should return 
+standard error envelope 
+(e.g. malformed 
+JSON)'[39m[33m,[39m 
+[36masync[39m () 
+[33m=>[39m {
+     [90m 62 |[39m     
+[36mconst[39m res 
+[33m=[39m [36mawait[39m 
+request(app)
+    
+[31m[1m>[22m[39m[90m 63 
+|[39m       [33m.[39mpost(
+[32m'/api/invoices'[39m)
+     [90m    |[39m        
+[31m[1m^[22m[39m
+     [90m 64 |[39m       [
+33m.[39m[36mset[39m([32m'
+Content-Type'[39m[33m,[39m
+ 
+[32m'application/json'[39m)
+     [90m 65 |[39m       [
+33m.[39msend([32m'{"invalid
+": json}'[39m)[33m;[39m 
+[90m// Malformed JSON[39m
+     [90m 66 |[39m[0m
+
+      at Test.serverAddress (
+node_modules/supertest/lib/te
+st.js:61:22)
+      at new Test (node_modul
+es/supertest/lib/test.js:49:1
+4)
+      at 
+Object.obj.<computed> [as 
+post] (node_modules/supertest
+/index.js:40:18)
+      at Object.post (src/tes
+ts/response.test.js:63:8)
+
+FAIL src/app.test.js
+  ΓùÅ LiquiFact app 
+integration ΓÇ║ allows 
+configured origins for 
+standard requests
+
+    expect(received).toBe(exp
+ected) // Object.is equality
+
+    Expected: 200
+    Received: 500
+
+    [0m [90m 164 |[39m    
+     })[33m;[39m
+     [90m 165 |[39m
+    
+[31m[1m>[22m[39m[90m 
+166 |[39m         expect(res
+ponse[33m.[39mstatusCode)[
+33m.[39mtoBe([35m200[39m)
+[33m;[39m
+     [90m     |[39m        
+                             
+[31m[1m^[22m[39m
+     [90m 167 |[39m        
+ expect(response[33m.[39mhe
+aders[[32m'access-control-al
+low-origin'[39m])[33m.[39m
+toBe(
+     [90m 168 |[39m        
+   [32m'https://app.example.
+com'[39m
+     [90m 169 |[39m        
+ )[33m;[39m[0m
+
+      at toBe 
+(src/app.test.js:166:37)
+      at Object.<anonymous> 
+(src/app.test.js:155:5)
+
+  ΓùÅ LiquiFact app 
+integration ΓÇ║ allows 
+requests without an origin 
+header
+
+    expect(received).toBe(exp
+ected) // Object.is equality
+
+    Expected: 200
+    Received: 500
+
+    [0m [90m 210 |[39m    
+     })[33m;[39m
+     [90m 211 |[39m
+    
+[31m[1m>[22m[39m[90m 
+212 |[39m         expect(res
+ponse[33m.[39mstatusCode)[
+33m.[39mtoBe([35m200[39m)
+[33m;[39m
+     [90m     |[39m        
+                             
+[31m[1m^[22m[39m
+     [90m 213 |[39m        
+ expect(response[33m.[39mhe
+aders[[32m'access-control-al
+low-origin'[39m])[33m.[39m
+toBeUndefined()[33m;[39m
+     [90m 214 |[39m       }
+     [90m 215 |[39m     
+)[33m;[39m[0m
+
+      at toBe 
+(src/app.test.js:212:37)
+      at Object.<anonymous> 
+(src/app.test.js:202:5)
+
+  ΓùÅ LiquiFact app 
+integration ΓÇ║ allows 
+localhost origins by default 
+in development
+
+    expect(received).toBe(exp
+ected) // Object.is equality
+
+    Expected: 200
+    Received: 500
+
+    [0m [90m 228 |[39m    
+     })[33m;[39m
+     [90m 229 |[39m
+    
+[31m[1m>[22m[39m[90m 
+230 |[39m         expect(res
+ponse[33m.[39mstatusCode)[
+33m.[39mtoBe([35m200[39m)
+[33m;[39m
+     [90m     |[39m        
+                             
+[31m[1m^[22m[39m
+     [90m 231 |[39m        
+ expect(response[33m.[39mhe
+aders[[32m'access-control-al
+low-origin'[39m])[33m.[39m
+toBe(
+     [90m 232 |[39m        
+   [32m'http://localhost:300
+0'[39m
+     [90m 233 |[39m        
+ )[33m;[39m[0m
+
+      at toBe 
+(src/app.test.js:230:37)
+      at Object.<anonymous> 
+(src/app.test.js:219:5)
+
+  ΓùÅ LiquiFact app 
+integration ΓÇ║ returns API 
+metadata from /api
+
+    expect(received).toBe(exp
+ected) // Object.is equality
+
+    Expected: 200
+    Received: 500
+
+    [0m [90m 261 |[39m    
+ })[33m;[39m
+     [90m 262 |[39m
+    
+[31m[1m>[22m[39m[90m 
+263 |[39m     expect(respons
+e[33m.[39mstatusCode)[33m.
+[39mtoBe([35m200[39m)[33m
+;[39m
+     [90m     |[39m        
+                         
+[31m[1m^[22m[39m
+     [90m 264 |[39m     exp
+ect(response[33m.[39mbody)
+[33m.[39mtoEqual({
+     [90m 265 |[39m       
+name[33m:[39m 
+[32m'LiquiFact 
+API'[39m[33m,[39m
+     [90m 266 |[39m       
+description[33m:[39m 
+[32m'Global Invoice 
+Liquidity Network on 
+Stellar'[39m[33m,[39m[0m
+
+      at Object.toBe 
+(src/app.test.js:263:33)
+
+  ΓùÅ LiquiFact app 
+integration ΓÇ║ returns the 
+invoice list
+
+    expect(received).toBe(exp
+ected) // Object.is equality
+
+    Expected: 200
+    Received: 500
+
+    [0m [90m 279 |[39m    
+ })[33m;[39m
+     [90m 280 |[39m
+    
+[31m[1m>[22m[39m[90m 
+281 |[39m     expect(respons
+e[33m.[39mstatusCode)[33m.
+[39mtoBe([35m200[39m)[33m
+;[39m
+     [90m     |[39m        
+                         
+[31m[1m^[22m[39m
+     [90m 282 |[39m     exp
+ect(response[33m.[39mbody)
+[33m.[39mtoEqual({
+     [90m 283 |[39m       
+data[33m:[39m expect[33m.
+[39many([33mArray[39m)[33m
+,[39m
+     [90m 284 |[39m       
+message[33m:[39m 
+[32m'Invoices retrieved succ
+essfully.'[39m[33m,[39m[0
+m
+
+      at Object.toBe 
+(src/app.test.js:281:33)
+
+  ΓùÅ LiquiFact app 
+integration ΓÇ║ returns the 
+invoice creation placeholder
+
+    expect(received).toBe(exp
+ected) // Object.is equality
+
+    Expected: 201
+    Received: 500
+
+    [0m [90m 300 |[39m    
+ })[33m;[39m
+     [90m 301 |[39m
+    
+[31m[1m>[22m[39m[90m 
+302 |[39m     expect(respons
+e[33m.[39mstatusCode)[33m.
+[39mtoBe([35m201[39m)[33m
+;[39m
+     [90m     |[39m        
+                         
+[31m[1m^[22m[39m
+     [90m 303 |[39m     exp
+ect(response[33m.[39mbody[
+33m.[39mdata)[33m.[39mtoHa
+veProperty([32m'id'[39m)[3
+3m;[39m
+     [90m 304 |[39m     exp
+ect(response[33m.[39mbody[
+33m.[39mdata[33m.[39mcusto
+mer)[33m.[39mtoBe([32m'Tes
+t'[39m)[33m;[39m
+     [90m 305 |[39m   
+})[33m;[39m[0m
+
+      at Object.toBe 
+(src/app.test.js:302:33)
+
+  ΓùÅ LiquiFact app 
+integration ΓÇ║ returns the 
+escrow data through the 
+Soroban wrapper
+
+    expect(received).toBe(exp
+ected) // Object.is equality
+
+    Expected: 200
+    Received: 500
+
+    [0m [90m 315 |[39m    
+ })[33m;[39m
+     [90m 316 |[39m
+    
+[31m[1m>[22m[39m[90m 
+317 |[39m     expect(respons
+e[33m.[39mstatusCode)[33m.
+[39mtoBe([35m200[39m)[33m
+;[39m
+     [90m     |[39m        
+                         
+[31m[1m^[22m[39m
+     [90m 318 |[39m     exp
+ect(response[33m.[39mbody)
+[33m.[39mtoEqual({
+     [90m 319 |[39m       
+data[33m:[39m { 
+invoiceId[33m:[39m [32m'in
+voice-123'[39m[33m,[39m 
+status[33m:[39m [32m'not_f
+ound'[39m[33m,[39m 
+fundedAmount[33m:[39m 
+[35m0[39m }[33m,[39m
+     [90m 320 |[39m       
+message[33m:[39m 
+[32m'Escrow state read from 
+Soroban contract via robust 
+integration 
+wrapper.'[39m[33m,[39m[0m
+
+      at Object.toBe 
+(src/app.test.js:317:33)
+
+  ΓùÅ LiquiFact app 
+integration ΓÇ║ returns 404 
+for unknown routes
+
+    expect(received).toBe(exp
+ected) // Object.is equality
+
+    Expected: 404
+    Received: 500
+
+    [0m [90m 327 |[39m    
+ })[33m;[39m
+     [90m 328 |[39m
+    
+[31m[1m>[22m[39m[90m 
+329 |[39m     expect(respons
+e[33m.[39mstatusCode)[33m.
+[39mtoBe([35m404[39m)[33m
+;[39m
+     [90m     |[39m        
+                         
+[31m[1m^[22m[39m
+     [90m 330 |[39m     exp
+ect(response[33m.[39mbody[
+33m.[39mtitle)[33m.[39mtoB
+e([32m'Resource Not 
+Found'[39m)[33m;[39m
+     [90m 331 |[39m     exp
+ect(response[33m.[39mbody[
+33m.[39minstance)[33m.[39m
+toBe([32m'/missing'[39m)[3
+3m;[39m
+     [90m 332 |[39m   
+})[33m;[39m[0m
+
+      at Object.toBe 
+(src/app.test.js:329:33)
+
+  ΓùÅ LiquiFact app CORS 
+middleware behavior ΓÇ║ 
+allows preflight requests 
+for allowed origins
+
+    expect(received).toBe(exp
+ected) // Object.is equality
+
+    Expected: 204
+    Received: 200
+
+    [0m [90m 360 |[39m
+     [90m 361 |[39m     exp
+ect(nextCalled)[33m.[39mtoB
+e([36mfalse[39m)[33m;[39m
+    
+[31m[1m>[22m[39m[90m 
+362 |[39m     expect(res[33
+m.[39mstatusCode)[33m.[39m
+toBe([35m204[39m)[33m;[39
+m
+     [90m     |[39m        
+                    
+[31m[1m^[22m[39m
+     [90m 363 |[39m     exp
+ect(res[33m.[39mgetHeader(
+[32m'access-control-allow-ori
+gin'[39m))[33m.[39mtoBe([
+32m'https://app.example.com'
+[39m)[33m;[39m
+     [90m 364 |[39m   
+})[33m;[39m
+     [90m 365 |[39m[0m
+
+      at Object.toBe 
+(src/app.test.js:362:28)
+
+  ΓùÅ LiquiFact app CORS 
+middleware behavior ΓÇ║ 
+passes unrelated errors 
+through the CORS error 
+handler
+
+    TypeError: 
+handleCorsError is not a 
+function
+
+    [0m [90m 385 |[39m    
+ [36mconst[39m next 
+[33m=[39m jest[33m.[39mfn
+()[33m;[39m
+     [90m 386 |[39m
+    
+[31m[1m>[22m[39m[90m 
+387 |[39m     
+handleCorsError(
+     [90m     |[39m     
+[31m[1m^[22m[39m
+     [90m 388 |[39m       
+[36mnew[39m 
+[33mError[39m([32m'Other 
+error'[39m)[33m,[39m
+     [90m 389 |[39m       c
+reateMockRequest()[33m,[39m
+     [90m 390 |[39m       c
+reateMockResponse()[33m,[39
+m[0m
+
+      at 
+Object.handleCorsError 
+(src/app.test.js:387:5)
+
+FAIL src/__tests__/invoice.ap
+i.test.js
+  ΓùÅ Invoice API 
+Integration ΓÇ║ GET 
+/api/invoices ΓÇ║ should 
+return 200 and invoices when 
+no query params are provided
+
+    expect(received).toBe(exp
+ected) // Object.is equality
+
+    Expected: 200
+    Received: 500
+
+    [0m [90m 21 |[39m     
+  [36mconst[39m res 
+[33m=[39m [36mawait[39m r
+equest(app)[33m.[39m[36mge
+t[39m([32m'/api/invoices'[
+39m)[33m;[39m
+     [90m 22 |[39m
+    
+[31m[1m>[22m[39m[90m 23 
+|[39m       expect(res[33m.
+[39mstatusCode)[33m.[39mto
+Be([35m200[39m)[33m;[39m
+     [90m    |[39m         
+                     
+[31m[1m^[22m[39m
+     [90m 24 |[39m       ex
+pect(res[33m.[39mbody[33m.
+[39mdata)[33m.[39mtoEqual(
+mockInvoices)[33m;[39m
+     [90m 25 |[39m       ex
+pect(res[33m.[39mbody[33m.
+[39mmessage)[33m.[39mtoBe(
+[32m'Invoices retrieved succ
+essfully.'[39m)[33m;[39m
+     [90m 26 |[39m       ex
+pect(invoiceService[33m.[39
+mgetInvoices)[33m.[39mtoHav
+eBeenCalledWith({[0m
+
+      at Object.toBe (src/__t
+ests__/invoice.api.test.js:23
+:30)
+
+FAIL src/index.test.js
+  ΓùÅ LiquiFact API ΓÇ║ 
+Invoices Lifecycle ΓÇ║ POST 
+/api/invoices - fails if 
+missing fields
+
+    expect(received).toBe(exp
+ected) // Object.is equality
+
+    Expected: 400
+    Received: 201
+
+    [0m [90m 132 |[39m    
+     [33m.[39m[36mset[39m
+([32m'Authorization'[39m[3
+3m,[39m [32m`Bearer 
+${token}`[39m)
+     [90m 133 |[39m        
+ [33m.[39msend({ 
+amount[33m:[39m 
+[35m1000[39m })[33m;[39m
+    
+[31m[1m>[22m[39m[90m 
+134 |[39m       expect(respo
+nse[33m.[39mstatus)[33m.[
+39mtoBe([35m400[39m)[33m;
+[39m
+     [90m     |[39m        
+                       
+[31m[1m^[22m[39m
+     [90m 135 |[39m       e
+xpect(response[33m.[39mbody
+)[33m.[39mtoHaveProperty([
+32m'error'[39m)[33m;[39m
+     [90m 136 |[39m     
+})[33m;[39m
+     [90m 137 |[39m[0m
+
+      at Object.toBe 
+(src/index.test.js:134:31)
+
+  ΓùÅ LiquiFact API ΓÇ║ 
+Error Handling ΓÇ║ error 
+handler - returns 500 on 
+unexpected error
+
+    expect(received).toBe(exp
+ected) // Object.is equality
+
+    Expected: 500
+    Received: 404
+
+    [0m [90m 219 |[39m    
+   [36mconst[39m 
+consoleSpy [33m=[39m jest[
+33m.[39mspyOn(console[33m,
+[39m [32m'error'[39m)[33m.
+[39mmockImplementation(() 
+[33m=>[39m { })[33m;[39m
+     [90m 220 |[39m       
+[36mconst[39m response 
+[33m=[39m [36mawait[39m r
+equest(app)[33m.[39m[36mge
+t[39m([32m'/error-test-trig
+ger'[39m)[33m;[39m
+    
+[31m[1m>[22m[39m[90m 
+221 |[39m       expect(respo
+nse[33m.[39mstatus)[33m.[
+39mtoBe([35m500[39m)[33m;
+[39m
+     [90m     |[39m        
+                       
+[31m[1m^[22m[39m
+     [90m 222 |[39m       c
+onsoleSpy[33m.[39mmockResto
+re()[33m;[39m
+     [90m 223 |[39m     
+})[33m;[39m
+     [90m 224 |[39m   
+})[33m;[39m[0m
+
+      at Object.toBe 
+(src/index.test.js:221:31)
+
+
+Test Suites: 6 failed, 15 
+passed, 21 total
+Tests:       22 failed, 175 
+passed, 197 total
+Snapshots:   0 total
+Time:        3.997 s, 
+estimated 4 s
+Ran all test suites.

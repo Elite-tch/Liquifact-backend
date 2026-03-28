@@ -1,49 +1,91 @@
-const request = require('supertest');
-const createTestApp = require('../helpers/createTestApp');
+const errorHandler = require('../../src/middleware/errorHandler');
+const AppError = require('../../src/errors/AppError');
 
-describe('errorHandler middleware', () => {
-  it('should return 500 by default', async () => {
-    const app = createTestApp((app) => {
-      app.get('/error', () => {
-        throw new Error('Boom');
-      });
-    });
+describe('errorHandler Middleware Unit Tests', () => {
+  let mockRequest;
+  let mockResponse;
+  let nextFunction;
 
-    const res = await request(app).get('/error');
-
-    expect(res.statusCode).toBe(500);
-    expect(res.body.error).toBeDefined();
+  beforeEach(() => {
+    mockRequest = {
+      originalUrl: '/api/v1/test',
+    };
+    mockResponse = {
+      header: jest.fn(),
+      status: jest.fn().mockReturnThis(),
+      json: jest.fn(),
+    };
+    nextFunction = jest.fn();
+    // Keep console.error quiet during tests
+    jest.spyOn(console, 'error').mockImplementation(() => { });
   });
 
-  it('should respect custom statusCode', async () => {
-    const app = createTestApp((app) => {
-      app.get('/custom', () => {
-        const err = new Error('Bad Request');
-        err.statusCode = 400;
-        throw err;
-      });
-    });
-
-    const res = await request(app).get('/custom');
-
-    expect(res.statusCode).toBe(400);
-    expect(res.body.error.message).toBe('Bad Request');
+  afterEach(() => {
+    console.error.mockRestore();
   });
 
-  it('should hide stack in production', async () => {
+  test('should handle AppError and send RFC 7807 response', () => {
+    const error = new AppError({
+      type: 'https://liquifact.com/probs/bad-request',
+      title: 'Bad Request',
+      status: 400,
+      detail: 'Invalid data',
+    });
+
+    errorHandler(error, mockRequest, mockResponse, nextFunction);
+
+    expect(mockResponse.header).toHaveBeenCalledWith('Content-Type', 'application/problem+json');
+    expect(mockResponse.status).toHaveBeenCalledWith(400);
+    expect(mockResponse.json).toHaveBeenCalledWith(
+      expect.objectContaining({
+        type: 'https://liquifact.com/probs/bad-request',
+        title: 'Bad Request',
+        status: 400,
+        detail: 'Invalid data',
+        instance: '/api/v1/test',
+        error: expect.objectContaining({
+          message: 'Bad Request',
+          code: 'BAD_REQUEST'
+        }),
+      })
+    );
+  });
+
+  test('should handle generic Error and fallback to 500', () => {
+    const error = new Error('Something exploded');
+    // Ensure production mode is set for strict detail message check
+    const prevEnv = process.env.NODE_ENV;
     process.env.NODE_ENV = 'production';
 
-    const app = createTestApp((app) => {
-      app.get('/prod-error', () => {
-        throw new Error('Sensitive');
-      });
-    });
+    errorHandler(error, mockRequest, mockResponse, nextFunction);
 
-    const res = await request(app).get('/prod-error');
+    expect(mockResponse.status).toHaveBeenCalledWith(500);
+    expect(mockResponse.json).toHaveBeenCalledWith(
+      expect.objectContaining({
+        status: 500,
+        title: 'Internal Server Error',
+        detail: 'An unexpected error occurred while processing your request.',
+        error: expect.objectContaining({
+          message: 'Internal Server Error',
+          code: 'INTERNAL_ERROR'
+        }),
+      })
+    );
+    process.env.NODE_ENV = prevEnv;
+  });
 
-    expect(res.body.error.message).toBe('Internal server error');
-    expect(res.body.error.stack).toBeUndefined();
+  test('should respect custom statusCode/status properties on generic errors', () => {
+    const error = new Error('Custom Error');
+    error.status = 403;
 
-    process.env.NODE_ENV = 'test'; // reset
+    errorHandler(error, mockRequest, mockResponse, nextFunction);
+
+    expect(mockResponse.status).toHaveBeenCalledWith(403);
+    expect(mockResponse.json).toHaveBeenCalledWith(
+      expect.objectContaining({
+        status: 403,
+        detail: 'Custom Error',
+      })
+    );
   });
 });

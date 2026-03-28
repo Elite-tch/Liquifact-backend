@@ -1,0 +1,286 @@
+﻿  console.log
+    [dotenv@17.3.1] injecting env (0) from .env -- tip: ΓÜÖ∩╕Å  write to custom object with { processEnv: myObject }
+
+      at _log (node_modules/dotenv/lib/main.js:139:11)
+
+  console.log
+    [dotenv@17.3.1] injecting env (0) from .env -- tip: ≡ƒöÉ encrypt with Dotenvx: https://dotenvx.com
+
+      at _log (node_modules/dotenv/lib/main.js:139:11)
+
+  console.error
+    Unhandled Error: Error: Triggered Error
+        at C:\Users\pc\Documents\waves\Liquifact-backend\src\app.js:134:10
+        at Layer.handleRequest (C:\Users\pc\Documents\waves\Liquifact-backend\node_modules\router\lib\layer.js:152:17)
+        at next (C:\Users\pc\Documents\waves\Liquifact-backend\node_modules\router\lib\route.js:157:13)
+        at Route.dispatch (C:\Users\pc\Documents\waves\Liquifact-backend\node_modules\router\lib\route.js:117:3)
+        at handle (C:\Users\pc\Documents\waves\Liquifact-backend\node_modules\router\index.js:435:11)
+        at Layer.handleRequest (C:\Users\pc\Documents\waves\Liquifact-backend\node_modules\router\lib\layer.js:152:17)
+        at C:\Users\pc\Documents\waves\Liquifact-backend\node_modules\router\index.js:295:15
+        at processParams (C:\Users\pc\Documents\waves\Liquifact-backend\node_modules\router\index.js:582:12)
+        at next (C:\Users\pc\Documents\waves\Liquifact-backend\node_modules\router\index.js:291:5)
+        at C:\Users\pc\Documents\waves\Liquifact-backend\node_modules\express-rate-limit\dist\index.cjs:947:7
+        at processTicksAndRejections (node:internal/process/task_queues:105:5)
+        at C:\Users\pc\Documents\waves\Liquifact-backend\node_modules\express-rate-limit\dist\index.cjs:830:5
+
+    [0m [90m 31 |[39m     [90m// Log unexpected errors[39m
+     [90m 32 |[39m     [36mif[39m (status [33m===[39m [35m500[39m) {
+    [31m[1m>[22m[39m[90m 33 |[39m       console[33m.[39merror([32m'Unhandled Error:'[39m[33m,[39m err)[33m;[39m
+     [90m    |[39m               [31m[1m^[22m[39m
+     [90m 34 |[39m     }
+     [90m 35 |[39m
+     [90m 36 |[39m     problem [33m=[39m formatProblemDetails({[0m
+
+      at error (src/middleware/errorHandler.js:33:15)
+      at Layer.handleError (node_modules/router/lib/layer.js:116:17)
+      at trimPrefix (node_modules/router/index.js:340:13)
+      at node_modules/router/index.js:297:9
+      at processParams (node_modules/router/index.js:582:12)
+      at next (node_modules/router/index.js:291:5)
+      at next (src/middleware/bodySizeLimits.js:177:3)
+      at Layer.handleError (node_modules/router/lib/layer.js:116:17)
+      at trimPrefix (node_modules/router/index.js:340:13)
+      at node_modules/router/index.js:297:9
+      at processParams (node_modules/router/index.js:582:12)
+      at next (node_modules/router/index.js:291:5)
+      at next (src/app.js:149:5)
+      at Layer.handleError (node_modules/router/lib/layer.js:116:17)
+      at trimPrefix (node_modules/router/index.js:340:13)
+      at node_modules/router/index.js:297:9
+      at processParams (node_modules/router/index.js:582:12)
+      at next (node_modules/router/index.js:291:5)
+      at Layer.handleError (node_modules/router/lib/layer.js:111:12)
+      at trimPrefix (node_modules/router/index.js:340:13)
+      at node_modules/router/index.js:297:9
+      at processParams (node_modules/router/index.js:582:12)
+      at next (node_modules/router/index.js:291:5)
+      at next (node_modules/router/lib/route.js:132:14)
+      at next (src/app.js:134:5)
+      at Layer.handleRequest (node_modules/router/lib/layer.js:152:17)
+      at next (node_modules/router/lib/route.js:157:13)
+      at Route.dispatch (node_modules/router/lib/route.js:117:3)
+      at handle (node_modules/router/index.js:435:11)
+      at Layer.handleRequest (node_modules/router/lib/layer.js:152:17)
+      at node_modules/router/index.js:295:15
+      at processParams (node_modules/router/index.js:582:12)
+      at next (node_modules/router/index.js:291:5)
+      at node_modules/express-rate-limit/dist/index.cjs:947:7
+      at node_modules/express-rate-limit/dist/index.cjs:830:5
+
+  console.error
+    Unhandled Error: Error: Triggered Error
+        at C:\Users\pc\Documents\waves\Liquifact-backend\src\app.js:134:10
+        at Layer.handleRequest (C:\Users\pc\Documents\waves\Liquifact-backend\node_modules\router\lib\layer.js:152:17)
+        at next (C:\Users\pc\Documents\waves\Liquifact-backend\node_modules\router\lib\route.js:157:13)
+        at Route.dispatch (C:\Users\pc\Documents\waves\Liquifact-backend\node_modules\router\lib\route.js:117:3)
+        at handle (C:\Users\pc\Documents\waves\Liquifact-backend\node_modules\router\index.js:435:11)
+        at Layer.handleRequest (C:\Users\pc\Documents\waves\Liquifact-backend\node_modules\router\lib\layer.js:152:17)
+        at C:\Users\pc\Documents\waves\Liquifact-backend\node_modules\router\index.js:295:15
+        at processParams (C:\Users\pc\Documents\waves\Liquifact-backend\node_modules\router\index.js:582:12)
+        at next (C:\Users\pc\Documents\waves\Liquifact-backend\node_modules\router\index.js:291:5)
+        at C:\Users\pc\Documents\waves\Liquifact-backend\node_modules\express-rate-limit\dist\index.cjs:947:7
+        at processTicksAndRejections (node:internal/process/task_queues:105:5)
+        at C:\Users\pc\Documents\waves\Liquifact-backend\node_modules\express-rate-limit\dist\index.cjs:830:5
+
+    [0m [90m 31 |[39m     [90m// Log unexpected errors[39m
+     [90m 32 |[39m     [36mif[39m (status [33m===[39m [35m500[39m) {
+    [31m[1m>[22m[39m[90m 33 |[39m       console[33m.[39merror([32m'Unhandled Error:'[39m[33m,[39m err)[33m;[39m
+     [90m    |[39m               [31m[1m^[22m[39m
+     [90m 34 |[39m     }
+     [90m 35 |[39m
+     [90m 36 |[39m     problem [33m=[39m formatProblemDetails({[0m
+
+      at error (src/middleware/errorHandler.js:33:15)
+      at Layer.handleError (node_modules/router/lib/layer.js:116:17)
+      at trimPrefix (node_modules/router/index.js:340:13)
+      at node_modules/router/index.js:297:9
+      at processParams (node_modules/router/index.js:582:12)
+      at next (node_modules/router/index.js:291:5)
+      at next (src/middleware/bodySizeLimits.js:177:3)
+      at Layer.handleError (node_modules/router/lib/layer.js:116:17)
+      at trimPrefix (node_modules/router/index.js:340:13)
+      at node_modules/router/index.js:297:9
+      at processParams (node_modules/router/index.js:582:12)
+      at next (node_modules/router/index.js:291:5)
+      at next (src/app.js:149:5)
+      at Layer.handleError (node_modules/router/lib/layer.js:116:17)
+      at trimPrefix (node_modules/router/index.js:340:13)
+      at node_modules/router/index.js:297:9
+      at processParams (node_modules/router/index.js:582:12)
+      at next (node_modules/router/index.js:291:5)
+      at Layer.handleError (node_modules/router/lib/layer.js:111:12)
+      at trimPrefix (node_modules/router/index.js:340:13)
+      at node_modules/router/index.js:297:9
+      at processParams (node_modules/router/index.js:582:12)
+      at next (node_modules/router/index.js:291:5)
+      at next (node_modules/router/lib/route.js:132:14)
+      at next (src/app.js:134:5)
+      at Layer.handleRequest (node_modules/router/lib/layer.js:152:17)
+      at next (node_modules/router/lib/route.js:157:13)
+      at Route.dispatch (node_modules/router/lib/route.js:117:3)
+      at handle (node_modules/router/index.js:435:11)
+      at Layer.handleRequest (node_modules/router/lib/layer.js:152:17)
+      at node_modules/router/index.js:295:15
+      at processParams (node_modules/router/index.js:582:12)
+      at next (node_modules/router/index.js:291:5)
+      at node_modules/express-rate-limit/dist/index.cjs:947:7
+      at node_modules/express-rate-limit/dist/index.cjs:830:5
+
+node.exe : FAIL 
+src/tests/response.test.js
+At C:\Users\pc\AppData\Roamin
+g\npm\npx.ps1:24 char:5
++     & "node$exe"  "$basedir
+/node_modules/npm/bin/npx-cli
+.js" $args
++     ~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~
+    + CategoryInfo           
+   : NotSpecified: (FAIL sr  
+  c/tests/response.test.js   
+ :String) [], RemoteExcep    
+tion
+    + FullyQualifiedErrorId  
+   : NativeCommandError
+ 
+  Standard Response Envelope 
+(Issue 19)
+    ΓêÜ Success response 
+should have data, meta, and 
+error=null (29 ms)
+    ΓêÜ Error response 
+should have data=null, meta, 
+and error object (11 ms)
+    ΓêÜ POST /api/invoices 
+should return 201 and 
+standardized success 
+envelope (19 ms)
+    ├ù All routes should 
+return standard response 
+format (14 ms)
+    ΓêÜ GET /debug/error 
+should return 500 and 
+standardized internal error 
+(16 ms)
+    ├ù Internal server 
+errors should return stack 
+trace in development (12 ms)
+    ΓêÜ Internal server 
+errors should return 
+standard error envelope 
+(e.g. malformed JSON) (7 ms)
+  Response Helper Utility
+    ΓêÜ success() handles 
+data and optional meta
+    ΓêÜ success() works with 
+default meta (1 ms)
+    ΓêÜ error() handles 
+message, code, and details 
+(1 ms)
+    ΓêÜ error() works with 
+default code and null details
+
+  ΓùÅ Standard Response 
+Envelope (Issue 19) ΓÇ║ All 
+routes should return 
+standard response format
+
+    expect(received).toBe(exp
+ected) // Object.is equality
+
+    Expected: 200
+    Received: 401
+
+    [0m [90m 40 |[39m     
+[36mfor[39m 
+([36mconst[39m route 
+[36mof[39m routes) {
+     [90m 41 |[39m       
+[36mconst[39m res 
+[33m=[39m [36mawait[39m r
+equest(app)[33m.[39m[36mge
+t[39m(route)[33m;[39m
+    
+[31m[1m>[22m[39m[90m 42 
+|[39m       expect(res[33m.
+[39mstatus)[33m.[39mtoBe(
+[35m200[39m)[33m;[39m
+     [90m    |[39m         
+                 
+[31m[1m^[22m[39m
+     [90m 43 |[39m       ex
+pect(res[33m.[39mbody)[33m
+.[39mtoHaveProperty([32m'da
+ta'[39m)[33m;[39m
+     [90m 44 |[39m       ex
+pect(res[33m.[39mbody)[33m
+.[39mtoHaveProperty([32m'me
+ta'[39m)[33m;[39m
+     [90m 45 |[39m       ex
+pect(res[33m.[39mbody)[33m
+.[39mtoHaveProperty([32m'er
+ror'[39m)[33m;[39m[0m
+
+      at Object.toBe (src/tes
+ts/response.test.js:42:26)
+
+  ΓùÅ Standard Response 
+Envelope (Issue 19) ΓÇ║ 
+Internal server errors 
+should return stack trace in 
+development
+
+    expect(received).toContai
+n(expected) // indexOf
+
+    Expected substring: 
+"Error: Triggered Error"
+    Received string:    
+"Triggered Error"
+
+    [0m [90m 60 |[39m     
+[36mconst[39m res 
+[33m=[39m [36mawait[39m r
+equest(app)[33m.[39m[36mge
+t[39m([32m'/debug/error'[3
+9m)[33m;[39m
+     [90m 61 |[39m     expe
+ct(res[33m.[39mstatus)[33m
+.[39mtoBe([35m500[39m)[33
+m;[39m
+    
+[31m[1m>[22m[39m[90m 62 
+|[39m     expect(res[33m.[
+39mbody[33m.[39merror[33m.
+[39mdetails)[33m.[39mtoCon
+tain([32m'Error: Triggered 
+Error'[39m)[33m;[39m
+     [90m    |[39m         
+                           
+[31m[1m^[22m[39m
+     [90m 63 |[39m   
+})[33m;[39m
+     [90m 64 |[39m
+     [90m 65 |[39m   
+it([32m'Internal server 
+errors should return 
+standard error envelope 
+(e.g. malformed 
+JSON)'[39m[33m,[39m 
+[36masync[39m () 
+[33m=>[39m {[0m
+
+      at Object.toContain (sr
+c/tests/response.test.js:62:3
+6)
+
+Test Suites: 1 failed, 1 
+total
+Tests:       2 failed, 9 
+passed, 11 total
+Snapshots:   0 total
+Time:        0.831 s, 
+estimated 2 s
+Ran all test suites matching 
+src/tests/response.test.js.

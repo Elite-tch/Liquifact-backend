@@ -1,69 +1,54 @@
+'use strict';
+
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-require('dotenv').config();
 
-const { callSorobanContract } = require('./services/soroban');
+const { globalLimiter, sensitiveLimiter } = require('./middleware/rateLimit');
+const { authenticateToken } = require('./middleware/auth');
+const { validateRequest, validateResponse } = require('./middleware/validate');
+const schemas = require('./schemas/apiSchemas');
+const { createSecurityMiddleware } = require('./middleware/security');
+const { createCorsOptions, isCorsOriginRejectedError } = require('./config/cors');
 const {
-  createCorsOptions,
-  isCorsOriginRejectedError,
-} = require('./config/cors');
+  jsonBodyLimit,
+  urlencodedBodyLimit,
+  invoiceBodyLimit,
+  payloadTooLargeHandler
+} = require('./middleware/bodySizeLimits');
+const { validateInvoiceQueryParams } = require('./utils/validators');
+const invoiceService = require('./services/invoice.service');
+const { success } = require('./utils/responseHelper');
 
-/**
- * Returns a 403 JSON response only for the dedicated blocked-origin CORS error.
- *
- * @param {Error} err Request error.
- * @param {import('express').Request} req Express request.
- * @param {import('express').Response} res Express response.
- * @param {import('express').NextFunction} next Express next callback.
- * @returns {void}
- */
-function handleCorsError(err, req, res, next) {
-  if (isCorsOriginRejectedError(err)) {
-    res.status(403).json({ error: err.message });
-    return;
-  }
+const asyncHandler = require('./utils/asyncHandler');
+const AppError = require('./errors/AppError');
+const errorHandler = require('./middleware/errorHandler');
+const { callSorobanContract } = require('./services/soroban');
 
-  next(err);
-}
-
-/**
- * Handles uncaught application errors with a generic 500 response.
- *
- * @param {Error} err Request error.
- * @param {import('express').Request} req Express request.
- * @param {import('express').Response} res Express response.
- * @param {import('express').NextFunction} _next Express next callback.
- * @returns {void}
- */
-function handleInternalError(err, req, res, _next) {
-  console.error(err);
-  res.status(500).json({ error: 'Internal server error' });
-}
-
-/**
- * Creates the LiquiFact API application with configured middleware and routes.
- *
- * @returns {import('express').Express} Configured Express application.
- */
 function createApp() {
   const app = express();
+  let invoices = [];
 
+  // Security & Hardening
+  app.use(createSecurityMiddleware());
   app.use(cors(createCorsOptions()));
-  app.use(express.json());
+  app.use(...jsonBodyLimit());
+  app.use(...urlencodedBodyLimit());
+  app.use(globalLimiter);
 
-  // Health check
+  /**
+   * Root Routes
+   */
   app.get('/health', (req, res) => {
-    res.json({
+    return res.json(success({
       status: 'ok',
       service: 'liquifact-api',
       version: '0.1.0',
-      timestamp: new Date().toISOString(),
-    });
+    }));
   });
 
-  // API info
   app.get('/api', (req, res) => {
-    res.json({
+    return res.json(success({
       name: 'LiquiFact API',
       description: 'Global Invoice Liquidity Network on Stellar',
       endpoints: {
@@ -71,61 +56,112 @@ function createApp() {
         invoices: 'GET/POST /api/invoices',
         escrow: 'GET/POST /api/escrow',
       },
-    });
+    }));
   });
 
-  // Placeholder: Invoices (to be wired to Invoice Service + DB)
-  app.get('/api/invoices', (req, res) => {
-    res.json({
-      data: [],
-      message: 'Invoice service will list tokenized invoices here.',
-    });
-  });
+  /**
+   * Invoice Operations
+   */
+  app.get('/api/invoices', validateResponse(schemas.InvoiceListResponseSchema), asyncHandler(async (req, res) => {
+    const v = validateInvoiceQueryParams(req.query);
+    if (!v.isValid) {
+      throw new AppError({
+        type: 'https://liquifact.com/probs/validation-error',
+        title: 'Invalid Request Parameters',
+        status: 400,
+        detail: v.errors.join(', '),
+      });
+    }
 
-  app.post('/api/invoices', (req, res) => {
-    res.status(201).json({
-      data: { id: 'placeholder', status: 'pending_verification' },
-      message: 'Invoice upload will be implemented with verification and tokenization.',
-    });
-  });
+    // Combine service data (DB/Mock) with in-memory (this session)
+    const sInvoices = await invoiceService.getInvoices(v.validatedParams);
+    const includeDeleted = req.query.includeDeleted === 'true';
+    const fInMemory = includeDeleted ? invoices : invoices.filter(i => !i.deletedAt);
 
-  // Placeholder: Escrow (to be wired to Soroban)
-  app.get('/api/escrow/:invoiceId', async (req, res) => {
-    const { invoiceId } = req.params;
+    return res.json(success([...sInvoices, ...fInMemory], { message: 'Invoices retrieved successfully.' }));
+  }));
 
-    try {
-      // Simulated remote contract call
-      const operation = async () => {
-        return { invoiceId, status: 'not_found', fundedAmount: 0 };
+  app.post('/api/invoices',
+    ...invoiceBodyLimit(),
+    sensitiveLimiter,
+    authenticateToken,
+    validateRequest(schemas.CreateInvoiceRequestSchema, 'body'),
+    validateResponse(schemas.CreateInvoiceResponseSchema),
+    (req, res) => {
+      const { amount, customer } = req.body;
+      const newInvoice = {
+        id: `inv_${Date.now()}`,
+        amount,
+        customer: customer || 'Unknown',
+        status: 'pending_verification',
+        createdAt: new Date().toISOString(),
+        deletedAt: null,
       };
 
-      const data = await callSorobanContract(operation);
-
-      res.json({
-        data,
-        message: 'Escrow state read from Soroban contract via robust integration wrapper.',
-      });
-    } catch (error) {
-      res.status(500).json({ error: error.message || 'Error fetching escrow state' });
+      invoices.push(newInvoice);
+      return res.status(201).json(success(newInvoice));
     }
+  );
+
+  app.delete('/api/invoices/:id', authenticateToken, sensitiveLimiter, (req, res) => {
+    const { id } = req.params;
+    const idx = invoices.findIndex(i => String(i.id) === id);
+    if (idx === -1) {
+      throw new AppError({
+        type: 'https://liquifact.com/probs/not-found',
+        title: 'Invoice Not Found',
+        status: 404,
+        detail: `Invoice ${id} not found.`,
+      });
+    }
+    invoices[idx].deletedAt = new Date().toISOString();
+    return res.json(success(invoices[idx]));
   });
 
-  app.get('/error', (req, res, next) => {
-    next(new Error('Simulated server error'));
+  /**
+   * Contract & Escrow
+   */
+  app.get('/api/escrow/:invoiceId', authenticateToken, asyncHandler(async (req, res) => {
+    const { invoiceId } = req.params;
+    const data = await callSorobanContract(async () => ({ invoiceId, status: 'not_found', fundedAmount: 0 }));
+    res.json(success(data, { message: 'Escrow state read from Soroban contract via robust integration wrapper.' }));
+  }));
+
+  /** 
+   * Debug & Testing triggers
+   */
+  app.get('/debug/error', (req, res, next) => {
+    next(new Error('Triggered Error'));
   });
 
-  app.use((req, res) => {
-    res.status(404).json({ error: 'Not found', path: req.path });
+  app.get('/standard', (req, res) => {
+    res.json({ ok: true });
   });
 
-  app.use(handleCorsError);
-  app.use(handleInternalError);
+  // Error Handling
+  app.use((req, res, next) => {
+    next(new AppError({
+      type: 'https://liquifact.com/probs/not-found',
+      title: 'Resource Not Found',
+      status: 404,
+      detail: `The path ${req.path} does not exist.`,
+    }));
+  });
+
+  app.use((err, req, res, next) => {
+    if (isCorsOriginRejectedError(err)) return res.status(403).json({ error: err.message });
+    next(err);
+  });
+
+  app.use(payloadTooLargeHandler);
+  app.use(errorHandler);
+
+  // Helper for tests to reset local state
+  app.resetStore = () => { invoices = []; };
 
   return app;
 }
 
-module.exports = {
-  createApp,
-  handleCorsError,
-  handleInternalError,
-};
+const defaultApp = createApp();
+module.exports = defaultApp;
+module.exports.createApp = createApp;

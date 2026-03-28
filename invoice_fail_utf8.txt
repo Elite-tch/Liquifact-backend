@@ -1,0 +1,177 @@
+﻿  console.log
+    [dotenv@17.3.1] injecting env (0) from .env -- tip: ΓÜÖ∩╕Å  write to custom object with { processEnv: myObject }
+
+      at _log (node_modules/dotenv/lib/main.js:139:11)
+
+  console.log
+    [dotenv@17.3.1] injecting env (0) from .env -- tip: ΓÜÖ∩╕Å  specify custom .env file path with { path: '/custom/path/.env' }
+
+      at _log (node_modules/dotenv/lib/main.js:139:11)
+
+  console.error
+    Response validation failed: [
+      {
+        expected: 'string',
+        code: 'invalid_type',
+        path: [ 'data', 0, 'status' ],
+        message: 'Invalid input: expected string, received undefined'
+      },
+      {
+        expected: 'string',
+        code: 'invalid_type',
+        path: [ 'data', 1, 'status' ],
+        message: 'Invalid input: expected string, received undefined'
+      }
+    ]
+
+    [0m [90m 42 |[39m             [90m/* istanbul ignore next */[39m
+     [90m 43 |[39m             [36mif[39m (error [36minstanceof[39m [33mZodError[39m) {
+    [31m[1m>[22m[39m[90m 44 |[39m                 console[33m.[39merror([32m'Response validation failed:'[39m[33m,[39m error[33m.[39missues)[33m;[39m
+     [90m    |[39m                         [31m[1m^[22m[39m
+     [90m 45 |[39m                 [36mreturn[39m originalJson[33m.[39mcall([36mthis[39m[33m.[39mstatus([35m500[39m)[33m,[39m { error[33m:[39m [32m'Internal server error: Response validation failed'[39m })[33m;[39m
+     [90m 46 |[39m             }
+     [90m 47 |[39m             [90m// In rare cases where another error happens, just throw[39m[0m
+
+      at ServerResponse.error [as json] (src/middleware/validate.js:44:25)
+      at json (src/app.js:81:18)
+
+node.exe : FAIL src/__tests__
+/invoice.api.test.js
+At C:\Users\pc\AppData\Roamin
+g\npm\npx.ps1:24 char:5
++     & "node$exe"  "$basedir
+/node_modules/npm/bin/npx-cli
+.js" $args
++     ~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~
+    + CategoryInfo           
+   : NotSpecified: (FAIL sr  
+  c/__tests__/invoice.api.   
+ test.js:String) [], Remo    
+teException
+    + FullyQualifiedErrorId  
+   : NativeCommandError
+ 
+  Invoice API Integration
+    GET /api/invoices
+      ├ù should return 200 
+and invoices when no query 
+params are provided (74 ms)
+      ΓêÜ should filter by 
+status (16 ms)
+      ΓêÜ should filter by 
+SME ID (11 ms)
+      ΓêÜ should filter by 
+date range (11 ms)
+      ΓêÜ should apply 
+sorting (10 ms)
+      ΓêÜ should reject 
+invalid status with 400 (12 
+ms)
+      ΓêÜ should reject 
+invalid date format with 400 
+(9 ms)
+      ΓêÜ should reject 
+multiple invalid inputs with 
+400 (9 ms)
+      ├ù should handle 
+service errors with 500 (15 
+ms)
+
+  ΓùÅ Invoice API 
+Integration ΓÇ║ GET 
+/api/invoices ΓÇ║ should 
+return 200 and invoices when 
+no query params are provided
+
+    expect(received).toBe(exp
+ected) // Object.is equality
+
+    Expected: 200
+    Received: 500
+
+    [0m [90m 21 |[39m     
+  [36mconst[39m res 
+[33m=[39m [36mawait[39m r
+equest(app)[33m.[39m[36mge
+t[39m([32m'/api/invoices'[
+39m)[33m;[39m
+     [90m 22 |[39m
+    
+[31m[1m>[22m[39m[90m 23 
+|[39m       expect(res[33m.
+[39mstatusCode)[33m.[39mto
+Be([35m200[39m)[33m;[39m
+     [90m    |[39m         
+                     
+[31m[1m^[22m[39m
+     [90m 24 |[39m       ex
+pect(res[33m.[39mbody[33m.
+[39mdata)[33m.[39mtoEqual(
+mockInvoices)[33m;[39m
+     [90m 25 |[39m       ex
+pect(res[33m.[39mbody[33m.
+[39mmessage)[33m.[39mtoBe(
+[32m'Invoices retrieved succ
+essfully.'[39m)[33m;[39m
+     [90m 26 |[39m       ex
+pect(invoiceService[33m.[39
+mgetInvoices)[33m.[39mtoHav
+eBeenCalledWith({[0m
+
+      at Object.toBe (src/__t
+ests__/invoice.api.test.js:23
+:30)
+
+  ΓùÅ Invoice API 
+Integration ΓÇ║ GET 
+/api/invoices ΓÇ║ should 
+handle service errors with 
+500
+
+    expect(received).toBe(exp
+ected) // Object.is equality
+
+    Expected: "Internal 
+server error"
+    Received: {"code": 
+"INTERNAL_ERROR", "message": 
+"Internal server error"}
+
+    [0m [90m 106 |[39m
+     [90m 107 |[39m       e
+xpect(res[33m.[39mstatusCod
+e)[33m.[39mtoBe([35m500[3
+9m)[33m;[39m
+    
+[31m[1m>[22m[39m[90m 
+108 |[39m       expect(res[
+33m.[39mbody[33m.[39merror
+)[33m.[39mtoBe([32m'Intern
+al server 
+error'[39m)[33m;[39m
+     [90m     |[39m        
+                      
+[31m[1m^[22m[39m
+     [90m 109 |[39m     
+})[33m;[39m
+     [90m 110 |[39m   
+})[33m;[39m
+     [90m 111 |[39m 
+})[33m;[39m[0m
+
+      at Object.toBe (src/__t
+ests__/invoice.api.test.js:10
+8:30)
+
+Test Suites: 1 failed, 1 
+total
+Tests:       2 failed, 7 
+passed, 9 total
+Snapshots:   0 total
+Time:        1.957 s, 
+estimated 3 s
+Ran all test suites matching 
+src/__tests__/invoice.api.tes
+t.js.

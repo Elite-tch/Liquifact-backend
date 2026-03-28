@@ -20,6 +20,7 @@ describe('asyncHandler utility', () => {
   });
 
   it('should catch async errors and pass to error handler', async () => {
+    process.env.NODE_ENV = 'development';
     const app = createTestApp((app) => {
       app.get(
         '/fail',
@@ -32,8 +33,9 @@ describe('asyncHandler utility', () => {
     const res = await request(app).get('/fail');
 
     expect(res.statusCode).toBe(500);
-    expect(res.body.error).toBeDefined();
-    expect(res.body.error.message).toBe('Test error');
+    expect(res.body.title).toBe('Internal Server Error');
+    // In development mode, we now return err.toString()
+    expect(res.body.detail).toBe('Error: Test error');
   });
 
   it('should handle rejected promises', async () => {
@@ -47,5 +49,6 @@ describe('asyncHandler utility', () => {
     const res = await request(app).get('/reject');
 
     expect(res.statusCode).toBe(500);
+    expect(res.body.detail).toContain('Error: Rejected');
   });
 });

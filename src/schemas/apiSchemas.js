@@ -1,46 +1,48 @@
 const { z } = require('zod');
 
-/**
- * Base Invoice Schema
- */
-const InvoiceSchema = z.object({
-    id: z.string(),
-    amount: z.number().positive(),
-    customer: z.string().min(1),
-    status: z.string(),
-    createdAt: z.string(),
-    deletedAt: z.string().nullable(),
-});
+const MetaSchema = z.object({
+    version: z.string(),
+    timestamp: z.string(),
+}).passthrough();
 
-/**
- * Request Schemas
- */
-const CreateInvoiceRequestSchema = z.object({
-    amount: z.number().positive(),
-    customer: z.string().min(1),
-});
-
-/**
- * Response Schemas
- */
-const CreateInvoiceResponseSchema = z.object({
-    data: InvoiceSchema,
+const ErrorSchema = z.object({
     message: z.string(),
+    code: z.string().optional(),
+    details: z.any().nullable().optional(),
+}).nullable();
+
+const InvoiceSchema = z.object({
+    id: z.union([z.string(), z.number()]),
+    amount: z.number().positive(),
+    customer: z.string().optional(),
+    status: z.string(),
+    createdAt: z.string().optional(),
+}).passthrough();
+
+const BaseResponseSchema = z.object({
+    meta: MetaSchema,
+    error: ErrorSchema,
+    message: z.string().optional().nullable(),
 });
 
-const InvoiceListResponseSchema = z.object({
-    data: z.array(InvoiceSchema),
-    message: z.string()
-});
-
-const DeleteRestoreInvoiceResponseSchema = z.object({
+const CreateInvoiceResponseSchema = BaseResponseSchema.extend({
     data: InvoiceSchema,
-    message: z.string()
+});
+
+const InvoiceListResponseSchema = BaseResponseSchema.extend({
+    data: z.array(InvoiceSchema),
+});
+
+const DeleteRestoreInvoiceResponseSchema = BaseResponseSchema.extend({
+    data: InvoiceSchema,
 });
 
 module.exports = {
     InvoiceSchema,
-    CreateInvoiceRequestSchema,
+    CreateInvoiceRequestSchema: z.object({
+        amount: z.number().positive(),
+        customer: z.string().optional(),
+    }),
     CreateInvoiceResponseSchema,
     InvoiceListResponseSchema,
     DeleteRestoreInvoiceResponseSchema

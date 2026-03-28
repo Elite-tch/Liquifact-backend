@@ -1,18 +1,844 @@
-  ● Validation Middleware › validateRequest › should return 400 with details if data is invalid
+  ● Soroban Integration Wrapper › isTransientError › should identify transient error messages
 
-    expect(jest.fn()).toHaveBeenCalledWith(...expected)
+    TypeError: isTransientError is not a function
 
-    Expected: ObjectContaining {"details": Any<Object>, "error": "Invalid request data"}
-    Received: {"details": undefined, "error": "Invalid request data"}
+    [0m [90m 4 |[39m   describe([32m'isTransientError'[39m[33m,[39m () [33m=>[39m {
+     [90m 5 |[39m     it([32m'should identify transient error messages'[39m[33m,[39m () [33m=>[39m {
+    [31m[1m>[22m[39m[90m 6 |[39m       expect(isTransientError([36mnew[39m [33mError[39m([32m'Network timeout'[39m)))[33m.[39mtoBe([36mtrue[39m)[33m;[39m
+     [90m   |[39m              [31m[1m^[22m[39m
+     [90m 7 |[39m       expect(isTransientError([36mnew[39m [33mError[39m([32m'Rate limit exceeded (HTTP 429)'[39m)))[33m.[39mtoBe([36mtrue[39m)[33m;[39m
+     [90m 8 |[39m       expect(isTransientError([36mnew[39m [33mError[39m([32m'Server responded with 503'[39m)))[33m.[39mtoBe([36mtrue[39m)[33m;[39m
+     [90m 9 |[39m     })[33m;[39m[0m
 
-    Number of calls: 1
+      at Object.isTransientError (src/services/soroban.test.js:6:14)
 
-    [0m [90m 45 |[39m
-     [90m 46 |[39m             expect(res[33m.[39mstatus)[33m.[39mtoHaveBeenCalledWith([35m400[39m)[33m;[39m
-    [31m[1m>[22m[39m[90m 47 |[39m             expect(res[33m.[39mjson)[33m.[39mtoHaveBeenCalledWith(expect[33m.[39mobjectContaining({
-     [90m    |[39m                              [31m[1m^[22m[39m
-     [90m 48 |[39m                 error[33m:[39m [32m'Invalid request data'[39m[33m,[39m
-     [90m 49 |[39m                 details[33m:[39m expect[33m.[39many([33mObject[39m)
-     [90m 50 |[39m             }))[33m;[39m[0m
+  ● Soroban Integration Wrapper › isTransientError › should return false for non-transient errors
 
-      at Object.toHaveBeenCalledWith (src/__tests__/validate.test.js:47:30)
+    TypeError: isTransientError is not a function
+
+    [0m [90m 10 |[39m
+     [90m 11 |[39m     it([32m'should return false for non-transient errors'[39m[33m,[39m () [33m=>[39m {
+    [31m[1m>[22m[39m[90m 12 |[39m       expect(isTransientError([36mnew[39m [33mError[39m([32m'Invalid arguments'[39m)))[33m.[39mtoBe([36mfalse[39m)[33m;[39m
+     [90m    |[39m              [31m[1m^[22m[39m
+     [90m 13 |[39m       expect(isTransientError([36mnew[39m [33mError[39m([32m'Contract execution trapped'[39m)))[33m.[39mtoBe([36mfalse[39m)[33m;[39m
+     [90m 14 |[39m       expect(isTransientError([36mnew[39m [33mError[39m([32m'404 Not Found'[39m)))[33m.[39mtoBe([36mfalse[39m)[33m;[39m
+     [90m 15 |[39m     })[33m;[39m[0m
+
+      at Object.isTransientError (src/services/soroban.test.js:12:14)
+
+  ● Soroban Integration Wrapper › callSorobanContract › should retry on transient errors using the wrapper
+
+    503 Service Unavailable
+
+    [0m [90m 29 |[39m         attempts[33m++[39m[33m;[39m
+     [90m 30 |[39m         [36mif[39m (attempts [33m<[39m [35m2[39m) {
+    [31m[1m>[22m[39m[90m 31 |[39m           [36mreturn[39m [33mPromise[39m[33m.[39mreject([36mnew[39m [33mError[39m([32m'503 Service Unavailable'[39m))[33m;[39m
+     [90m    |[39m                                 [31m[1m^[22m[39m
+     [90m 32 |[39m         }
+     [90m 33 |[39m         [36mreturn[39m [33mPromise[39m[33m.[39mresolve([32m'recovered'[39m)[33m;[39m
+     [90m 34 |[39m       })[33m;[39m[0m
+
+      at src/services/soroban.test.js:31:33
+      at operation (src/services/soroban.js:106:20)
+      at withRetry (src/services/soroban.js:137:10)
+      at Object.callSorobanContract (src/services/soroban.test.js:37:28)
+
+
+  ● CORS configuration helper › parseAllowedOrigins › returns an empty list for missing values
+
+    expect(received).toEqual(expected) // deep equality
+
+    Expected: []
+    Received: null
+
+    [0m [90m 24 |[39m
+     [90m 25 |[39m     it([32m'returns an empty list for missing values'[39m[33m,[39m () [33m=>[39m {
+    [31m[1m>[22m[39m[90m 26 |[39m       expect(parseAllowedOrigins(undefined))[33m.[39mtoEqual([])[33m;[39m
+     [90m    |[39m                                              [31m[1m^[22m[39m
+     [90m 27 |[39m     })[33m;[39m
+     [90m 28 |[39m   })[33m;[39m
+     [90m 29 |[39m[0m
+
+      at Object.toEqual (src/config/cors.test.js:26:46)
+
+  ● CORS configuration helper › getAllowedOriginsFromEnv › uses the explicit allowlist when configured
+
+    TypeError: getAllowedOriginsFromEnv is not a function
+
+    [0m [90m 31 |[39m     it([32m'uses the explicit allowlist when configured'[39m[33m,[39m () [33m=>[39m {
+     [90m 32 |[39m       expect(
+    [31m[1m>[22m[39m[90m 33 |[39m         getAllowedOriginsFromEnv({
+     [90m    |[39m         [31m[1m^[22m[39m
+     [90m 34 |[39m           [33mNODE_ENV[39m[33m:[39m [32m'production'[39m[33m,[39m
+     [90m 35 |[39m           [33mCORS_ALLOWED_ORIGINS[39m[33m:[39m [32m'https://app.example.com,https://admin.example.com'[39m[33m,[39m
+     [90m 36 |[39m         })[0m
+
+      at Object.getAllowedOriginsFromEnv (src/config/cors.test.js:33:9)
+
+  ● CORS configuration helper › getAllowedOriginsFromEnv › uses development localhost fallback when unset in development
+
+    TypeError: getAllowedOriginsFromEnv is not a function
+
+    [0m [90m 40 |[39m     it([32m'uses development localhost fallback when unset in development'[39m[33m,[39m () [33m=>[39m {
+     [90m 41 |[39m       expect(
+    [31m[1m>[22m[39m[90m 42 |[39m         getAllowedOriginsFromEnv({
+     [90m    |[39m         [31m[1m^[22m[39m
+     [90m 43 |[39m           [33mNODE_ENV[39m[33m:[39m [32m'development'[39m[33m,[39m
+     [90m 44 |[39m         })
+     [90m 45 |[39m       )[33m.[39mtoEqual(getDevelopmentFallbackOrigins())[33m;[39m[0m
+
+      at Object.getAllowedOriginsFromEnv (src/config/cors.test.js:42:9)
+
+  ● CORS configuration helper › getAllowedOriginsFromEnv › fails closed outside development when unset
+
+    TypeError: getAllowedOriginsFromEnv is not a function
+
+    [0m [90m 48 |[39m     it([32m'fails closed outside development when unset'[39m[33m,[39m () [33m=>[39m {
+     [90m 49 |[39m       expect(
+    [31m[1m>[22m[39m[90m 50 |[39m         getAllowedOriginsFromEnv({
+     [90m    |[39m         [31m[1m^[22m[39m
+     [90m 51 |[39m           [33mNODE_ENV[39m[33m:[39m [32m'production'[39m[33m,[39m
+     [90m 52 |[39m         })
+     [90m 53 |[39m       )[33m.[39mtoEqual([])[33m;[39m[0m
+
+      at Object.getAllowedOriginsFromEnv (src/config/cors.test.js:50:9)
+
+  ● CORS configuration helper › createCorsOptions › rejects blocked origins with the dedicated CORS error
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: undefined
+    Received: "CORS policy: origin \"https://evil.example.com\" is not allowed."
+
+    [0m [90m 76 |[39m
+     [90m 77 |[39m       [36mconst[39m [error] [33m=[39m callback[33m.[39mmock[33m.[39mcalls[[35m0[39m][33m;[39m
+    [31m[1m>[22m[39m[90m 78 |[39m       expect(error[33m.[39mmessage)[33m.[39mtoBe([33mCORS_REJECTION_MESSAGE[39m)[33m;[39m
+     [90m    |[39m                             [31m[1m^[22m[39m
+     [90m 79 |[39m       expect(error[33m.[39mstatus)[33m.[39mtoBe([35m403[39m)[33m;[39m
+     [90m 80 |[39m       expect(isCorsOriginRejectedError(error))[33m.[39mtoBe([36mtrue[39m)[33m;[39m
+     [90m 81 |[39m     })[33m;[39m[0m
+
+      at Object.toBe (src/config/cors.test.js:78:29)
+
+  ● CORS configuration helper › CORS rejection helpers › creates a 403 rejection error
+
+    TypeError: createCorsRejectionError is not a function
+
+    [0m [90m 84 |[39m   describe([32m'CORS rejection helpers'[39m[33m,[39m () [33m=>[39m {
+     [90m 85 |[39m     it([32m'creates a 403 rejection error'[39m[33m,[39m () [33m=>[39m {
+    [31m[1m>[22m[39m[90m 86 |[39m       [36mconst[39m error [33m=[39m createCorsRejectionError()[33m;[39m
+     [90m    |[39m                     [31m[1m^[22m[39m
+     [90m 87 |[39m
+     [90m 88 |[39m       expect(error[33m.[39mmessage)[33m.[39mtoBe([33mCORS_REJECTION_MESSAGE[39m)[33m;[39m
+     [90m 89 |[39m       expect(error[33m.[39mstatus)[33m.[39mtoBe([35m403[39m)[33m;[39m[0m
+
+      at Object.createCorsRejectionError (src/config/cors.test.js:86:21)
+
+
+  ● Test suite failed to run
+
+    Cannot find module 'vitest' from 'src/__tests__/bodySizeLimits.test.js'
+
+    [0m [90m 15 |[39m [32m'use strict'[39m[33m;[39m
+     [90m 16 |[39m
+    [31m[1m>[22m[39m[90m 17 |[39m [36mconst[39m { describe[33m,[39m it[33m,[39m expect[33m,[39m beforeEach[33m,[39m beforeAll[33m,[39m vi } [33m=[39m require([32m'vitest'[39m)[33m;[39m
+     [90m    |[39m                                                             [31m[1m^[22m[39m
+     [90m 18 |[39m [36mconst[39m request [33m=[39m require([32m'supertest'[39m)[33m;[39m
+     [90m 19 |[39m [36mconst[39m express [33m=[39m require([32m'express'[39m)[33m;[39m
+     [90m 20 |[39m[0m
+
+      at Resolver._throwModNotFoundError (node_modules/jest-resolve/build/index.js:863:11)
+      at Object.require (src/__tests__/bodySizeLimits.test.js:17:61)
+
+
+  ● Async Handler › should catch async errors
+
+    TypeError: Cannot read properties of undefined (reading 'message')
+
+    [0m [90m 34 |[39m     [36mconst[39m res [33m=[39m [36mawait[39m request(app)[33m.[39m[36mget[39m([32m'/fail'[39m)[33m;[39m
+     [90m 35 |[39m     expect(res[33m.[39mstatusCode)[33m.[39mtoBe([35m500[39m)[33m;[39m
+    [31m[1m>[22m[39m[90m 36 |[39m     expect(res[33m.[39mbody[33m.[39merror[33m.[39mmessage)[33m.[39mtoBeDefined()[33m;[39m
+     [90m    |[39m                           [31m[1m^[22m[39m
+     [90m 37 |[39m   })[33m;[39m
+     [90m 38 |[39m })[33m;[39m[0m
+
+      at Object.message (tests/app.test.js:36:27)
+
+
+  ● asyncHandler utility › should catch async errors and pass to error handler
+
+    expect(received).toBeDefined()
+
+    Received: undefined
+
+    [0m [90m 33 |[39m
+     [90m 34 |[39m     expect(res[33m.[39mstatusCode)[33m.[39mtoBe([35m500[39m)[33m;[39m
+    [31m[1m>[22m[39m[90m 35 |[39m     expect(res[33m.[39mbody[33m.[39merror)[33m.[39mtoBeDefined()[33m;[39m
+     [90m    |[39m                            [31m[1m^[22m[39m
+     [90m 36 |[39m     expect(res[33m.[39mbody[33m.[39merror[33m.[39mmessage)[33m.[39mtoBe([32m'Test error'[39m)[33m;[39m
+     [90m 37 |[39m   })[33m;[39m
+     [90m 38 |[39m[0m
+
+      at Object.toBeDefined (tests/unit/asyncHandler.test.js:35:28)
+
+
+  ● errorHandler middleware › should return 500 by default
+
+    expect(received).toBeDefined()
+
+    Received: undefined
+
+    [0m [90m 77 |[39m
+     [90m 78 |[39m     expect(res[33m.[39mstatusCode)[33m.[39mtoBe([35m500[39m)[33m;[39m
+    [31m[1m>[22m[39m[90m 79 |[39m     expect(res[33m.[39mbody[33m.[39merror)[33m.[39mtoBeDefined()[33m;[39m
+     [90m    |[39m                            [31m[1m^[22m[39m
+     [90m 80 |[39m   })[33m;[39m
+     [90m 81 |[39m
+     [90m 82 |[39m   it([32m'should respect custom statusCode'[39m[33m,[39m [36masync[39m () [33m=>[39m {[0m
+
+      at Object.toBeDefined (tests/unit/errorHandler.test.js:79:28)
+
+  ● errorHandler middleware › should respect custom statusCode
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 400
+    Received: 500
+
+    [0m [90m 91 |[39m     [36mconst[39m res [33m=[39m [36mawait[39m request(app)[33m.[39m[36mget[39m([32m'/custom'[39m)[33m;[39m
+     [90m 92 |[39m
+    [31m[1m>[22m[39m[90m 93 |[39m     expect(res[33m.[39mstatusCode)[33m.[39mtoBe([35m400[39m)[33m;[39m
+     [90m    |[39m                            [31m[1m^[22m[39m
+     [90m 94 |[39m     expect(res[33m.[39mbody[33m.[39merror[33m.[39mmessage)[33m.[39mtoBe([32m'Bad Request'[39m)[33m;[39m
+     [90m 95 |[39m   })[33m;[39m
+     [90m 96 |[39m[0m
+
+      at Object.toBe (tests/unit/errorHandler.test.js:93:28)
+
+  ● errorHandler middleware › should hide stack in production
+
+    TypeError: Cannot read properties of undefined (reading 'message')
+
+    [0m [90m 106 |[39m     [36mconst[39m res [33m=[39m [36mawait[39m request(app)[33m.[39m[36mget[39m([32m'/prod-error'[39m)[33m;[39m
+     [90m 107 |[39m
+    [31m[1m>[22m[39m[90m 108 |[39m     expect(res[33m.[39mbody[33m.[39merror[33m.[39mmessage)[33m.[39mtoBe([32m'Internal server error'[39m)[33m;[39m
+     [90m     |[39m                           [31m[1m^[22m[39m
+     [90m 109 |[39m     expect(res[33m.[39mbody[33m.[39merror[33m.[39mstack)[33m.[39mtoBeUndefined()[33m;[39m
+     [90m 110 |[39m
+     [90m 111 |[39m     process[33m.[39menv[33m.[39m[33mNODE_ENV[39m [33m=[39m [32m'test'[39m[33m;[39m [90m// reset[39m[0m
+
+      at Object.message (tests/unit/errorHandler.test.js:108:27)
+
+
+  ● Test suite failed to run
+
+    Jest encountered an unexpected token
+
+    Jest failed to parse a file. This happens e.g. when your code or its dependencies use non-standard JavaScript syntax, or when Jest is not configured to support such syntax.
+
+    Out of the box Jest supports Babel, which will be used to transform your files into valid JS based on your Babel configuration.
+
+    By default "node_modules" folder is ignored by transformers.
+
+    Here's what you can do:
+     • If you are trying to use ECMAScript Modules, see https://jestjs.io/docs/ecmascript-modules for how to enable it.
+     • If you are trying to use TypeScript, see https://jestjs.io/docs/getting-started#using-typescript
+     • To have some of your "node_modules" files transformed, you can specify a custom "transformIgnorePatterns" in your config.
+     • If you need a custom transformation, specify a "transform" option in your config.
+     • If you simply want to mock your non-JS modules (e.g. binary assets) you can stub them out with the "moduleNameMapper" config option.
+
+    You'll find more details and examples of these config options in the docs:
+    https://jestjs.io/docs/configuration
+    For information about custom transformations, see:
+    https://jestjs.io/docs/code-transformation
+
+    Details:
+
+    SyntaxError: C:\Users\pc\Documents\waves\Liquifact-backend\src\index.js: Unexpected token (8:1)
+
+    [0m [90m  6 |[39m [90m */[39m
+     [90m  7 |[39m
+    [31m[1m>[22m[39m[90m  8 |[39m  [33m*[39m [33mExpress[39m app configuration [36mfor[39m invoice financing[33m,[39m auth[33m,[39m and [33mStellar[39m integration[33m.[39m
+     [90m    |[39m  [31m[1m^[22m[39m
+     [90m  9 |[39m  [33m*[39m [33mServer[39m startup lives [36min[39m server[33m.[39mjs so [36mthis[39m module can be imported cleanly [36min[39m tests[33m.[39m
+     [90m 10 |[39m  [33m*[39m[33m/[39m
+     [90m 11 |[39m[0m
+
+    [0m [90m 1 |[39m [36mconst[39m request [33m=[39m require([32m'supertest'[39m)[33m;[39m
+     [90m 2 |[39m [36mconst[39m jwt [33m=[39m require([32m'jsonwebtoken'[39m)[33m;[39m
+    [31m[1m>[22m[39m[90m 3 |[39m [36mconst[39m { app } [33m=[39m require([32m'../index'[39m)[33m;[39m
+     [90m   |[39m                 [31m[1m^[22m[39m
+     [90m 4 |[39m
+     [90m 5 |[39m describe([32m'Rate Limiting Middleware'[39m[33m,[39m () [33m=>[39m {
+     [90m 6 |[39m     [36mconst[39m secret [33m=[39m process[33m.[39menv[33m.[39m[33mJWT_SECRET[39m [33m||[39m [32m'test-secret'[39m[33m;[39m[0m
+
+      at constructor (node_modules/@babel/parser/src/parse-error.ts:95:45)
+      at Parser.toParseError [as raise] (node_modules/@babel/parser/src/tokenizer/index.ts:1504:19)
+      at Parser.raise [as unexpected] (node_modules/@babel/parser/src/tokenizer/index.ts:1544:16)
+      at Parser.unexpected [as parseExprAtom] (node_modules/@babel/parser/src/parser/expression.ts:1358:22)
+      at Parser.parseExprAtom [as parseExprSubscripts] (node_modules/@babel/parser/src/parser/expression.ts:742:23)
+      at Parser.parseExprSubscripts [as parseUpdate] (node_modules/@babel/parser/src/parser/expression.ts:721:21)
+      at Parser.parseUpdate [as parseMaybeUnary] (node_modules/@babel/parser/src/parser/expression.ts:683:23)
+      at Parser.parseMaybeUnary [as parseMaybeUnaryOrPrivate] (node_modules/@babel/parser/src/parser/expression.ts:417:14)
+      at Parser.parseMaybeUnaryOrPrivate [as parseExprOps] (node_modules/@babel/parser/src/parser/expression.ts:429:23)
+      at Parser.parseExprOps [as parseMaybeConditional] (node_modules/@babel/parser/src/parser/expression.ts:384:23)
+      at Parser.parseMaybeConditional [as parseMaybeAssign] (node_modules/@babel/parser/src/parser/expression.ts:301:21)
+      at Parser.parseMaybeAssign [as parseExpressionBase] (node_modules/@babel/parser/src/parser/expression.ts:226:23)
+      at parseExpressionBase (node_modules/@babel/parser/src/parser/expression.ts:217:39)
+      at Parser.callback [as allowInAnd] (node_modules/@babel/parser/src/parser/expression.ts:3192:16)
+      at Parser.allowInAnd [as parseExpression] (node_modules/@babel/parser/src/parser/expression.ts:217:17)
+      at Parser.parseExpression [as parseStatementContent] (node_modules/@babel/parser/src/parser/statement.ts:688:23)
+      at Parser.parseStatementContent [as parseStatementLike] (node_modules/@babel/parser/src/parser/statement.ts:482:17)
+      at Parser.parseStatementLike [as parseModuleItem] (node_modules/@babel/parser/src/parser/statement.ts:419:17)
+      at Parser.parseModuleItem [as parseBlockOrModuleBlockBody] (node_modules/@babel/parser/src/parser/statement.ts:1443:16)
+      at Parser.parseBlockOrModuleBlockBody [as parseBlockBody] (node_modules/@babel/parser/src/parser/statement.ts:1417:10)
+      at Parser.parseBlockBody [as parseProgram] (node_modules/@babel/parser/src/parser/statement.ts:229:10)
+      at Parser.parseProgram [as parseTopLevel] (node_modules/@babel/parser/src/parser/statement.ts:203:25)
+      at Parser.parseTopLevel [as parse] (node_modules/@babel/parser/src/parser/index.ts:83:25)
+      at parse (node_modules/@babel/parser/src/index.ts:86:38)
+      at parser (node_modules/@babel/core/src/parser/index.ts:29:19)
+          at parser.next (<anonymous>)
+      at normalizeFile (node_modules/@babel/core/src/transformation/normalize-file.ts:50:24)
+          at normalizeFile.next (<anonymous>)
+      at run (node_modules/@babel/core/src/transformation/index.ts:41:36)
+          at run.next (<anonymous>)
+      at transform (node_modules/@babel/core/src/transform.ts:29:20)
+          at transform.next (<anonymous>)
+      at evaluateSync (node_modules/gensync/index.js:251:28)
+      at sync (node_modules/gensync/index.js:89:14)
+      at fn (node_modules/@babel/core/src/errors/rewrite-stack-trace.ts:99:14)
+      at transformSync (node_modules/@babel/core/src/transform.ts:66:52)
+      at ScriptTransformer.transformSource (node_modules/@jest/transform/build/index.js:415:31)
+      at ScriptTransformer._transformAndBuildScript (node_modules/@jest/transform/build/index.js:512:40)
+      at ScriptTransformer.transform (node_modules/@jest/transform/build/index.js:551:19)
+      at Object.require (src/__tests__/rateLimit.test.js:3:17)
+
+
+  ● Test suite failed to run
+
+    Jest encountered an unexpected token
+
+    Jest failed to parse a file. This happens e.g. when your code or its dependencies use non-standard JavaScript syntax, or when Jest is not configured to support such syntax.
+
+    Out of the box Jest supports Babel, which will be used to transform your files into valid JS based on your Babel configuration.
+
+    By default "node_modules" folder is ignored by transformers.
+
+    Here's what you can do:
+     • If you are trying to use ECMAScript Modules, see https://jestjs.io/docs/ecmascript-modules for how to enable it.
+     • If you are trying to use TypeScript, see https://jestjs.io/docs/getting-started#using-typescript
+     • To have some of your "node_modules" files transformed, you can specify a custom "transformIgnorePatterns" in your config.
+     • If you need a custom transformation, specify a "transform" option in your config.
+     • If you simply want to mock your non-JS modules (e.g. binary assets) you can stub them out with the "moduleNameMapper" config option.
+
+    You'll find more details and examples of these config options in the docs:
+    https://jestjs.io/docs/configuration
+    For information about custom transformations, see:
+    https://jestjs.io/docs/code-transformation
+
+    Details:
+
+    SyntaxError: C:\Users\pc\Documents\waves\Liquifact-backend\src\app.js: Missing semicolon. (120:4)
+
+    [0m [90m 118 |[39m       message[33m:[39m [32m'Invoice service will list tokenized invoices here.'[39m[33m,[39m
+     [90m 119 |[39m     })[33m;[39m
+    [31m[1m>[22m[39m[90m 120 |[39m   }))[33m;[39m
+     [90m     |[39m     [31m[1m^[22m[39m
+     [90m 121 |[39m
+     [90m 122 |[39m   [90m// Invoices — POST (create) with strict 512 KB body limit[39m
+     [90m 123 |[39m   app[33m.[39mpost([32m'/api/invoices'[39m[33m,[39m [33m...[39minvoiceBodyLimit()[33m,[39m (req[33m,[39m res) [33m=>[39m {[0m
+
+    [0m [90m 1 |[39m [36mconst[39m request [33m=[39m require([32m'supertest'[39m)[33m;[39m
+    [31m[1m>[22m[39m[90m 2 |[39m [36mconst[39m { createApp } [33m=[39m require([32m'../app'[39m)[33m;[39m
+     [90m   |[39m                       [31m[1m^[22m[39m
+     [90m 3 |[39m [36mconst[39m invoiceService [33m=[39m require([32m'../services/invoice.service'[39m)[33m;[39m
+     [90m 4 |[39m
+     [90m 5 |[39m [90m// Mock the service[39m[0m
+
+      at constructor (node_modules/@babel/parser/src/parse-error.ts:95:45)
+      at Parser.toParseError [as raise] (node_modules/@babel/parser/src/tokenizer/index.ts:1504:19)
+      at Parser.raise [as semicolon] (node_modules/@babel/parser/src/parser/util.ts:149:10)
+      at Parser.semicolon [as parseExpressionStatement] (node_modules/@babel/parser/src/parser/statement.ts:1363:10)
+      at Parser.parseExpressionStatement [as parseStatementContent] (node_modules/@babel/parser/src/parser/statement.ts:702:19)
+      at Parser.parseStatementContent [as parseStatementLike] (node_modules/@babel/parser/src/parser/statement.ts:482:17)
+      at Parser.parseStatementLike [as parseStatementListItem] (node_modules/@babel/parser/src/parser/statement.ts:431:17)
+      at Parser.parseStatementListItem [as parseBlockOrModuleBlockBody] (node_modules/@babel/parser/src/parser/statement.ts:1444:16)
+      at Parser.parseBlockOrModuleBlockBody [as parseBlockBody] (node_modules/@babel/parser/src/parser/statement.ts:1417:10)
+      at Parser.parseBlockBody [as parseBlock] (node_modules/@babel/parser/src/parser/statement.ts:1385:10)
+      at Parser.parseBlock [as parseFunctionBody] (node_modules/@babel/parser/src/parser/expression.ts:2621:24)
+      at Parser.parseFunctionBody [as parseFunctionBodyAndFinish] (node_modules/@babel/parser/src/parser/expression.ts:2590:10)
+      at parseFunctionBodyAndFinish (node_modules/@babel/parser/src/parser/statement.ts:1695:12)
+      at Parser.callback [as withSmartMixTopicForbiddingContext] (node_modules/@babel/parser/src/parser/expression.ts:3171:14)
+      at Parser.withSmartMixTopicForbiddingContext [as parseFunction] (node_modules/@babel/parser/src/parser/statement.ts:1693:10)
+      at Parser.parseFunction [as parseFunctionStatement] (node_modules/@babel/parser/src/parser/statement.ts:1080:17)
+      at Parser.parseFunctionStatement [as parseStatementContent] (node_modules/@babel/parser/src/parser/statement.ts:525:21)
+      at Parser.parseStatementContent [as parseStatementLike] (node_modules/@babel/parser/src/parser/statement.ts:482:17)
+      at Parser.parseStatementLike [as parseModuleItem] (node_modules/@babel/parser/src/parser/statement.ts:419:17)
+      at Parser.parseModuleItem [as parseBlockOrModuleBlockBody] (node_modules/@babel/parser/src/parser/statement.ts:1443:16)
+      at Parser.parseBlockOrModuleBlockBody [as parseBlockBody] (node_modules/@babel/parser/src/parser/statement.ts:1417:10)
+      at Parser.parseBlockBody [as parseProgram] (node_modules/@babel/parser/src/parser/statement.ts:229:10)
+      at Parser.parseProgram [as parseTopLevel] (node_modules/@babel/parser/src/parser/statement.ts:203:25)
+      at Parser.parseTopLevel [as parse] (node_modules/@babel/parser/src/parser/index.ts:83:25)
+      at parse (node_modules/@babel/parser/src/index.ts:86:38)
+      at parser (node_modules/@babel/core/src/parser/index.ts:29:19)
+          at parser.next (<anonymous>)
+      at normalizeFile (node_modules/@babel/core/src/transformation/normalize-file.ts:50:24)
+          at normalizeFile.next (<anonymous>)
+      at run (node_modules/@babel/core/src/transformation/index.ts:41:36)
+          at run.next (<anonymous>)
+      at transform (node_modules/@babel/core/src/transform.ts:29:20)
+          at transform.next (<anonymous>)
+      at evaluateSync (node_modules/gensync/index.js:251:28)
+      at sync (node_modules/gensync/index.js:89:14)
+      at fn (node_modules/@babel/core/src/errors/rewrite-stack-trace.ts:99:14)
+      at transformSync (node_modules/@babel/core/src/transform.ts:66:52)
+      at ScriptTransformer.transformSource (node_modules/@jest/transform/build/index.js:415:31)
+      at ScriptTransformer._transformAndBuildScript (node_modules/@jest/transform/build/index.js:512:40)
+      at ScriptTransformer.transform (node_modules/@jest/transform/build/index.js:551:19)
+      at Object.require (src/__tests__/invoice.api.test.js:2:23)
+
+
+  ● Test suite failed to run
+
+    Jest encountered an unexpected token
+
+    Jest failed to parse a file. This happens e.g. when your code or its dependencies use non-standard JavaScript syntax, or when Jest is not configured to support such syntax.
+
+    Out of the box Jest supports Babel, which will be used to transform your files into valid JS based on your Babel configuration.
+
+    By default "node_modules" folder is ignored by transformers.
+
+    Here's what you can do:
+     • If you are trying to use ECMAScript Modules, see https://jestjs.io/docs/ecmascript-modules for how to enable it.
+     • If you are trying to use TypeScript, see https://jestjs.io/docs/getting-started#using-typescript
+     • To have some of your "node_modules" files transformed, you can specify a custom "transformIgnorePatterns" in your config.
+     • If you need a custom transformation, specify a "transform" option in your config.
+     • If you simply want to mock your non-JS modules (e.g. binary assets) you can stub them out with the "moduleNameMapper" config option.
+
+    You'll find more details and examples of these config options in the docs:
+    https://jestjs.io/docs/configuration
+    For information about custom transformations, see:
+    https://jestjs.io/docs/code-transformation
+
+    Details:
+
+    SyntaxError: C:\Users\pc\Documents\waves\Liquifact-backend\src\index.js: Unexpected token (8:1)
+
+    [0m [90m  6 |[39m [90m */[39m
+     [90m  7 |[39m
+    [31m[1m>[22m[39m[90m  8 |[39m  [33m*[39m [33mExpress[39m app configuration [36mfor[39m invoice financing[33m,[39m auth[33m,[39m and [33mStellar[39m integration[33m.[39m
+     [90m    |[39m  [31m[1m^[22m[39m
+     [90m  9 |[39m  [33m*[39m [33mServer[39m startup lives [36min[39m server[33m.[39mjs so [36mthis[39m module can be imported cleanly [36min[39m tests[33m.[39m
+     [90m 10 |[39m  [33m*[39m[33m/[39m
+     [90m 11 |[39m[0m
+
+    [0m [90m 1 |[39m [36mconst[39m request [33m=[39m require([32m'supertest'[39m)[33m;[39m
+     [90m 2 |[39m [36mconst[39m jwt [33m=[39m require([32m'jsonwebtoken'[39m)[33m;[39m
+    [31m[1m>[22m[39m[90m 3 |[39m [36mconst[39m { app } [33m=[39m require([32m'../index'[39m)[33m;[39m
+     [90m   |[39m                 [31m[1m^[22m[39m
+     [90m 4 |[39m
+     [90m 5 |[39m describe([32m'Authentication Middleware'[39m[33m,[39m () [33m=>[39m {
+     [90m 6 |[39m     [36mconst[39m secret [33m=[39m process[33m.[39menv[33m.[39m[33mJWT_SECRET[39m [33m||[39m [32m'test-secret'[39m[33m;[39m[0m
+
+      at constructor (node_modules/@babel/parser/src/parse-error.ts:95:45)
+      at Parser.toParseError [as raise] (node_modules/@babel/parser/src/tokenizer/index.ts:1504:19)
+      at Parser.raise [as unexpected] (node_modules/@babel/parser/src/tokenizer/index.ts:1544:16)
+      at Parser.unexpected [as parseExprAtom] (node_modules/@babel/parser/src/parser/expression.ts:1358:22)
+      at Parser.parseExprAtom [as parseExprSubscripts] (node_modules/@babel/parser/src/parser/expression.ts:742:23)
+      at Parser.parseExprSubscripts [as parseUpdate] (node_modules/@babel/parser/src/parser/expression.ts:721:21)
+      at Parser.parseUpdate [as parseMaybeUnary] (node_modules/@babel/parser/src/parser/expression.ts:683:23)
+      at Parser.parseMaybeUnary [as parseMaybeUnaryOrPrivate] (node_modules/@babel/parser/src/parser/expression.ts:417:14)
+      at Parser.parseMaybeUnaryOrPrivate [as parseExprOps] (node_modules/@babel/parser/src/parser/expression.ts:429:23)
+      at Parser.parseExprOps [as parseMaybeConditional] (node_modules/@babel/parser/src/parser/expression.ts:384:23)
+      at Parser.parseMaybeConditional [as parseMaybeAssign] (node_modules/@babel/parser/src/parser/expression.ts:301:21)
+      at Parser.parseMaybeAssign [as parseExpressionBase] (node_modules/@babel/parser/src/parser/expression.ts:226:23)
+      at parseExpressionBase (node_modules/@babel/parser/src/parser/expression.ts:217:39)
+      at Parser.callback [as allowInAnd] (node_modules/@babel/parser/src/parser/expression.ts:3192:16)
+      at Parser.allowInAnd [as parseExpression] (node_modules/@babel/parser/src/parser/expression.ts:217:17)
+      at Parser.parseExpression [as parseStatementContent] (node_modules/@babel/parser/src/parser/statement.ts:688:23)
+      at Parser.parseStatementContent [as parseStatementLike] (node_modules/@babel/parser/src/parser/statement.ts:482:17)
+      at Parser.parseStatementLike [as parseModuleItem] (node_modules/@babel/parser/src/parser/statement.ts:419:17)
+      at Parser.parseModuleItem [as parseBlockOrModuleBlockBody] (node_modules/@babel/parser/src/parser/statement.ts:1443:16)
+      at Parser.parseBlockOrModuleBlockBody [as parseBlockBody] (node_modules/@babel/parser/src/parser/statement.ts:1417:10)
+      at Parser.parseBlockBody [as parseProgram] (node_modules/@babel/parser/src/parser/statement.ts:229:10)
+      at Parser.parseProgram [as parseTopLevel] (node_modules/@babel/parser/src/parser/statement.ts:203:25)
+      at Parser.parseTopLevel [as parse] (node_modules/@babel/parser/src/parser/index.ts:83:25)
+      at parse (node_modules/@babel/parser/src/index.ts:86:38)
+      at parser (node_modules/@babel/core/src/parser/index.ts:29:19)
+          at parser.next (<anonymous>)
+      at normalizeFile (node_modules/@babel/core/src/transformation/normalize-file.ts:50:24)
+          at normalizeFile.next (<anonymous>)
+      at run (node_modules/@babel/core/src/transformation/index.ts:41:36)
+          at run.next (<anonymous>)
+      at transform (node_modules/@babel/core/src/transform.ts:29:20)
+          at transform.next (<anonymous>)
+      at evaluateSync (node_modules/gensync/index.js:251:28)
+      at sync (node_modules/gensync/index.js:89:14)
+      at fn (node_modules/@babel/core/src/errors/rewrite-stack-trace.ts:99:14)
+      at transformSync (node_modules/@babel/core/src/transform.ts:66:52)
+      at ScriptTransformer.transformSource (node_modules/@jest/transform/build/index.js:415:31)
+      at ScriptTransformer._transformAndBuildScript (node_modules/@jest/transform/build/index.js:512:40)
+      at ScriptTransformer.transform (node_modules/@jest/transform/build/index.js:551:19)
+      at Object.require (src/__tests__/auth.test.js:3:17)
+
+
+  ● Test suite failed to run
+
+    Jest encountered an unexpected token
+
+    Jest failed to parse a file. This happens e.g. when your code or its dependencies use non-standard JavaScript syntax, or when Jest is not configured to support such syntax.
+
+    Out of the box Jest supports Babel, which will be used to transform your files into valid JS based on your Babel configuration.
+
+    By default "node_modules" folder is ignored by transformers.
+
+    Here's what you can do:
+     • If you are trying to use ECMAScript Modules, see https://jestjs.io/docs/ecmascript-modules for how to enable it.
+     • If you are trying to use TypeScript, see https://jestjs.io/docs/getting-started#using-typescript
+     • To have some of your "node_modules" files transformed, you can specify a custom "transformIgnorePatterns" in your config.
+     • If you need a custom transformation, specify a "transform" option in your config.
+     • If you simply want to mock your non-JS modules (e.g. binary assets) you can stub them out with the "moduleNameMapper" config option.
+
+    You'll find more details and examples of these config options in the docs:
+    https://jestjs.io/docs/configuration
+    For information about custom transformations, see:
+    https://jestjs.io/docs/code-transformation
+
+    Details:
+
+    SyntaxError: C:\Users\pc\Documents\waves\Liquifact-backend\src\index.js: Unexpected token (8:1)
+
+    [0m [90m  6 |[39m [90m */[39m
+     [90m  7 |[39m
+    [31m[1m>[22m[39m[90m  8 |[39m  [33m*[39m [33mExpress[39m app configuration [36mfor[39m invoice financing[33m,[39m auth[33m,[39m and [33mStellar[39m integration[33m.[39m
+     [90m    |[39m  [31m[1m^[22m[39m
+     [90m  9 |[39m  [33m*[39m [33mServer[39m startup lives [36min[39m server[33m.[39mjs so [36mthis[39m module can be imported cleanly [36min[39m tests[33m.[39m
+     [90m 10 |[39m  [33m*[39m[33m/[39m
+     [90m 11 |[39m[0m
+
+    [0m [90m 1 |[39m [36mconst[39m request [33m=[39m require([32m'supertest'[39m)[33m;[39m
+    [31m[1m>[22m[39m[90m 2 |[39m [36mconst[39m app [33m=[39m require([32m'../../src/index'[39m)[33m;[39m
+     [90m   |[39m             [31m[1m^[22m[39m
+     [90m 3 |[39m
+     [90m 4 |[39m describe([32m'API Integration Tests (RFC 7807)'[39m[33m,[39m () [33m=>[39m {
+     [90m 5 |[39m   test([32m'GET /api/invoices should return 501 Not Implemented with Problem Details'[39m[33m,[39m [36masync[39m () [33m=>[39m {[0m
+
+      at constructor (node_modules/@babel/parser/src/parse-error.ts:95:45)
+      at Parser.toParseError [as raise] (node_modules/@babel/parser/src/tokenizer/index.ts:1504:19)
+      at Parser.raise [as unexpected] (node_modules/@babel/parser/src/tokenizer/index.ts:1544:16)
+      at Parser.unexpected [as parseExprAtom] (node_modules/@babel/parser/src/parser/expression.ts:1358:22)
+      at Parser.parseExprAtom [as parseExprSubscripts] (node_modules/@babel/parser/src/parser/expression.ts:742:23)
+      at Parser.parseExprSubscripts [as parseUpdate] (node_modules/@babel/parser/src/parser/expression.ts:721:21)
+      at Parser.parseUpdate [as parseMaybeUnary] (node_modules/@babel/parser/src/parser/expression.ts:683:23)
+      at Parser.parseMaybeUnary [as parseMaybeUnaryOrPrivate] (node_modules/@babel/parser/src/parser/expression.ts:417:14)
+      at Parser.parseMaybeUnaryOrPrivate [as parseExprOps] (node_modules/@babel/parser/src/parser/expression.ts:429:23)
+      at Parser.parseExprOps [as parseMaybeConditional] (node_modules/@babel/parser/src/parser/expression.ts:384:23)
+      at Parser.parseMaybeConditional [as parseMaybeAssign] (node_modules/@babel/parser/src/parser/expression.ts:301:21)
+      at Parser.parseMaybeAssign [as parseExpressionBase] (node_modules/@babel/parser/src/parser/expression.ts:226:23)
+      at parseExpressionBase (node_modules/@babel/parser/src/parser/expression.ts:217:39)
+      at Parser.callback [as allowInAnd] (node_modules/@babel/parser/src/parser/expression.ts:3192:16)
+      at Parser.allowInAnd [as parseExpression] (node_modules/@babel/parser/src/parser/expression.ts:217:17)
+      at Parser.parseExpression [as parseStatementContent] (node_modules/@babel/parser/src/parser/statement.ts:688:23)
+      at Parser.parseStatementContent [as parseStatementLike] (node_modules/@babel/parser/src/parser/statement.ts:482:17)
+      at Parser.parseStatementLike [as parseModuleItem] (node_modules/@babel/parser/src/parser/statement.ts:419:17)
+      at Parser.parseModuleItem [as parseBlockOrModuleBlockBody] (node_modules/@babel/parser/src/parser/statement.ts:1443:16)
+      at Parser.parseBlockOrModuleBlockBody [as parseBlockBody] (node_modules/@babel/parser/src/parser/statement.ts:1417:10)
+      at Parser.parseBlockBody [as parseProgram] (node_modules/@babel/parser/src/parser/statement.ts:229:10)
+      at Parser.parseProgram [as parseTopLevel] (node_modules/@babel/parser/src/parser/statement.ts:203:25)
+      at Parser.parseTopLevel [as parse] (node_modules/@babel/parser/src/parser/index.ts:83:25)
+      at parse (node_modules/@babel/parser/src/index.ts:86:38)
+      at parser (node_modules/@babel/core/src/parser/index.ts:29:19)
+          at parser.next (<anonymous>)
+      at normalizeFile (node_modules/@babel/core/src/transformation/normalize-file.ts:50:24)
+          at normalizeFile.next (<anonymous>)
+      at run (node_modules/@babel/core/src/transformation/index.ts:41:36)
+          at run.next (<anonymous>)
+      at transform (node_modules/@babel/core/src/transform.ts:29:20)
+          at transform.next (<anonymous>)
+      at evaluateSync (node_modules/gensync/index.js:251:28)
+      at sync (node_modules/gensync/index.js:89:14)
+      at fn (node_modules/@babel/core/src/errors/rewrite-stack-trace.ts:99:14)
+      at transformSync (node_modules/@babel/core/src/transform.ts:66:52)
+      at ScriptTransformer.transformSource (node_modules/@jest/transform/build/index.js:415:31)
+      at ScriptTransformer._transformAndBuildScript (node_modules/@jest/transform/build/index.js:512:40)
+      at ScriptTransformer.transform (node_modules/@jest/transform/build/index.js:551:19)
+      at Object.require (tests/integration/errorHandling.test.js:2:13)
+
+
+  ● Test suite failed to run
+
+    Jest encountered an unexpected token
+
+    Jest failed to parse a file. This happens e.g. when your code or its dependencies use non-standard JavaScript syntax, or when Jest is not configured to support such syntax.
+
+    Out of the box Jest supports Babel, which will be used to transform your files into valid JS based on your Babel configuration.
+
+    By default "node_modules" folder is ignored by transformers.
+
+    Here's what you can do:
+     • If you are trying to use ECMAScript Modules, see https://jestjs.io/docs/ecmascript-modules for how to enable it.
+     • If you are trying to use TypeScript, see https://jestjs.io/docs/getting-started#using-typescript
+     • To have some of your "node_modules" files transformed, you can specify a custom "transformIgnorePatterns" in your config.
+     • If you need a custom transformation, specify a "transform" option in your config.
+     • If you simply want to mock your non-JS modules (e.g. binary assets) you can stub them out with the "moduleNameMapper" config option.
+
+    You'll find more details and examples of these config options in the docs:
+    https://jestjs.io/docs/configuration
+    For information about custom transformations, see:
+    https://jestjs.io/docs/code-transformation
+
+    Details:
+
+    SyntaxError: C:\Users\pc\Documents\waves\Liquifact-backend\src\index.test.js: Expecting Unicode escape sequence \uXXXX. (59:45)
+
+    [0m [90m 57 |[39m   [36mconst[39m csp [33m=[39m res[33m.[39mheaders[[32m'content-security-policy'[39m][33m;[39m
+     [90m 58 |[39m   expect(csp)[33m.[39mtoBeDefined()[33m;[39m
+    [31m[1m>[22m[39m[90m 59 |[39m   expect(csp)[33m.[39mtoContain([32m'default-src \\'[39mself[37m[41m[1m\[22m[49m[39m[37m[41m[1m\[22m[49m[39m[32m''[39m)[33m;[39m
+     [90m    |[39m                                              [31m[1m^[22m[39m
+     [90m 60 |[39m   expect(csp)[33m.[39mtoContain([32m'object-src \\'[39mnone[37m[41m[1m\[22m[49m[39m[37m[41m[1m\[22m[49m[39m[32m''[39m)[33m;[39m
+     [90m 61 |[39m   expect(csp)[33m.[39mtoContain([32m'frame-src \\'[39mnone[37m[41m[1m\[22m[49m[39m[37m[41m[1m\[22m[49m[39m[32m''[39m)[33m;[39m
+     [90m 62 |[39m[0m
+
+      at constructor (node_modules/@babel/parser/src/parse-error.ts:95:45)
+      at Parser.toParseError [as raise] (node_modules/@babel/parser/src/tokenizer/index.ts:1504:19)
+      at Parser.raise [as readWord1] (node_modules/@babel/parser/src/tokenizer/index.ts:1440:16)
+      at Parser.readWord1 [as readWord] (node_modules/@babel/parser/src/tokenizer/index.ts:1466:23)
+      at Parser.readWord [as getTokenFromCode] (node_modules/@babel/parser/src/tokenizer/index.ts:1054:16)
+      at Parser.getTokenFromCode [as nextToken] (node_modules/@babel/parser/src/tokenizer/index.ts:279:10)
+      at Parser.nextToken [as next] (node_modules/@babel/parser/src/tokenizer/index.ts:122:10)
+      at Parser.next [as parseLiteralAtNode] (node_modules/@babel/parser/src/parser/expression.ts:1699:10)
+      at Parser.parseLiteralAtNode [as parseLiteral] (node_modules/@babel/parser/src/parser/expression.ts:1705:17)
+      at Parser.parseLiteral [as parseStringLiteral] (node_modules/@babel/parser/src/parser/expression.ts:1709:17)
+      at Parser.parseStringLiteral [as parseExprAtom] (node_modules/@babel/parser/src/parser/expression.ts:1158:21)
+      at Parser.parseExprAtom [as parseExprSubscripts] (node_modules/@babel/parser/src/parser/expression.ts:742:23)
+      at Parser.parseExprSubscripts [as parseUpdate] (node_modules/@babel/parser/src/parser/expression.ts:721:21)
+      at Parser.parseUpdate [as parseMaybeUnary] (node_modules/@babel/parser/src/parser/expression.ts:683:23)
+      at Parser.parseMaybeUnary [as parseMaybeUnaryOrPrivate] (node_modules/@babel/parser/src/parser/expression.ts:417:14)
+      at Parser.parseMaybeUnaryOrPrivate [as parseExprOps] (node_modules/@babel/parser/src/parser/expression.ts:429:23)
+      at Parser.parseExprOps [as parseMaybeConditional] (node_modules/@babel/parser/src/parser/expression.ts:384:23)
+      at Parser.parseMaybeConditional [as parseMaybeAssign] (node_modules/@babel/parser/src/parser/expression.ts:301:21)
+      at parseMaybeAssign (node_modules/@babel/parser/src/parser/expression.ts:257:12)
+      at Parser.callback [as allowInAnd] (node_modules/@babel/parser/src/parser/expression.ts:3197:12)
+      at Parser.allowInAnd [as parseMaybeAssignAllowIn] (node_modules/@babel/parser/src/parser/expression.ts:256:17)
+      at Parser.parseMaybeAssignAllowIn [as parseMaybeAssignAllowInOrVoidPattern] (node_modules/@babel/parser/src/parser/expression.ts:3311:17)
+      at Parser.parseMaybeAssignAllowInOrVoidPattern [as parseExprListItem] (node_modules/@babel/parser/src/parser/expression.ts:2793:18)
+      at Parser.parseExprListItem [as parseCallExpressionArguments] (node_modules/@babel/parser/src/parser/expression.ts:1042:14)
+      at Parser.parseCallExpressionArguments [as parseCoverCallAndAsyncArrowHead] (node_modules/@babel/parser/src/parser/expression.ts:922:29)
+      at Parser.parseCoverCallAndAsyncArrowHead [as parseSubscript] (node_modules/@babel/parser/src/parser/expression.ts:804:19)
+      at Parser.parseSubscript [as parseSubscripts] (node_modules/@babel/parser/src/parser/expression.ts:763:19)
+      at Parser.parseSubscripts [as parseExprSubscripts] (node_modules/@babel/parser/src/parser/expression.ts:748:17)
+      at Parser.parseExprSubscripts [as parseUpdate] (node_modules/@babel/parser/src/parser/expression.ts:721:21)
+      at Parser.parseUpdate [as parseMaybeUnary] (node_modules/@babel/parser/src/parser/expression.ts:683:23)
+      at Parser.parseMaybeUnary [as parseMaybeUnaryOrPrivate] (node_modules/@babel/parser/src/parser/expression.ts:417:14)
+      at Parser.parseMaybeUnaryOrPrivate [as parseExprOps] (node_modules/@babel/parser/src/parser/expression.ts:429:23)
+      at Parser.parseExprOps [as parseMaybeConditional] (node_modules/@babel/parser/src/parser/expression.ts:384:23)
+      at Parser.parseMaybeConditional [as parseMaybeAssign] (node_modules/@babel/parser/src/parser/expression.ts:301:21)
+      at Parser.parseMaybeAssign [as parseExpressionBase] (node_modules/@babel/parser/src/parser/expression.ts:226:23)
+      at parseExpressionBase (node_modules/@babel/parser/src/parser/expression.ts:217:39)
+      at Parser.callback [as allowInAnd] (node_modules/@babel/parser/src/parser/expression.ts:3192:16)
+      at Parser.allowInAnd [as parseExpression] (node_modules/@babel/parser/src/parser/expression.ts:217:17)
+      at Parser.parseExpression [as parseStatementContent] (node_modules/@babel/parser/src/parser/statement.ts:688:23)
+      at Parser.parseStatementContent [as parseStatementLike] (node_modules/@babel/parser/src/parser/statement.ts:482:17)
+      at Parser.parseStatementLike [as parseStatementListItem] (node_modules/@babel/parser/src/parser/statement.ts:431:17)
+      at Parser.parseStatementListItem [as parseBlockOrModuleBlockBody] (node_modules/@babel/parser/src/parser/statement.ts:1444:16)
+      at Parser.parseBlockOrModuleBlockBody [as parseBlockBody] (node_modules/@babel/parser/src/parser/statement.ts:1417:10)
+      at Parser.parseBlockBody [as parseBlock] (node_modules/@babel/parser/src/parser/statement.ts:1385:10)
+      at Parser.parseBlock [as parseFunctionBody] (node_modules/@babel/parser/src/parser/expression.ts:2621:24)
+      at Parser.parseFunctionBody [as parseFunctionBodyAndFinish] (node_modules/@babel/parser/src/parser/expression.ts:2590:10)
+      at parseFunctionBodyAndFinish (node_modules/@babel/parser/src/parser/statement.ts:1695:12)
+      at Parser.callback [as withSmartMixTopicForbiddingContext] (node_modules/@babel/parser/src/parser/expression.ts:3171:14)
+      at Parser.withSmartMixTopicForbiddingContext [as parseFunction] (node_modules/@babel/parser/src/parser/statement.ts:1693:10)
+      at Parser.parseFunction [as parseFunctionStatement] (node_modules/@babel/parser/src/parser/statement.ts:1080:17)
+      at Parser.parseFunctionStatement [as parseStatementContent] (node_modules/@babel/parser/src/parser/statement.ts:525:21)
+      at Parser.parseStatementContent [as parseStatementLike] (node_modules/@babel/parser/src/parser/statement.ts:482:17)
+      at Parser.parseStatementLike [as parseModuleItem] (node_modules/@babel/parser/src/parser/statement.ts:419:17)
+      at Parser.parseModuleItem [as parseBlockOrModuleBlockBody] (node_modules/@babel/parser/src/parser/statement.ts:1443:16)
+      at Parser.parseBlockOrModuleBlockBody [as parseBlockBody] (node_modules/@babel/parser/src/parser/statement.ts:1417:10)
+      at Parser.parseBlockBody [as parseProgram] (node_modules/@babel/parser/src/parser/statement.ts:229:10)
+      at Parser.parseProgram [as parseTopLevel] (node_modules/@babel/parser/src/parser/statement.ts:203:25)
+      at Parser.parseTopLevel [as parse] (node_modules/@babel/parser/src/parser/index.ts:83:25)
+      at parse (node_modules/@babel/parser/src/index.ts:86:38)
+      at parser (node_modules/@babel/core/src/parser/index.ts:29:19)
+          at parser.next (<anonymous>)
+      at normalizeFile (node_modules/@babel/core/src/transformation/normalize-file.ts:50:24)
+          at normalizeFile.next (<anonymous>)
+      at run (node_modules/@babel/core/src/transformation/index.ts:41:36)
+          at run.next (<anonymous>)
+      at transform (node_modules/@babel/core/src/transform.ts:29:20)
+          at transform.next (<anonymous>)
+      at evaluateSync (node_modules/gensync/index.js:251:28)
+      at sync (node_modules/gensync/index.js:89:14)
+      at fn (node_modules/@babel/core/src/errors/rewrite-stack-trace.ts:99:14)
+      at transformSync (node_modules/@babel/core/src/transform.ts:66:52)
+      at ScriptTransformer.transformSource (node_modules/@jest/transform/build/index.js:415:31)
+      at ScriptTransformer._transformAndBuildScript (node_modules/@jest/transform/build/index.js:512:40)
+      at ScriptTransformer.transform (node_modules/@jest/transform/build/index.js:551:19)
+
+
+  ● Test suite failed to run
+
+    Jest encountered an unexpected token
+
+    Jest failed to parse a file. This happens e.g. when your code or its dependencies use non-standard JavaScript syntax, or when Jest is not configured to support such syntax.
+
+    Out of the box Jest supports Babel, which will be used to transform your files into valid JS based on your Babel configuration.
+
+    By default "node_modules" folder is ignored by transformers.
+
+    Here's what you can do:
+     • If you are trying to use ECMAScript Modules, see https://jestjs.io/docs/ecmascript-modules for how to enable it.
+     • If you are trying to use TypeScript, see https://jestjs.io/docs/getting-started#using-typescript
+     • To have some of your "node_modules" files transformed, you can specify a custom "transformIgnorePatterns" in your config.
+     • If you need a custom transformation, specify a "transform" option in your config.
+     • If you simply want to mock your non-JS modules (e.g. binary assets) you can stub them out with the "moduleNameMapper" config option.
+
+    You'll find more details and examples of these config options in the docs:
+    https://jestjs.io/docs/configuration
+    For information about custom transformations, see:
+    https://jestjs.io/docs/code-transformation
+
+    Details:
+
+    SyntaxError: C:\Users\pc\Documents\waves\Liquifact-backend\src\app.js: Missing semicolon. (120:4)
+
+    [0m [90m 118 |[39m       message[33m:[39m [32m'Invoice service will list tokenized invoices here.'[39m[33m,[39m
+     [90m 119 |[39m     })[33m;[39m
+    [31m[1m>[22m[39m[90m 120 |[39m   }))[33m;[39m
+     [90m     |[39m     [31m[1m^[22m[39m
+     [90m 121 |[39m
+     [90m 122 |[39m   [90m// Invoices — POST (create) with strict 512 KB body limit[39m
+     [90m 123 |[39m   app[33m.[39mpost([32m'/api/invoices'[39m[33m,[39m [33m...[39minvoiceBodyLimit()[33m,[39m (req[33m,[39m res) [33m=>[39m {[0m
+
+    [0m [90m 1 |[39m [36mconst[39m cors [33m=[39m require([32m'cors'[39m)[33m;[39m
+     [90m 2 |[39m
+    [31m[1m>[22m[39m[90m 3 |[39m [36mconst[39m { createApp[33m,[39m handleCorsError } [33m=[39m require([32m'./app'[39m)[33m;[39m
+     [90m   |[39m                                        [31m[1m^[22m[39m
+     [90m 4 |[39m [36mconst[39m { [33mCORS_REJECTION_MESSAGE[39m } [33m=[39m require([32m'./config/cors'[39m)[33m;[39m
+     [90m 5 |[39m [36mconst[39m { createCorsOptions } [33m=[39m require([32m'./config/cors'[39m)[33m;[39m
+     [90m 6 |[39m [36mconst[39m invoiceService [33m=[39m require([32m'./services/invoice.service'[39m)[33m;[39m[0m
+
+      at constructor (node_modules/@babel/parser/src/parse-error.ts:95:45)
+      at Parser.toParseError [as raise] (node_modules/@babel/parser/src/tokenizer/index.ts:1504:19)
+      at Parser.raise [as semicolon] (node_modules/@babel/parser/src/parser/util.ts:149:10)
+      at Parser.semicolon [as parseExpressionStatement] (node_modules/@babel/parser/src/parser/statement.ts:1363:10)
+      at Parser.parseExpressionStatement [as parseStatementContent] (node_modules/@babel/parser/src/parser/statement.ts:702:19)
+      at Parser.parseStatementContent [as parseStatementLike] (node_modules/@babel/parser/src/parser/statement.ts:482:17)
+      at Parser.parseStatementLike [as parseStatementListItem] (node_modules/@babel/parser/src/parser/statement.ts:431:17)
+      at Parser.parseStatementListItem [as parseBlockOrModuleBlockBody] (node_modules/@babel/parser/src/parser/statement.ts:1444:16)
+      at Parser.parseBlockOrModuleBlockBody [as parseBlockBody] (node_modules/@babel/parser/src/parser/statement.ts:1417:10)
+      at Parser.parseBlockBody [as parseBlock] (node_modules/@babel/parser/src/parser/statement.ts:1385:10)
+      at Parser.parseBlock [as parseFunctionBody] (node_modules/@babel/parser/src/parser/expression.ts:2621:24)
+      at Parser.parseFunctionBody [as parseFunctionBodyAndFinish] (node_modules/@babel/parser/src/parser/expression.ts:2590:10)
+      at parseFunctionBodyAndFinish (node_modules/@babel/parser/src/parser/statement.ts:1695:12)
+      at Parser.callback [as withSmartMixTopicForbiddingContext] (node_modules/@babel/parser/src/parser/expression.ts:3171:14)
+      at Parser.withSmartMixTopicForbiddingContext [as parseFunction] (node_modules/@babel/parser/src/parser/statement.ts:1693:10)
+      at Parser.parseFunction [as parseFunctionStatement] (node_modules/@babel/parser/src/parser/statement.ts:1080:17)
+      at Parser.parseFunctionStatement [as parseStatementContent] (node_modules/@babel/parser/src/parser/statement.ts:525:21)
+      at Parser.parseStatementContent [as parseStatementLike] (node_modules/@babel/parser/src/parser/statement.ts:482:17)
+      at Parser.parseStatementLike [as parseModuleItem] (node_modules/@babel/parser/src/parser/statement.ts:419:17)
+      at Parser.parseModuleItem [as parseBlockOrModuleBlockBody] (node_modules/@babel/parser/src/parser/statement.ts:1443:16)
+      at Parser.parseBlockOrModuleBlockBody [as parseBlockBody] (node_modules/@babel/parser/src/parser/statement.ts:1417:10)
+      at Parser.parseBlockBody [as parseProgram] (node_modules/@babel/parser/src/parser/statement.ts:229:10)
+      at Parser.parseProgram [as parseTopLevel] (node_modules/@babel/parser/src/parser/statement.ts:203:25)
+      at Parser.parseTopLevel [as parse] (node_modules/@babel/parser/src/parser/index.ts:83:25)
+      at parse (node_modules/@babel/parser/src/index.ts:86:38)
+      at parser (node_modules/@babel/core/src/parser/index.ts:29:19)
+          at parser.next (<anonymous>)
+      at normalizeFile (node_modules/@babel/core/src/transformation/normalize-file.ts:50:24)
+          at normalizeFile.next (<anonymous>)
+      at run (node_modules/@babel/core/src/transformation/index.ts:41:36)
+          at run.next (<anonymous>)
+      at transform (node_modules/@babel/core/src/transform.ts:29:20)
+          at transform.next (<anonymous>)
+      at evaluateSync (node_modules/gensync/index.js:251:28)
+      at sync (node_modules/gensync/index.js:89:14)
+      at fn (node_modules/@babel/core/src/errors/rewrite-stack-trace.ts:99:14)
+      at transformSync (node_modules/@babel/core/src/transform.ts:66:52)
+      at ScriptTransformer.transformSource (node_modules/@jest/transform/build/index.js:415:31)
+      at ScriptTransformer._transformAndBuildScript (node_modules/@jest/transform/build/index.js:512:40)
+      at ScriptTransformer.transform (node_modules/@jest/transform/build/index.js:551:19)
+      at Object.require (src/app.test.js:3:40)
+
+
+  ● Test suite failed to run
+
+    Jest encountered an unexpected token
+
+    Jest failed to parse a file. This happens e.g. when your code or its dependencies use non-standard JavaScript syntax, or when Jest is not configured to support such syntax.
+
+    Out of the box Jest supports Babel, which will be used to transform your files into valid JS based on your Babel configuration.
+
+    By default "node_modules" folder is ignored by transformers.
+
+    Here's what you can do:
+     • If you are trying to use ECMAScript Modules, see https://jestjs.io/docs/ecmascript-modules for how to enable it.
+     • If you are trying to use TypeScript, see https://jestjs.io/docs/getting-started#using-typescript
+     • To have some of your "node_modules" files transformed, you can specify a custom "transformIgnorePatterns" in your config.
+     • If you need a custom transformation, specify a "transform" option in your config.
+     • If you simply want to mock your non-JS modules (e.g. binary assets) you can stub them out with the "moduleNameMapper" config option.
+
+    You'll find more details and examples of these config options in the docs:
+    https://jestjs.io/docs/configuration
+    For information about custom transformations, see:
+    https://jestjs.io/docs/code-transformation
+
+    Details:
+
+    SyntaxError: C:\Users\pc\Documents\waves\Liquifact-backend\src\app.js: Missing semicolon. (120:4)
+
+    [0m [90m 118 |[39m       message[33m:[39m [32m'Invoice service will list tokenized invoices here.'[39m[33m,[39m
+     [90m 119 |[39m     })[33m;[39m
+    [31m[1m>[22m[39m[90m 120 |[39m   }))[33m;[39m
+     [90m     |[39m     [31m[1m^[22m[39m
+     [90m 121 |[39m
+     [90m 122 |[39m   [90m// Invoices — POST (create) with strict 512 KB body limit[39m
+     [90m 123 |[39m   app[33m.[39mpost([32m'/api/invoices'[39m[33m,[39m [33m...[39minvoiceBodyLimit()[33m,[39m (req[33m,[39m res) [33m=>[39m {[0m
+
+    [0m [90m 1 |[39m [36mconst[39m request [33m=[39m require([32m'supertest'[39m)[33m;[39m
+    [31m[1m>[22m[39m[90m 2 |[39m [36mconst[39m app [33m=[39m require([32m'../app'[39m)[33m;[39m
+     [90m   |[39m             [31m[1m^[22m[39m
+     [90m 3 |[39m
+     [90m 4 |[39m describe([32m'Standard Response Envelope (Issue 19)'[39m[33m,[39m () [33m=>[39m {
+     [90m 5 |[39m   it([32m'Success response should have data, meta, and error=null'[39m[33m,[39m [36masync[39m () [33m=>[39m {[0m
+
+      at constructor (node_modules/@babel/parser/src/parse-error.ts:95:45)
+      at Parser.toParseError [as raise] (node_modules/@babel/parser/src/tokenizer/index.ts:1504:19)
+      at Parser.raise [as semicolon] (node_modules/@babel/parser/src/parser/util.ts:149:10)
+      at Parser.semicolon [as parseExpressionStatement] (node_modules/@babel/parser/src/parser/statement.ts:1363:10)
+      at Parser.parseExpressionStatement [as parseStatementContent] (node_modules/@babel/parser/src/parser/statement.ts:702:19)
+      at Parser.parseStatementContent [as parseStatementLike] (node_modules/@babel/parser/src/parser/statement.ts:482:17)
+      at Parser.parseStatementLike [as parseStatementListItem] (node_modules/@babel/parser/src/parser/statement.ts:431:17)
+      at Parser.parseStatementListItem [as parseBlockOrModuleBlockBody] (node_modules/@babel/parser/src/parser/statement.ts:1444:16)
+      at Parser.parseBlockOrModuleBlockBody [as parseBlockBody] (node_modules/@babel/parser/src/parser/statement.ts:1417:10)
+      at Parser.parseBlockBody [as parseBlock] (node_modules/@babel/parser/src/parser/statement.ts:1385:10)
+      at Parser.parseBlock [as parseFunctionBody] (node_modules/@babel/parser/src/parser/expression.ts:2621:24)
+      at Parser.parseFunctionBody [as parseFunctionBodyAndFinish] (node_modules/@babel/parser/src/parser/expression.ts:2590:10)
+      at parseFunctionBodyAndFinish (node_modules/@babel/parser/src/parser/statement.ts:1695:12)
+      at Parser.callback [as withSmartMixTopicForbiddingContext] (node_modules/@babel/parser/src/parser/expression.ts:3171:14)
+      at Parser.withSmartMixTopicForbiddingContext [as parseFunction] (node_modules/@babel/parser/src/parser/statement.ts:1693:10)
+      at Parser.parseFunction [as parseFunctionStatement] (node_modules/@babel/parser/src/parser/statement.ts:1080:17)
+      at Parser.parseFunctionStatement [as parseStatementContent] (node_modules/@babel/parser/src/parser/statement.ts:525:21)
+      at Parser.parseStatementContent [as parseStatementLike] (node_modules/@babel/parser/src/parser/statement.ts:482:17)
+      at Parser.parseStatementLike [as parseModuleItem] (node_modules/@babel/parser/src/parser/statement.ts:419:17)
+      at Parser.parseModuleItem [as parseBlockOrModuleBlockBody] (node_modules/@babel/parser/src/parser/statement.ts:1443:16)
+      at Parser.parseBlockOrModuleBlockBody [as parseBlockBody] (node_modules/@babel/parser/src/parser/statement.ts:1417:10)
+      at Parser.parseBlockBody [as parseProgram] (node_modules/@babel/parser/src/parser/statement.ts:229:10)
+      at Parser.parseProgram [as parseTopLevel] (node_modules/@babel/parser/src/parser/statement.ts:203:25)
+      at Parser.parseTopLevel [as parse] (node_modules/@babel/parser/src/parser/index.ts:83:25)
+      at parse (node_modules/@babel/parser/src/index.ts:86:38)
+      at parser (node_modules/@babel/core/src/parser/index.ts:29:19)
+          at parser.next (<anonymous>)
+      at normalizeFile (node_modules/@babel/core/src/transformation/normalize-file.ts:50:24)
+          at normalizeFile.next (<anonymous>)
+      at run (node_modules/@babel/core/src/transformation/index.ts:41:36)
+          at run.next (<anonymous>)
+      at transform (node_modules/@babel/core/src/transform.ts:29:20)
+          at transform.next (<anonymous>)
+      at evaluateSync (node_modules/gensync/index.js:251:28)
+      at sync (node_modules/gensync/index.js:89:14)
+      at fn (node_modules/@babel/core/src/errors/rewrite-stack-trace.ts:99:14)
+      at transformSync (node_modules/@babel/core/src/transform.ts:66:52)
+      at ScriptTransformer.transformSource (node_modules/@jest/transform/build/index.js:415:31)
+      at ScriptTransformer._transformAndBuildScript (node_modules/@jest/transform/build/index.js:512:40)
+      at ScriptTransformer.transform (node_modules/@jest/transform/build/index.js:551:19)
+      at Object.require (src/tests/response.test.js:2:13)
