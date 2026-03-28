@@ -19,6 +19,18 @@ const InvoiceSchema = z.object({
     createdAt: z.string().optional(),
 }).passthrough();
 
+const EscrowSchema = z.object({
+    invoiceId: z.string(),
+    status: z.enum(['pending', 'funded', 'disputed', 'released', 'initiated']),
+    amountInEscrow: z.number().nonnegative(),
+    contractId: z.string(),
+    lastUpdated: z.string().optional(),
+    governance: z.object({
+        canDispute: z.boolean(),
+        disputePeriodDays: z.number(),
+    }).optional(),
+}).passthrough();
+
 const BaseResponseSchema = z.object({
     meta: MetaSchema,
     error: ErrorSchema,
@@ -37,6 +49,10 @@ const DeleteRestoreInvoiceResponseSchema = BaseResponseSchema.extend({
     data: InvoiceSchema,
 });
 
+const EscrowResponseSchema = BaseResponseSchema.extend({
+    data: EscrowSchema,
+});
+
 module.exports = {
     InvoiceSchema,
     CreateInvoiceRequestSchema: z.object({
@@ -45,5 +61,6 @@ module.exports = {
     }),
     CreateInvoiceResponseSchema,
     InvoiceListResponseSchema,
-    DeleteRestoreInvoiceResponseSchema
+    DeleteRestoreInvoiceResponseSchema,
+    EscrowResponseSchema,
 };

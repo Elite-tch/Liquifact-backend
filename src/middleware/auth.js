@@ -4,7 +4,10 @@
  * @module middleware/auth
  */
 
+'use strict';
+
 const jwt = require('jsonwebtoken');
+const AppError = require('../errors/AppError');
 
 /**
  * Middleware function to enforce authentication for protected routes.
@@ -18,29 +21,48 @@ const jwt = require('jsonwebtoken');
  */
 const authenticateToken = (req, res, next) => {
   const authHeader = req.headers['authorization'];
-  
+
   if (!authHeader) {
-    return res.status(401).json({ error: 'Authentication token is required' });
+    return next(new AppError({
+      type: 'https://liquifact.com/probs/unauthorized',
+      title: 'Authentication Required',
+      status: 401,
+      detail: 'Authentication token is required in the Authorization header.',
+    }));
   }
 
   const tokenParts = authHeader.split(' ');
-  
+
   if (tokenParts.length !== 2 || tokenParts[0] !== 'Bearer') {
-    return res.status(401).json({ error: 'Invalid Authorization header format. Expected "Bearer <token>"' });
+    return next(new AppError({
+      type: 'https://liquifact.com/probs/unauthorized',
+      title: 'Invalid Auth Header',
+      status: 401,
+      detail: 'Invalid Authorization header format. Expected "Bearer <token>"',
+    }));
   }
 
   const token = tokenParts[1];
-  const secret = process.env.JWT_SECRET || 'test-secret'; // Fallback for local testing if env is not completely set
+  const secret = process.env.JWT_SECRET || 'test-secret';
 
   jwt.verify(token, secret, (err, decoded) => {
     if (err) {
       if (err.name === 'TokenExpiredError') {
-        return res.status(401).json({ error: 'Token has expired' });
+        return next(new AppError({
+          type: 'https://liquifact.com/probs/unauthorized',
+          title: 'Token Expired',
+          status: 401,
+          detail: 'The authentication token has expired. Please log in again.',
+        }));
       }
-      return res.status(401).json({ error: 'Invalid token' });
+      return next(new AppError({
+        type: 'https://liquifact.com/probs/unauthorized',
+        title: 'Invalid Token',
+        status: 401,
+        detail: 'The provided token is invalid.',
+      }));
     }
-    
-    // Attach user info to the request pattern
+
     req.user = decoded;
     next();
   });

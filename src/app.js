@@ -18,12 +18,12 @@ const {
 } = require('./middleware/bodySizeLimits');
 const { validateInvoiceQueryParams } = require('./utils/validators');
 const invoiceService = require('./services/invoice.service');
+const escrowService = require('./services/escrow.service');
 const { success } = require('./utils/responseHelper');
 
 const asyncHandler = require('./utils/asyncHandler');
 const AppError = require('./errors/AppError');
 const errorHandler = require('./middleware/errorHandler');
-const { callSorobanContract } = require('./services/soroban');
 
 function createApp() {
   const app = express();
@@ -121,11 +121,15 @@ function createApp() {
   /**
    * Contract & Escrow
    */
-  app.get('/api/escrow/:invoiceId', authenticateToken, asyncHandler(async (req, res) => {
-    const { invoiceId } = req.params;
-    const data = await callSorobanContract(async () => ({ invoiceId, status: 'not_found', fundedAmount: 0 }));
-    res.json(success(data, { message: 'Escrow state read from Soroban contract via robust integration wrapper.' }));
-  }));
+  app.get('/api/escrow/:invoiceId',
+    authenticateToken,
+    validateResponse(schemas.EscrowResponseSchema),
+    asyncHandler(async (req, res) => {
+      const { invoiceId } = req.params;
+      const data = await escrowService.getEscrowStatus(invoiceId);
+      res.json(success(data, { message: 'Escrow state synchronized with Soroban blockchain.' }));
+    })
+  );
 
   /** 
    * Debug & Testing triggers

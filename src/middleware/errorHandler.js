@@ -56,8 +56,8 @@ function errorHandler(err, req, res, _next) {
   // The 'error' field should contain the message/code for tests
   problem.error = {
     message: problem.title, // Map title to message
-    code: err.code || (status === 404 ? 'NOT_FOUND' : (status === 400 ? 'BAD_REQUEST' : 'INTERNAL_ERROR')),
-    details: (process.env.NODE_ENV !== 'production' && status === 500) ? problem.detail : (status === 400 ? problem.detail : null)
+    code: err.code || (status === 404 ? 'NOT_FOUND' : (status === 401 ? 'UNAUTHORIZED' : (status === 400 ? 'BAD_REQUEST' : 'INTERNAL_ERROR'))),
+    details: (process.env.NODE_ENV !== 'production' && status === 500) ? problem.detail : (status === 400 || status === 401 ? problem.detail : null)
   };
 
   // RFC 7807: Content-Type must be 'application/problem+json'
