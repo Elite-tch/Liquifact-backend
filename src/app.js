@@ -35,6 +35,7 @@ const { performHealthChecks } = require('./services/health');
 const responseHelper = require('./utils/responseHelper');
 const logger = require('./logger');
 const { metricsAuth, metricsHandler } = require('./metrics');
+const apiKeysRoutes = require('./routes/apiKeys').router;
 
 /**
  * Returns a 403 JSON response only for the dedicated blocked-origin CORS error.
@@ -151,6 +152,8 @@ function createApp() {
       },
     });
   });
+
+  app.use('/api/api-keys', apiKeysRoutes);
 
   // Invoices — GET (list)
   app.get('/api/invoices', async (req, res) => {
