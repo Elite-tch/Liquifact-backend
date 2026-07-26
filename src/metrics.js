@@ -12,7 +12,65 @@
  * @module metrics
  */
 
-const client = require('prom-client');
+let client;
+
+try {
+  client = require('prom-client');
+} catch (_error) {
+  /* eslint-disable jsdoc/require-jsdoc */
+  /**
+   * Minimal registry fallback used when prom-client is unavailable in the
+   * local workspace.
+   */
+  class FallbackRegistry {
+    constructor() {
+      this.contentType = 'text/plain';
+    }
+
+    resetMetrics() {}
+
+    /**
+     * Returns the current metrics payload.
+     *
+     * @returns {Promise<string>} Empty metrics text.
+     */
+    async metrics() {
+      return '';
+    }
+  }
+
+  /**
+   * No-op counter fallback.
+   */
+  class FallbackCounter {
+    constructor() {}
+
+    /**
+     * Increments the counter.
+     */
+    inc() {}
+  }
+
+  /**
+   * No-op histogram fallback.
+   */
+  class FallbackHistogram {
+    constructor() {}
+
+    /**
+     * Records an observation.
+     */
+    observe() {}
+  }
+
+  client = {
+    Registry: FallbackRegistry,
+    collectDefaultMetrics() {},
+    Counter: FallbackCounter,
+    Histogram: FallbackHistogram,
+  };
+  /* eslint-enable jsdoc/require-jsdoc */
+}
 
 const LOOPBACK = new Set(['127.0.0.1', '::1', '::ffff:127.0.0.1']);
 
@@ -30,6 +88,21 @@ const configReadCacheHits = new client.Counter({
 const configReadCacheMisses = new client.Counter({
   name: 'liquifact_config_read_cache_misses_total',
   help: 'Total number of config read cache misses',
+  registers: [registry],
+});
+
+const invoiceStateRequestDurationMs = new client.Histogram({
+  name: 'liquifact_invoice_state_request_duration_ms',
+  help: 'Invoice-state request duration in milliseconds',
+  buckets: [5, 10, 25, 50, 100, 250, 500, 1000, 2500, 5000],
+  labelNames: ['route', 'method', 'status_class', 'error_cause'],
+  registers: [registry],
+});
+
+const invoiceStateRequestCount = new client.Counter({
+  name: 'liquifact_invoice_state_requests_total',
+  help: 'Total invoice-state requests',
+  labelNames: ['route', 'method', 'status_class', 'error_cause'],
   registers: [registry],
 });
 
@@ -75,4 +148,6 @@ module.exports = {
   metricsHandler,
   configReadCacheHits,
   configReadCacheMisses,
+  invoiceStateRequestDurationMs,
+  invoiceStateRequestCount,
 };
