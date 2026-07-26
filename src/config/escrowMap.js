@@ -12,6 +12,15 @@
 
 const z = require('zod');
 const { get: getConfig } = require('./index');
+const { parseCacheConfig } = require('./cache');
+let configReadCacheHits = { inc() {} };
+let configReadCacheMisses = { inc() {} };
+
+try {
+  ({ configReadCacheHits, configReadCacheMisses } = require('../metrics'));
+} catch (_error) {
+  // Metrics are optional in isolated config tests.
+}
 
 /**
  * Schema for individual escrow mapping entries.
@@ -26,9 +35,8 @@ const EscrowMappingEntrySchema = z.object({
     .min(1, 'Escrow address cannot be empty')
     .regex(/^G[A-Z0-9]{55}$/, 'Invalid Stellar address format - must start with G and be 56 characters'),
   environment: z.string()
-    .optional()
-    .default('development')
-    .regex(/^(development|staging|production)$/, 'Environment must be development, staging, or production'),
+    .regex(/^(development|staging|production)$/, 'Environment must be development, staging, or production')
+    .default('development'),
   isActive: z.boolean()
     .default(true)
 });
@@ -42,8 +50,8 @@ const EscrowMappingConfigSchema = z.object({
     .min(0, 'Mappings array cannot be negative')
     .max(1000, 'Too many mappings - maximum 1000 allowed'),
   defaultEnvironment: z.string()
-    .default('development')
-    .regex(/^(development|staging|production)$/, 'Default environment must be valid'),
+    .regex(/^(development|staging|production)$/, 'Default environment must be valid')
+    .default('development'),
   allowlistEnabled: z.boolean()
     .default(true),
   cacheEnabled: z.boolean()
@@ -60,6 +68,46 @@ const EscrowMappingConfigSchema = z.object({
  * Cache value: { address, timestamp }
  */
 const mappingCache = new Map();
+let cachedSource = null;
+let cacheHits = 0;
+let cacheMisses = 0;
+
+/**
+ * Reads the cache bounds and TTL from environment configuration.
+ *
+ * @returns {{ ttlMs: number, maxEntries: number }} Cache settings.
+ */
+function getCacheSettings() {
+  const parsed = parseCacheConfig();
+  return {
+    ttlMs: parsed.escrowTtl,
+    maxEntries: Number.isFinite(parsed.escrowCacheMaxEntries) ? parsed.escrowCacheMaxEntries : 100,
+  };
+}
+
+/**
+ * Refreshes a cache entry's recency without changing its payload.
+ *
+ * @param {string} cacheKey - Cache key to touch.
+ * @param {{ address: string, timestamp: number }} entry - Cached entry.
+ * @returns {void}
+ */
+function touchCacheKey(cacheKey, entry) {
+  mappingCache.delete(cacheKey);
+  mappingCache.set(cacheKey, entry);
+}
+
+/**
+ * Evicts the least-recently used cache entry.
+ *
+ * @returns {void}
+ */
+function evictOldestEntry() {
+  const oldestKey = mappingCache.keys().next().value;
+  if (oldestKey !== undefined) {
+    mappingCache.delete(oldestKey);
+  }
+}
 
 /**
  * Parses and validates the ESCROW_ADDR_BY_INVOICE environment variable.
@@ -72,6 +120,10 @@ const mappingCache = new Map();
  */
 function parseEscrowMappingConfig() {
   const envValue = process.env.ESCROW_ADDR_BY_INVOICE;
+  if (envValue !== cachedSource) {
+    clearCache();
+    cachedSource = envValue;
+  }
   
   // Default empty config if not set
   if (!envValue || envValue.trim() === '') {
@@ -106,7 +158,7 @@ function getCurrentEnvironment() {
   try {
     const config = getConfig();
     return config.NODE_ENV || 'development';
-  } catch (error) {
+  } catch (_error) {
     // Config not validated, fall back to environment variable
     return process.env.NODE_ENV || 'development';
   }
@@ -161,19 +213,26 @@ function resolveEscrowAddress(invoiceId, environment) {
   const targetEnv = environment || getCurrentEnvironment();
   const config = parseEscrowMappingConfig();
   const cacheKey = `${invoiceId}:${targetEnv}`;
+  const cacheSettings = getCacheSettings();
 
   // Check cache first if enabled
   if (config.cacheEnabled && mappingCache.has(cacheKey)) {
     const cached = mappingCache.get(cacheKey);
     const ageSeconds = (Date.now() - cached.timestamp) / 1000;
     
-    if (ageSeconds < config.cacheTtlSeconds) {
+    if (ageSeconds * 1000 < cacheSettings.ttlMs) {
+      cacheHits += 1;
+      configReadCacheHits.inc();
+      touchCacheKey(cacheKey, cached);
       return cached.address;
     } else {
       // Remove expired entry
       mappingCache.delete(cacheKey);
     }
   }
+
+  cacheMisses += 1;
+  configReadCacheMisses.inc();
 
   // Validate against allowlist
   if (config.allowlistEnabled && !isInvoiceAllowlisted(invoiceId, targetEnv)) {
@@ -193,6 +252,9 @@ function resolveEscrowAddress(invoiceId, environment) {
 
   // Cache the result if enabled
   if (config.cacheEnabled) {
+    if (mappingCache.size >= cacheSettings.maxEntries) {
+      evictOldestEntry();
+    }
     mappingCache.set(cacheKey, {
       address: mapping.escrowAddress,
       timestamp: Date.now()
@@ -288,6 +350,9 @@ function validateMappingConfig() {
  */
 function clearCache() {
   mappingCache.clear();
+  cachedSource = null;
+  cacheHits = 0;
+  cacheMisses = 0;
 }
 
 /**
@@ -301,10 +366,43 @@ function getCacheStats() {
   
   return {
     size: mappingCache.size,
+    maxSize: getCacheSettings().maxEntries,
+    hits: cacheHits,
+    misses: cacheMisses,
     entries: entries.map(entry => ({
       ageSeconds: (now - entry.timestamp) / 1000
     }))
   };
+}
+
+/**
+ * Invalidates a single cached mapping entry.
+ *
+ * @param {string} invoiceId - Invoice ID whose cached mapping should be removed.
+ * @param {string} [environment] - Target environment.
+ * @returns {boolean} True if an entry was removed.
+ */
+function invalidateEscrowCache(invoiceId, environment) {
+  const targetEnv = environment || getCurrentEnvironment();
+  return mappingCache.delete(`${invoiceId}:${targetEnv}`);
+}
+
+/**
+ * Invalidates all cached mappings for an environment.
+ *
+ * @param {string} [environment] - Target environment.
+ * @returns {number} Number of entries removed.
+ */
+function invalidateEscrowCacheByEnvironment(environment) {
+  const targetEnv = environment || getCurrentEnvironment();
+  let removed = 0;
+  for (const key of Array.from(mappingCache.keys())) {
+    if (key.endsWith(`:${targetEnv}`)) {
+      mappingCache.delete(key);
+      removed += 1;
+    }
+  }
+  return removed;
 }
 
 module.exports = {
@@ -314,6 +412,8 @@ module.exports = {
   validateMappingConfig,
   clearCache,
   getCacheStats,
+  invalidateEscrowCache,
+  invalidateEscrowCacheByEnvironment,
   parseEscrowMappingConfig,
   EscrowMappingEntrySchema,
   EscrowMappingConfigSchema

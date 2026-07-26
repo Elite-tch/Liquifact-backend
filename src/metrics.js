@@ -21,6 +21,18 @@ const registry = new client.Registry();
 
 client.collectDefaultMetrics({ register: registry });
 
+const configReadCacheHits = new client.Counter({
+  name: 'liquifact_config_read_cache_hits_total',
+  help: 'Total number of config read cache hits',
+  registers: [registry],
+});
+
+const configReadCacheMisses = new client.Counter({
+  name: 'liquifact_config_read_cache_misses_total',
+  help: 'Total number of config read cache misses',
+  registers: [registry],
+});
+
 /**
  * Express middleware that enforces metrics auth.
  *
@@ -57,4 +69,10 @@ async function metricsHandler(_req, res) {
   res.end(await registry.metrics());
 }
 
-module.exports = { registry, metricsAuth, metricsHandler };
+module.exports = {
+  registry,
+  metricsAuth,
+  metricsHandler,
+  configReadCacheHits,
+  configReadCacheMisses,
+};
